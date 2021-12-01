@@ -1,0 +1,325 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Collage API",
+        "description": "Collage Api Documentation",
+        "contact": {
+            "email": "ahmed.ali-gad@outlook.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/articles": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Get list of articles",
+                "description": "Returns list of articles",
+                "operationId": "getArticlesList",
+                "parameters": [
+                    {
+                        "name": "section_id",
+                        "in": "query",
+                        "description": "Section Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Get Article Data",
+                "description": "Return Article Data",
+                "operationId": "getArticleData",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Sign"
+                ],
+                "summary": "Login",
+                "description": "Login User",
+                "operationId": "login_user",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User Password",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Sign"
+                ],
+                "summary": "Loogout",
+                "description": "Loogout User",
+                "operationId": "logout_user",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/contact": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Contact Message Endpoint",
+                "description": "Send Message",
+                "operationId": "send_message",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Sender Name",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Sender Email",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Sender Phone",
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "description": "Message Content",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/sections": {
+            "get": {
+                "tags": [
+                    "Sections"
+                ],
+                "summary": "Get list of sections",
+                "description": "Returns list of sections",
+                "operationId": "getSectionsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/sliders": {
+            "get": {
+                "tags": [
+                    "Sliders"
+                ],
+                "summary": "Get list of sliders",
+                "description": "Returns list of sliders",
+                "operationId": "getSlidersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "Pass Bearer Token",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
