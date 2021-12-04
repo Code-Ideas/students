@@ -18,4 +18,9 @@ class Service extends Model
     {
         return $this->belongsTo(Service::class, 'parent_id');
     }
+
+    public function subServices()
+    {
+        return $this->hasMany(Service::class, 'parent_id');
+    }
 }

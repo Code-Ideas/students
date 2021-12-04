@@ -18,10 +18,10 @@ Route::post('login', 'AuthController@login')->name('login');
 Route::post('register', 'AuthController@register')->name('register');
 /*====== Sliders =======*/
 Route::get('sliders', 'SliderController');
-/*====== Sections =======*/
-Route::get('sections', 'SectionController')->name('sections.index');
-/* ====== Articles =======*/
-Route::apiResource('articles', 'ArticlesController', ['only' => ['index', 'show']]);
+/*====== Services =======*/
+Route::get('services', 'ServiceController')->name('services.index');
+/* ====== Posts =======*/
+Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
 /*====== Contact =======*/
 Route::post('contact', 'ContactController');
 

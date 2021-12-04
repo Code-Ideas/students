@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SectionResource;
-use App\Models\Section;
-use Illuminate\Http\Request;
+use App\Http\Resources\ServicesResource;
+use App\Models\Service;
 
-class SectionController extends Controller
+class ServiceController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/sections",
-     *      operationId="getSectionsList",
-     *      tags={"Sections"},
-     *      summary="Get list of sections",
-     *      description="Returns list of sections",
+     *      path="/services",
+     *      operationId="getServicesList",
+     *      tags={"Services"},
+     *      summary="Get list of services",
+     *      description="Returns list of services",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -43,6 +42,6 @@ class SectionController extends Controller
      */
     public function __invoke()
     {
-        return SectionResource::collection(Section::withCount('articles')->get());
+        return ServicesResource::collection(Service::active()->get());
     }
 }

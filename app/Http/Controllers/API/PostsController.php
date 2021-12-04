@@ -4,29 +4,20 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\SectionProductsRequest;
-use App\Http\Resources\ArticleListResource;
-use App\Http\Resources\ShowArticleResource;
-use App\Models\Article;
+use App\Http\Resources\PostsListResource;
+use App\Http\Resources\ShowPostResource;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class PostsController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/articles",
-     *      operationId="getArticlesList",
-     *      tags={"Articles"},
-     *      summary="Get list of articles",
-     *      description="Returns list of articles",
-     *      @OA\Parameter(
-     *          name="section_id",
-     *          description="Section Id",
-     *          required=true,
-     *          in="query",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
+     *      path="/posts",
+     *      operationId="getPostsList",
+     *      tags={"Posts"},
+     *      summary="Get list of posts",
+     *      description="Returns list of posts",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -54,11 +45,11 @@ class ArticlesController extends Controller
      * @param SectionProductsRequest $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(SectionProductsRequest $request)
+    public function index(Request $request)
     {
-        $articles = Article::whereSectionId($request->section_id)->active()->get();
+        $posts = Post::latest()->paginate(15);
 
-        return ArticleListResource::collection($articles);
+        return PostsListResource::collection($posts);
     }
 
     /**
@@ -84,14 +75,14 @@ class ArticlesController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/articles/{id}",
-     *      operationId="getArticleData",
-     *      tags={"Articles"},
-     *      summary="Get Article Data",
-     *      description="Return Article Data",
+     *      path="/posts/{id}",
+     *      operationId="getPostData",
+     *      tags={"Posts"},
+     *      summary="Get Post Data",
+     *      description="Return Post Data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Article id",
+     *          description="Post id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -123,18 +114,18 @@ class ArticlesController extends Controller
      *      ),
      *     )
      */
-    public function show(Article $article)
+    public function show(Post $post)
     {
-        return new ShowArticleResource($article);
+        return new ShowPostResource($post);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Post $post)
     {
         //
     }
@@ -143,10 +134,10 @@ class ArticlesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -154,10 +145,10 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Post $post)
     {
         //
     }
