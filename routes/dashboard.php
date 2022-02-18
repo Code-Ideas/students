@@ -9,7 +9,11 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['admin']], fun
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => ['admin']], function () {
     Route::name('dashboard')->get('/', 'HomeController@index');
-    // Sections
+    // Collages
+    Route::resource('collages', 'CollagesController', ['except' => 'show']);
+    // Departments
+    Route::resource('departments', 'DepartmentsController', ['except' => 'show']);
+    // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Articles
     Route::resource('posts', 'PostsController');

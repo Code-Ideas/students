@@ -44,7 +44,7 @@
     </div>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label">رابط الخارجي الخدمة </label>
+            <label class="label">الرابط الخارجي للخدمة</label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -62,11 +62,12 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::number('priority', isset($service) ? $service->priority : 1, ['class' => 'input', 'min' => 1] )!!}
+                    {!! Form::number('priority', isset($service) ? $service->priority : \App\Models\Service::count()+1, ['class' => 'input', 'min' => 1] )!!}
                 </div>
             </div>
         </div>
     </div>
+    <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label">الحالة</label>

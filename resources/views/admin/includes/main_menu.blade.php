@@ -3,7 +3,15 @@
             class="fa fa-home"></i><span>رئيسية الموقع</span></a>
     <a href="{{ route('admin.dashboard') }}" class="card link-item-no-collapse "><i
             class="fas fa-tachometer-alt"></i><span>لوحه التحكم</span></a>
-    <collapse-item title="الخدمات" icon="fa fa-sitemap">
+    <collapse-item title="الكليات" icon="fa fa-building">
+        <a class="link-item" href="{{ route('admin.collages.create') }}">اضافة كلية</a>
+        <a class="link-item" href="{{ route('admin.collages.index') }}">قائمة الكليات</a>
+    </collapse-item>
+    <collapse-item title="الأقسام" icon="fa fa-sitemap">
+        <a class="link-item" href="{{ route('admin.departments.create') }}">اضافة قسم</a>
+        <a class="link-item" href="{{ route('admin.departments.index') }}">قائمة الأقسام</a>
+    </collapse-item>
+    <collapse-item title="الخدمات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.services.create') }}">اضافة خدمة</a>
         <a class="link-item" href="{{ route('admin.services.index') }}">قائمة الخدمات</a>
     </collapse-item>

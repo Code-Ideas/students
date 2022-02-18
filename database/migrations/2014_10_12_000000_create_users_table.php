@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('device_token')->nullable()->unique();
             $table->enum('platform', ['web', 'app'])->default('web');
 
+            $table->unsignedBigInteger('collage_id');
+            $table->foreign('collage_id')->references('id')->on('collages')->onDelete('cascade');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->unsignedBigInteger('year_id');

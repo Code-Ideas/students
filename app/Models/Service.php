@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['name', 'active', 'priority', 'parent_id'];
+    protected $fillable = ['name', 'type', 'active', 'priority', 'parent_id'];
 
     public function scopeActive(Builder $builder)
     {

@@ -47,6 +47,12 @@ class YearsTableSeeder extends Seeder
                 'name'          => 'الفرقة الرابعة',
                 'active'        => true,
                 'created_at'    => Carbon::now(),
+            ],
+            [
+                'id'            => 6,
+                'name'          => 'الفرقة الخامسة',
+                'active'        => true,
+                'created_at'    => Carbon::now(),
             ]
         ];
 

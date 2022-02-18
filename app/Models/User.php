@@ -14,7 +14,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'code', 'department_id', 'year_id', 'active', 'api_token'];
+    protected $fillable = ['name', 'email', 'password', 'code', 'collage_id', 'department_id', 'year_id', 'active',
+        'api_token'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -22,6 +23,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function collage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Collage::class);
+    }
 
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

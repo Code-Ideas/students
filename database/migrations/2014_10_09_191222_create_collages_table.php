@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLayersTable extends Migration
+class CreateCollagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateLayersTable extends Migration
      */
     public function up()
     {
-        Schema::create('layers', function (Blueprint $table) {
+        Schema::create('collages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('logo');
+            $table->boolean('active')->default(true);
+            $table->unsignedInteger('priority')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateLayersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('layers');
+        Schema::dropIfExists('collages');
     }
 }
