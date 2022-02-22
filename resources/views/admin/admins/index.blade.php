@@ -1,0 +1,55 @@
+<!-- Layout Extend -->
+@extends('admin.layouts.app')
+<!-- SEO Section -->
+@section('page.title', 'المشرفين')
+<!-- Start Content Section -->
+@section('content')
+    <!-- Start Card -->
+    <div class="card main-card">
+        <!-- Start Card Header -->
+        <div class="card-header is-justify-content-space-between">
+            <a href="{{ route('admin.admins.create') }}" class="button is-success">
+        <span class="icon is-small">
+          <i class="fa fa-plus-circle"></i>
+        </span>
+                <span>اضافة مشرف</span>
+            </a>
+        </div>
+        <!-- End Card Header -->
+        <div class="card-content">
+            <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
+                    <tr>
+                        <th>اسم المشرف</th>
+                        <th>البريد الالكتروني</th>
+                        <th>القسم</th>
+                        <th>الحالة</th>
+                        <th>الاجراءات</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($admins as $admin)
+                    <tr>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{ $admin->department ? $admin->department->name : ' - - ' }}</td>
+                        <td>{{ $admin->active ? 'مفعل' : 'غير مفعل' }}</td>
+                        <td>
+                            <div class="buttons has-addons">
+                                <a class="button is-info" href="{{ route('admin.admins.edit', $admin->id) }}"> تعديل </a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer with-pagination">
+            {{ $admins->links('vendor.pagination.bulma') }}
+        </div>
+    </div>
+    <!-- End Card -->
+@endsection
+<!-- End Content Section -->

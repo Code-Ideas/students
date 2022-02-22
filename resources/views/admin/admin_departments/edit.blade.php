@@ -8,16 +8,16 @@
   <div class="card main-card">
     <!-- Start Card Header -->
     <div class="card-header">
-      <a href="{{ route('admin.departments.index') }}" class="button is-success">
+      <a href="{{ route('admin.admin_departments.index') }}" class="button is-success">
         <span class="icon is-small">
           <i class="fa fa-sitemap"></i>
         </span>
-        <span>قائمة اقسام الكليات</span>
+        <span>قائمة اقسام المشرفين</span>
       </a>
     </div><!-- End Card Header -->
     <!-- Start Form -->
-    {!! Form::model($department,['method' => 'PATCH', 'files' => true, 'url' => route('admin.departments.update', $department->id)]) !!}
-      @include('admin.departments._form')
+    {!! Form::model($department,['method' => 'PATCH', 'files' => true, 'url' => route('admin.admin_departments.update', $department->id)]) !!}
+      @include('admin.admin_departments._form')
     {!! Form::close() !!}<!-- End Form -->
   </div><!-- End Card -->
 @endsection<!-- End Content Section -->

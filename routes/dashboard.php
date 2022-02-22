@@ -13,6 +13,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('collages', 'CollagesController', ['except' => 'show']);
     // Departments
     Route::resource('departments', 'DepartmentsController', ['except' => 'show']);
+    // Admin Departments
+    Route::resource('admin_departments', 'AdminDepartmentsController', ['except' => 'show']);
+    // Admins
+    Route::resource('admins', 'AdminsController', ['except' => 'show']);
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Articles

@@ -1,14 +1,14 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'اقسام الكليات')
+@section('page.title', 'اقسام المشرفين')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
   <div class="card main-card">
       <!-- Start Card Header -->
       <div class="card-header is-justify-content-space-between">
-          <a href="{{ route('admin.departments.create') }}" class="button is-success">
+          <a href="{{ route('admin.admin_departments.create') }}" class="button is-success">
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
@@ -23,6 +23,7 @@
                     <tr>
                         <th>اسم القسم</th>
                         <th>الكلية</th>
+                        <th>عدد المشرفين</th>
                         <th>حالة القسم</th>
                         <th>الاجراءات</th>
                     </tr>
@@ -32,10 +33,11 @@
                         <tr>
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->collage ? $department->collage->name : ' - - ' }}</td>
+                            <td>{{ $department->admins_count }}</td>
                             <td>{{ $department->active ? 'مفعل' : 'غير مفعل' }}</td>
                             <td>
                                 <div class="buttons has-addons">
-                                    <a class="button is-info" href="{{ route('admin.departments.edit', $department->id) }}">
+                                    <a class="button is-info" href="{{ route('admin.admin_departments.edit', $department->id) }}">
                                         تعديل </a>
                                 </div>
                             </td>
