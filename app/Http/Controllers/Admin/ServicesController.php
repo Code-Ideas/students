@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ServiceRequest;
+use App\Models\Collage;
 use App\Models\Service;
 
 class ServicesController extends Controller
@@ -28,8 +29,9 @@ class ServicesController extends Controller
     public function create()
     {
         $services = Service::whereNull('parent_id')->pluck('name', 'id');
+        $collages = Collage::get(['id', 'name']);
 
-        return view('admin.services.create', compact('services'));
+        return view('admin.services.create', compact('services', 'collages'));
     }
 
     /**
@@ -65,8 +67,9 @@ class ServicesController extends Controller
     public function edit(Service $service)
     {
         $services = Service::where([['id', '!=', $service->id], ['parent_id', null]])->pluck('name', 'id');
+        $collages = Collage::get(['id', 'name']);
 
-        return view('admin.services.edit', compact('service', 'services'));
+        return view('admin.services.edit', compact('service', 'services', 'collages'));
     }
 
     /**

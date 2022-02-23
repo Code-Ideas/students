@@ -1,5 +1,20 @@
 <!-- Start Card Content -->
 <div class="card-content">
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">الكلية التابع لها</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <single-select :inputs="{{ $collages }}" forname="collage_id"
+                                   @if(isset($service) && $service->collage) :oldvalues="{{ $service->collage()->get(['id', 'name']) }}" @endif>
+                    </single-select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
               <label class="label required">اسم الخدمة </label>

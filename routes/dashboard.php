@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('admins', 'AdminsController', ['except' => 'show']);
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
+    // Service Layers
+    Route::resource('services.service_layers', 'ServiceLayersController', ['except' => 'show']);
     // Articles
     Route::resource('posts', 'PostsController');
     Route::post('posts/{post}/photos', 'ImagesController@store')->name('store_photo');
