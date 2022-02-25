@@ -18,7 +18,7 @@ const tailwindcss = require('tailwindcss');
 //     .sass('resources/assets/front/sass/app.scss', 'public/front/css/app.css')
 //     .options({
 //         processCssUrls: false,
-//         postCss: [ 
+//         postCss: [
 //             tailwindcss('tailwind.config.js'),
 //          ],
 //     }).sourceMaps();
@@ -32,12 +32,12 @@ const tailwindcss = require('tailwindcss');
  */
 // mix.minify('resources/assets/admin/js/ckeditor/ckeditor.js');
 
-// mix.js('resources/assets/admin/js/app.js', 'public/admin/js').sourceMaps();
-mix.sass('resources/assets/admin/sass/app.scss', 'public/admin/css/app.css').sourceMaps();
+mix.js('resources/assets/admin/js/app.js', 'public/admin/js').sourceMaps();
+//mix.sass('resources/assets/admin/sass/app.scss', 'public/admin/css/app.css').sourceMaps();
 
 /*
  |--------------------------------------------------------------------------
  | Watcher Management
  |--------------------------------------------------------------------------
  */
-mix.browserSync('http://127.0.0.1:8000');
+//mix.browserSync('http://127.0.0.1:8000');

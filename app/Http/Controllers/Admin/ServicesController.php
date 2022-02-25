@@ -42,7 +42,7 @@ class ServicesController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        Service::create($request->input());
+        Service::create($request->except('collages') + ['collages' => array_map('intval', $request->collages)]);
 
         return redirect()->route('admin.services.index')->with('success', 'تم اضافة البيانات');
     }
@@ -81,7 +81,7 @@ class ServicesController extends Controller
      */
     public function update(ServiceRequest $request, Service $service)
     {
-        $service->update($request->input());
+        $service->update($request->except('collages') + ['collages' => array_map('intval', $request->collages)]);
 
         return redirect()->route('admin.services.index')->with('success', 'تم تحديث البيانات');
     }

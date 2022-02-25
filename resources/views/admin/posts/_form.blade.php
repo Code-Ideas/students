@@ -27,20 +27,9 @@
       </div>
   </div>
   <hr />
-  <div class="field is-horizontal">
-      <div class="field-label is-normal">
-          <label class="label required">اختيار الخدمة</label>
-      </div>
-      <div class="field-body">
-          <div class="field">
-              <div class="control">
-                  <div class="select is-fullwidth">
-                      {!! Form::select('service_id', $sections, null, ['required']) !!}
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+  <collage-select old-type="{{ isset($post) ? $post->type : 'general' }}"
+                  @if((isset($post) && $post->collage)) :old-collage="{{ $post->collage()->get(['id', 'name']) }}" @endif>
+  </collage-select>
   <hr />
   <div class="field is-horizontal">
       <div class="field-label is-normal">

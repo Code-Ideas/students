@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Collage;
 use App\Models\Department;
 use App\Models\Service;
 use App\Models\ServiceLayer;
@@ -13,7 +14,7 @@ class ServiceLayersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index(Service $service)
     {
@@ -25,7 +26,7 @@ class ServiceLayersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create(Service $service)
     {
@@ -36,19 +37,21 @@ class ServiceLayersController extends Controller
                                 'name' => $department->name.' - '.$department->collage->name
                             ];
                       });
+        $collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
 
-        return view('admin.service_layers.create', compact('service', 'departments'));
+        return view('admin.service_layers.create', compact('service', 'departments', 'collages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, Service $service)
     {
-        $layer = ServiceLayer::create($request->input() + ['service_id' => $service->id]);
+        $layer = ServiceLayer::create($request->except('collages') + [
+            'service_id' => $service->id, 'collages' => array_map('intval', $request->collages)]);
 
         return redirect()->route('admin.services.service_layers.index', $service->id)
                          ->with('success', 'تم اضافة البيانات بنجاح');
@@ -69,7 +72,7 @@ class ServiceLayersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\ServiceLayer  $serviceLayer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function edit(Service $service, ServiceLayer $serviceLayer)
     {
@@ -80,8 +83,9 @@ class ServiceLayersController extends Controller
                                          'name' => $department->name.' - '.$department->collage->name
                                      ];
                                  });
+        $collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
 
-        return view('admin.service_layers.edit', compact('service', 'serviceLayer', 'departments'));
+        return view('admin.service_layers.edit', compact('service', 'serviceLayer', 'departments', 'collages'));
     }
 
     /**
@@ -89,7 +93,7 @@ class ServiceLayersController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ServiceLayer  $serviceLayer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Service $service, ServiceLayer $serviceLayer)
     {
@@ -103,7 +107,7 @@ class ServiceLayersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\ServiceLayer  $serviceLayer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Service $service, ServiceLayer $serviceLayer)
     {

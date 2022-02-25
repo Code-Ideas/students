@@ -19,10 +19,9 @@ class CreatePostsTable extends Migration
             $table->longText('body');
             $table->unsignedInteger('priority')->default(0);
             $table->boolean('active')->default(true);
-            $table->unsignedBigInteger('collage_id');
-            $table->foreign('collage_id')->references('id')->on('collages')->onDelete('cascade');
-            $table->unsignedBigInteger('service_id')->nullable();
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('set null');
+            $table->enum('type', ['general', 'collage'])->default('general');
+            $table->unsignedBigInteger('collage_id')->nullable();
+            $table->foreign('collage_id')->references('id')->on('collages')->onDelete('set null');
             $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');
             $table->unsignedBigInteger('year_id')->nullable();

@@ -46,6 +46,7 @@ import DateTimePicker from './SecondaryComponents/DateTimePicker'
 import CustomSelect from './SecondaryComponents/Select/CustomSelect'
 import SingleSelect from './SecondaryComponents/Select/SingleSelect'
 import SelectAll from './SecondaryComponents/Select/SelectAll';
+import CollageSelect from "./SecondaryComponents/Select/CollageSelect";
 
 
 /*==============General Use=============*/
@@ -74,7 +75,8 @@ export {
     CkEditor,
     SelectAll,
     Alert,
-    IconPicker
+    IconPicker,
+    CollageSelect
 }
 
 const app = new Vue({
@@ -98,6 +100,7 @@ const app = new Vue({
         CkEditor,
         SelectAll,
         Alert,
-        IconPicker
+        IconPicker,
+        CollageSelect
     }
 });

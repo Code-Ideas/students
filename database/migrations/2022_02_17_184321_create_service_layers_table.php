@@ -19,6 +19,7 @@ class CreateServiceLayersTable extends Migration
             $table->longText('content');
             $table->boolean('active')->default(true);
             $table->unsignedInteger('priority')->default(0);
+            $table->json('collages');
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->unsignedBigInteger('department_id')->nullable();

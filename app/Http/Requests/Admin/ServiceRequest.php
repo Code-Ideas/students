@@ -28,7 +28,8 @@ class ServiceRequest extends FormRequest
             'priority' => 'required|numeric|unique:services,priority,'.optional($this->service)->id,
             'parent_id' => $this->filled('parent_id') ? 'numeric|exists:services,id' : '',
             'link' => $this->get('type') == 'link' ? 'string|url' : '',
-            'collage_id' => 'required|numeric|exists:collages,id'
+            'collages' => 'required|array',
+            'collages.*' => 'required|numeric|exists:collages,id'
         ];
     }
 
@@ -39,7 +40,7 @@ class ServiceRequest extends FormRequest
             'priority' => 'الترتيب',
             'parent_id' => 'الخدمة الرئيسية',
             'link' => 'الرابط الخارجي للخدمة',
-            'collage_id' => 'الكلية التابع لها'
+            'collages' => 'الكلية التابع لها'
         ];
     }
 }

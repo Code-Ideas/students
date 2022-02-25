@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('services.service_layers', 'ServiceLayersController', ['except' => 'show']);
     // Articles
     Route::resource('posts', 'PostsController');
+    Route::name('get_collages')->get('get_collages', 'PostsController@collagesList');
+
     Route::post('posts/{post}/photos', 'ImagesController@store')->name('store_photo');
     Route::delete('photos/{photo}', 'ImagesController@destroy')->name('destroy_photo');
     // Contacts

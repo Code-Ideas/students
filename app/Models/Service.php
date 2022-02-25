@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['name', 'type', 'active', 'priority', 'parent_id', 'collage_id'];
+    protected $fillable = ['name', 'type', 'active', 'priority', 'parent_id', 'collages'];
+
+    protected $casts = ['collages' => 'array'];
 
     public function scopeActive(Builder $builder)
     {
@@ -24,8 +26,17 @@ class Service extends Model
         return $this->hasMany(Service::class, 'parent_id');
     }
 
-    public function collage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function layers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsTo(Collage::class);
+        return $this->hasMany(ServiceLayer::class, 'service_id');
+    }
+
+    public function collages()
+    {
+        if ($this->collages) {
+            return Collage::whereIn('id', $this->collages)->get(['id', 'name']);
+        } else {
+            return [];
+        }
     }
 }

@@ -2,6 +2,20 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
+            <label class="label required">اختيار الكلية</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <select-all :inputs="{{ $collages }}" forname="collages[]"
+                                @if(isset($serviceLayer) && $serviceLayer->collages) :oldvalues="{{ $serviceLayer->collages() }}" @endif>
+                    </select-all>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <div class="field is-horizontal">
+        <div class="field-label is-normal">
             <label class="label required">القسم التابع لها</label>
         </div>
         <div class="field-body">
@@ -13,7 +27,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <hr />
   <div class="field is-horizontal">
       <div class="field-label is-normal">

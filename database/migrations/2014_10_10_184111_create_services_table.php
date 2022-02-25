@@ -21,8 +21,7 @@ class CreateServicesTable extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedInteger('priority')->default(0);
             $table->boolean('active')->default(true);
-            $table->unsignedBigInteger('collage_id');
-            $table->foreign('collage_id')->references('id')->on('collages')->onDelete('cascade');
+            $table->json('collages');
             $table->timestamps();
         });
     }

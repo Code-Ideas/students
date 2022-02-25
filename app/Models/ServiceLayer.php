@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceLayer extends Model
 {
-    protected $fillable = ['service_id', 'title', 'content', 'priority', 'department_id', 'year_id', 'active'];
+    protected $fillable = ['service_id', 'title', 'content', 'priority',
+        'collages', 'department_id', 'year_id', 'active'];
+
+    protected $casts = ['collages' => 'array'];
 
     public function scopeActive(Builder $builder)
     {
@@ -25,5 +28,14 @@ class ServiceLayer extends Model
     public function year(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Year::class);
+    }
+
+    public function collages(): array
+    {
+        if ($this->collages) {
+            return Collage::whereIn('id', $this->collages)->get(['id', 'name']);
+        } else {
+            return [];
+        }
     }
 }

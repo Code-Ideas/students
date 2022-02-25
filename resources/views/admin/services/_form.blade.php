@@ -2,14 +2,14 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الكلية التابع لها</label>
+            <label class="label required">اختيار الكلية</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <single-select :inputs="{{ $collages }}" forname="collage_id"
-                                   @if(isset($service) && $service->collage) :oldvalues="{{ $service->collage()->get(['id', 'name']) }}" @endif>
-                    </single-select>
+                    <select-all :inputs="{{ $collages }}" forname="collages[]"
+                                   @if(isset($service) && $service->collages) :oldvalues="{{ $service->collages() }}" @endif>
+                    </select-all>
                 </div>
             </div>
         </div>

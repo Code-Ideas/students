@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
+use App\Models\Collage;
 use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+
+    public function collagesList()
+    {
+        return response()->json(Collage::get(['id', 'name']));
+    }
     /**
      * Display a listing of the resource.
      *

@@ -26,7 +26,7 @@ class PostRequest extends FormRequest
         return [
             'title'    => 'required|string|min:3|max:150',
             'body'    => 'required|string|min:15',
-            'service_id' => 'required|numeric|exists:services,id',
+            //'service_id' => 'required|numeric|exists:services,id',
             'image' => ($this->method() === 'POST' ? 'required|' : '') . 'image'
         ];
     }

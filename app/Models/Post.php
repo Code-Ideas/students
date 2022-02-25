@@ -9,10 +9,10 @@ class Post extends Model
 {
     use HasPhoto;
 
-    protected $fillable = ['title', 'body', 'service_id', 'priority', 'active'];
+    protected $fillable = ['title', 'body', 'type', 'collage_id', 'priority', 'active'];
 
-    public function service()
+    public function collage()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Collage::class);
     }
 }
