@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceLayerAttachment extends Model
 {
-    protected $fillable = ['file_name', 'service_layer_id', 'path', 'type'];
+    protected $fillable = ['file_name', 'service_layer_id', 'video_url', 'path', 'type'];
 
     protected static function boot()
     {

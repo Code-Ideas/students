@@ -17,7 +17,8 @@ class CreateServiceLayerAttachmentsTable extends Migration
             $table->id();
             $table->string('file_name');
             $table->string('path');
-            $table->enum('type', ['image', 'file'])->default('image');
+            $table->enum('type', ['image', 'file', 'video'])->default('image');
+            $table->text('video_url')->nullable();
             $table->unsignedBigInteger('service_layer_id');
             $table->foreign('service_layer_id')->references('id')->on('service_layers')->onDelete('cascade');
             $table->timestamps();

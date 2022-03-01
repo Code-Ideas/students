@@ -7,13 +7,15 @@
   <!-- Start Card -->
   <div class="card main-card">
     <!-- Start Card Header -->
-    <div class="card-header is-justify-content-space-between">
-      <a href="{{ route('admin.services.service_layers.create', $service->id) }}" class="button is-success">
-        <span class="icon is-small">
-          <i class="fa fa-plus-circle"></i>
-        </span>
-        <span>اضافة محتوي</span>
-      </a>
+      <div class="card-header is-justify-content-space-between">
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link button is-warning" href="#">اختيار نوع المحتوي</a>
+            <div class="navbar-dropdown is-right-to-left notification-menu control">
+                <a class="notification-item" href="{{ route('admin.services.service_layers.create', $service->id) }}">محتوي فقط</a>
+                <a class="notification-item" href="{{ route('admin.services.service_layers.create', $service->id) }}">محتوي ومرفقات</a>
+                <a class="notification-item" href="{{ route('admin.services.service_layers.create', $service->id) }}" >مرفقات فقط</a>
+            </div>
+        </div>
     </div><!-- End Card Header -->
 
     <!-- Start Card Content -->
