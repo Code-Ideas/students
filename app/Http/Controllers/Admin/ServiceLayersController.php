@@ -28,18 +28,19 @@ class ServiceLayersController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function create(Service $service)
+    public function create(Service $service, Request $request)
     {
+        $type = $request->get('content_type', 'content');
         $departments = Department::with('collage:id,name')->get(['id', 'name', 'collage_id'])
-                      ->map(function ($department) {
-                            return [
-                                'id' => $department->id,
-                                'name' => $department->name.' - '.$department->collage->name
-                            ];
-                      });
+                                 ->map(function ($department) {
+                                     return [
+                                         'id' => $department->id,
+                                         'name' => $department->name.' - '.$department->collage->name
+                                     ];
+                                 });
         $collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
 
-        return view('admin.service_layers.create', compact('service', 'departments', 'collages'));
+        return view('admin.service_layers.create', compact('service', 'departments', 'collages', 'type'));
     }
 
     /**
@@ -51,7 +52,7 @@ class ServiceLayersController extends Controller
     public function store(Request $request, Service $service)
     {
         $layer = ServiceLayer::create($request->except('collages') + [
-            'service_id' => $service->id, 'collages' => array_map('intval', $request->collages)]);
+                'service_id' => $service->id, 'collages' => array_map('intval', $request->collages)]);
 
         return redirect()->route('admin.services.service_layers.index', $service->id)
                          ->with('success', 'تم اضافة البيانات بنجاح');

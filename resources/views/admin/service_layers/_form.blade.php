@@ -7,9 +7,9 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <select-all :inputs="{{ $collages }}" forname="collages[]"
-                                @if(isset($serviceLayer) && $serviceLayer->collages) :oldvalues="{{ $serviceLayer->collages() }}" @endif>
-                    </select-all>
+                    <single-select :inputs="{{ $collages }}" forname="collages[]"
+                                   @if(isset($serviceLayer) && $serviceLayer->collages) :oldvalues="{{ $serviceLayer->collages() }}" @endif>
+                    </single-select>
                 </div>
             </div>
         </div>
@@ -29,33 +29,50 @@
         </div>
     </div>-->
     <hr />
-  <div class="field is-horizontal">
-      <div class="field-label is-normal">
-          <label class="label required">العنوان</label>
-      </div>
-      <div class="field-body">
-          <div class="field">
-              <div class="control">
-                  {!! Form::text('title', null, ['class' => 'input', 'required']) !!}
-              </div>
-          </div>
-      </div>
-  </div>
-  <hr />
-  <div class="field is-horizontal">
-      <div class="field-label is-normal">
-          <label class="label required"> المحتوي</label>
-      </div>
-      <div class="field-body">
-          <div class="field">
-              <div class="control">
-                  <ck-editor id="content" name="content" @if (isset($serviceLayer))
-                      old-data="{{ $serviceLayer->content }}" @endif></ck-editor>
-              </div>
-          </div>
-      </div>
-  </div>
-  <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">العنوان</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('title', null, ['class' => 'input', 'required']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    @if($type == 'content' || $type == 'content_files')
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label required"> المحتوي</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <ck-editor id="content" name="content" @if (isset($serviceLayer))
+                        old-data="{{ $serviceLayer->content }}" @endif></ck-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    @endif
+    @if($type == 'files' || $type == 'content_files')
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label required">المرفقات</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <uploader accept="pdf" label="اختر ملف او اكثر" name="attachments[]" :is-multiple="true"></uploader>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    @endif
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">الترتيب</label>
@@ -91,8 +108,8 @@
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">
-  <div class="buttons has-addons">
-      <a class="button is-info" href="{{ route('admin.services.service_layers.index', $service->id) }}"> الغاء </a>
-      <button type="submit" class="button is-success">حفظ</button>
-  </div>
+    <div class="buttons has-addons">
+        <a class="button is-info" href="{{ route('admin.services.service_layers.index', $service->id) }}"> الغاء </a>
+        <button type="submit" class="button is-success">حفظ</button>
+    </div>
 </div><!-- End Card Footer -->
