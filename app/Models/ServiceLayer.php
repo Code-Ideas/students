@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceLayer extends Model
 {
     protected $fillable = ['service_id', 'title', 'content', 'priority',
-        'collages', 'department_id', 'year_id', 'active'];
+        'content_type', 'department_id', 'year_id', 'active'];
 
     protected $casts = ['collages' => 'array'];
 
@@ -37,5 +37,10 @@ class ServiceLayer extends Model
         } else {
             return [];
         }
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(ServiceLayerAttachment::class)->where('type', 'file');
     }
 }

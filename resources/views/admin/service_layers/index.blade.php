@@ -36,6 +36,9 @@
                             <td>{{ $layer->active ? 'مفعل' : 'غير مفعل' }}</td>
                             <td>
                                 <div class="buttons has-addons">
+                                    @if($layer->content_type != 'content')
+                                    <a class="button is-warning" target="_blank" href="{{ route('admin.services.service_layers.show', [$service->id, $layer->id]) }}">المرفقات</a>
+                                    @endif
                                     <a class="button is-info" href="{{ route('admin.services.service_layers.edit', [$service->id, $layer->id]) }}"> تعديل </a>
                                     <span class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $layer->id }}" data_name="{{ $layer->title }}" data-url="{{ route('admin.services.service_layers.destroy', [$service->id, $layer->id]) }}">حذف</span>
                                 </div>

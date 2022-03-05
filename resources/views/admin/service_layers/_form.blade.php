@@ -1,20 +1,7 @@
 <!-- Start Card Content -->
 <div class="card-content">
+    <input type="hidden" name="content_type" value="{{ isset($type) ? $type : 'content' }}">
     <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">اختيار الكلية</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <single-select :inputs="{{ $collages }}" forname="collages[]"
-                                   @if(isset($serviceLayer) && $serviceLayer->collages) :oldvalues="{{ $serviceLayer->collages() }}" @endif>
-                    </single-select>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--    <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">القسم التابع لها</label>
         </div>
@@ -27,7 +14,21 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">الفرقة الدراسية</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <single-select :inputs="{{ $years }}" forname="year_id"
+                                   @if(isset($serviceLayer) && $serviceLayer->year) :oldvalues="{{ $serviceLayer->year()->get(['id', 'name']) }}" @endif>
+                    </single-select>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">

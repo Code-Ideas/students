@@ -20,7 +20,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Service Layers
-    Route::resource('services.service_layers', 'ServiceLayersController', ['except' => 'show']);
+    Route::resource('services.service_layers', 'ServiceLayersController');
+    Route::post('service_layers/{service_layer}/attachments', 'ServiceLayerAttachmentsController@store')
+         ->name('layer_attachments.store');
+    Route::delete('/service_layer_attachments/{service_layer_attachment}', 'ServiceLayerAttachmentsController@destroy')
+         ->name('layer_attachments.destroy');
     // Articles
     Route::resource('posts', 'PostsController');
     Route::name('get_collages')->get('get_collages', 'PostsController@collagesList');

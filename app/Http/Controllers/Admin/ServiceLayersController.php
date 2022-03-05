@@ -7,6 +7,8 @@ use App\Models\Collage;
 use App\Models\Department;
 use App\Models\Service;
 use App\Models\ServiceLayer;
+use App\Models\ServiceLayerAttachment;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class ServiceLayersController extends Controller
@@ -38,9 +40,10 @@ class ServiceLayersController extends Controller
                                          'name' => $department->name.' - '.$department->collage->name
                                      ];
                                  });
-        $collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
+        //$collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
+        $years = Year::active()->get(['id', 'name']);
 
-        return view('admin.service_layers.create', compact('service', 'departments', 'collages', 'type'));
+        return view('admin.service_layers.create', compact('service', 'departments', 'years', 'type'));
     }
 
     /**
@@ -51,8 +54,16 @@ class ServiceLayersController extends Controller
      */
     public function store(Request $request, Service $service)
     {
-        $layer = ServiceLayer::create($request->except('collages') + [
-                'service_id' => $service->id, 'collages' => array_map('intval', $request->collages)]);
+        $layer = ServiceLayer::create($request->input() + [
+                'service_id' => $service->id, 'content_type' => $request->content_type]);
+        if ($request->hasFile('attachments')) {
+            foreach ($request->file('attachments') as $file) {
+                ServiceLayerAttachment::create([
+                    'file_name' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
+                    'type' => 'file', 'service_layer_id' => $layer->id,
+                    'path' => $file->store('service_layers/service_layer_'.$layer->id, 'public')]);
+            }
+        }
 
         return redirect()->route('admin.services.service_layers.index', $service->id)
                          ->with('success', 'تم اضافة البيانات بنجاح');
@@ -64,9 +75,9 @@ class ServiceLayersController extends Controller
      * @param  \App\Models\ServiceLayer  $serviceLayer
      * @return \Illuminate\Http\Response
      */
-    public function show(ServiceLayer $serviceLayer)
+    public function show(Service $service, ServiceLayer $serviceLayer)
     {
-        //
+        return view('admin.service_layers.show', compact('service', 'serviceLayer'));
     }
 
     /**
@@ -77,6 +88,7 @@ class ServiceLayersController extends Controller
      */
     public function edit(Service $service, ServiceLayer $serviceLayer)
     {
+        $type = $serviceLayer->type;
         $departments = Department::with('collage:id,name')->get(['id', 'name', 'collage_id'])
                                  ->map(function ($department) {
                                      return [
@@ -84,9 +96,10 @@ class ServiceLayersController extends Controller
                                          'name' => $department->name.' - '.$department->collage->name
                                      ];
                                  });
-        $collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
+        //$collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
+        $years = Year::active()->get(['id', 'name']);
 
-        return view('admin.service_layers.edit', compact('service', 'serviceLayer', 'departments', 'collages'));
+        return view('admin.service_layers.edit', compact('service', 'serviceLayer', 'departments', 'years', 'type'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ServiceLayerAttachment;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -36,6 +37,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::bind('service_layer_attachment', function ($id) {
+            return ServiceLayerAttachment::whereId($id)->firstOrFail();
+        });
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
