@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,12 +13,32 @@ class Admin extends Authenticatable
 
     protected $guard = 'admin';
 
-    protected $fillable = ['name', 'email', 'password', 'active', 'admin_department_id'];
+    protected $fillable = ['name', 'email', 'role', 'password', 'active', 'collage_id', 'admin_department_id'];
 
     protected $hidden = ['password', 'remember_token'];
 
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AdminDepartment::class, 'admin_department_id');
+    }
+
+    public function scopeActive(Builder $builder)
+    {
+        $builder->where('active', true);
+    }
+
+    public function scopeAdmins(Builder $builder)
+    {
+        $builder->where('role', 'admin');
+    }
+
+    public function scopeSupervisor(Builder $builder)
+    {
+        $builder->where('role', 'supervisor');
+    }
+
+    public function scopeStaff(Builder $builder)
+    {
+        $builder->where('role', 'staff');
     }
 }
