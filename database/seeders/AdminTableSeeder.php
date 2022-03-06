@@ -14,7 +14,10 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        Admin::create(['name' => 'Admin', 'email' => 'admin@dashboard.com',
-            'password' => bcrypt('dashboard'), 'admin_department_id' => 1]);
+        Admin::create(['name' => 'Super Admin', 'email' => 'admin@dashboard.com',
+            'role' => 'super_admin', 'password' => bcrypt('dashboard')]);
+
+        Admin::create(['name' => 'Engineering Admin', 'email' => 'admin@engineering.com',
+            'role' => 'admin', 'password' => bcrypt('engineering'), 'collage_id' => 1]);
     }
 }
