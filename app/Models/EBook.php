@@ -3,11 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class EBook extends Model
 {
     protected $fillable = ['title', 'path', 'staff_id', 'collage_id', 'department_id', 'year_id',
         'published', 'approved', 'admin_id'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($eBook) {
+            if ($eBook->path) {
+                Storage::disk('public')->delete($eBook->path);
+            }
+        });
+    }
 
     /**
      * @return string
@@ -34,11 +45,11 @@ class EBook extends Model
 
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Admin::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function year(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Admin::class, 'year_id');
+        return $this->belongsTo(Year::class, 'year_id');
     }
 }

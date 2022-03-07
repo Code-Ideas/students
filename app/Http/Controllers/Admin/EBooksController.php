@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EbookRequest;
+use App\Models\Department;
 use App\Models\EBook;
+use App\Models\Year;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EBooksController extends Controller
 {
@@ -15,7 +19,7 @@ class EBooksController extends Controller
      */
     public function index()
     {
-        $books = EBook::whereStaffId(auth()->id())->paginate(10);
+        $books = EBook::whereStaffId(auth()->id())->with('department:id,name')->paginate(10);
 
         return view('admin.e_books.index', compact('books'));
     }
@@ -27,18 +31,28 @@ class EBooksController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::where('collage_id', auth()->guard('admin')->user()->collage_id)->get(['id', 'name']);
+        $years = Year::active()->get(['id', 'name']);
+
+        return view('admin.e_books.create', compact('departments', 'years'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param EbookRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EbookRequest $request)
     {
-        //
+        $fileName = pathinfo($request->file('book')->getClientOriginalName(), PATHINFO_FILENAME);
+        $eBook = EBook::create($request->input() + [
+                'path' => $request->file('book')->storeAs('e_books', $fileName, 'public'),
+                'collage_id' => auth()->guard('admin')->user()->collage_id,
+                'staff_id' => auth()->id(),
+            ]);
+
+        return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم اضافة الكتاب');
     }
 
     /**
@@ -49,7 +63,7 @@ class EBooksController extends Controller
      */
     public function show(EBook $eBook)
     {
-        //
+        return view('admin.e_books.show', compact('eBook'));
     }
 
     /**
@@ -60,19 +74,41 @@ class EBooksController extends Controller
      */
     public function edit(EBook $eBook)
     {
-        //
+        $departments = Department::where('collage_id', auth()->guard('admin')->user()->collage_id)->get(['id', 'name']);
+        $years = Year::active()->get(['id', 'name']);
+
+        return view('admin.e_books.edit', compact('departments', 'years', 'eBook'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EBook  $eBook
+     * @param EbookRequest $request
+     * @param \App\Models\EBook $eBook
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EBook $eBook)
+    public function update(EbookRequest $request, EBook $eBook)
     {
-        //
+        if ($request->hasFile('book')) {
+            Storage::disk('public')->delete($eBook->path);
+            $fileName = pathinfo($request->file('book')->getClientOriginalName(), PATHINFO_FILENAME);
+            $eBook->update($request->input() + [
+                    'path' => $request->file('book')->storeAs('e_books', $fileName, 'public')
+                ]);
+
+            return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم التعديل بنجاح');
+        } else {
+            $eBook->update($request->input());
+
+            return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم التعديل بنجاح');
+        }
+    }
+
+    public function approved(EBook $EBook)
+    {
+        $EBook->update(['approved' => true]);
+
+        return redirect()->route('admin.e_books.index')->with('success', 'تم اضافة الكتاب بنجاح');
     }
 
     /**
