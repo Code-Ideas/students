@@ -11,7 +11,11 @@
         <a class="link-item" href="{{ route('admin.departments.create') }}">اضافة قسم</a>
         <a class="link-item" href="{{ route('admin.departments.index') }}">قائمة الأقسام</a>
     </collapse-item>
-    <collapse-item title="المشرفين" icon="fa fa-user-tie">
+    <collapse-item title="هيئة التدريس" icon="fa fa-user-tie">
+        <a class="link-item" href="{{ route('admin.staff_members.create') }}">اضافة عضو</a>
+        <a class="link-item" href="{{ route('admin.staff_members.index') }}">قائمة الاعضاء</a>
+    </collapse-item>
+    <collapse-item title="المشرفين" icon="fa fa-user-check">
         <a class="link-item" href="{{ route('admin.admin_departments.index') }}">أقسام المشرفين</a>
         <a class="link-item" href="{{ route('admin.admins.create') }}">اضافة مشرف</a>
         <a class="link-item" href="{{ route('admin.admins.index') }}">قائمة المشرفين</a>
