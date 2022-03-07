@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StaffMemberRequest;
 use App\Models\Admin;
 use App\Models\Collage;
 use Illuminate\Http\Request;
@@ -36,10 +37,10 @@ class StaffMembersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StaffMemberRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StaffMemberRequest $request)
     {
         Admin::create($request->except('password') + ['role' => 'staff',
                 'password' => bcrypt($request->input('password'))
@@ -51,10 +52,10 @@ class StaffMembersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\Admin  $staffMember
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(Admin $staffMember)
     {
         //
     }
@@ -75,13 +76,21 @@ class StaffMembersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $staffMember
+     * @param StaffMemberRequest $request
+     * @param \App\Models\Admin $staffMember
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $staffMember)
+    public function update(StaffMemberRequest $request, Admin $staffMember)
     {
-        //
+        if ($request->filled('password') && $staffMember->password != $request->get('password')) {
+            $staffMember->update($request->except('password') + [
+                    'password' => bcrypt($request->input('password')),
+                ]);
+        } else {
+            $staffMember->update($request->except('password'));
+        }
+
+        return redirect()->route('admin.staff_members.index')->with('sucess', 'تم تعديل البيانات');
     }
 
     /**
@@ -92,6 +101,8 @@ class StaffMembersController extends Controller
      */
     public function destroy(Admin $staffMember)
     {
-        //
+        $staffMember->delete();
+
+        return redirect()->route('admin.staff_members.index')->with('sucess', 'تم حذف البيانات');
     }
 }
