@@ -14,7 +14,6 @@
         </span>
         <span>اضافة خبر</span>
       </a>
-        @include('admin.partials.search')
     </div><!-- End Card Header -->
 
     <!-- Start Card Content -->
