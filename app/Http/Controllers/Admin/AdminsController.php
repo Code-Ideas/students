@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminRequest;
 use App\Models\Admin;
-use App\Models\AdminDepartment;
-use Illuminate\Http\Request;
+use App\Models\Collage;
 
 class AdminsController extends Controller
 {
@@ -29,9 +28,9 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        $departments = AdminDepartment::get(['id', 'name']);
+        $collages = Collage::get(['id', 'name']);
 
-        return view('admin.admins.create', compact('departments'));
+        return view('admin.admins.create', compact('collages'));
     }
 
     /**
@@ -42,11 +41,11 @@ class AdminsController extends Controller
      */
     public function store(AdminRequest $request)
     {
-        Admin::create($request->except('password') + [
+        Admin::create($request->except('password') + ['role' => 'admin',
                 'password' => bcrypt($request->input('password'))
             ]);
 
-        return redirect()->route('admin.admins.index')->with('sucess', 'تم انشاء المشرف');
+        return redirect()->route('admin.admins.index')->with('sucess', 'تم انشاء المدير');
     }
 
     /**
@@ -68,9 +67,9 @@ class AdminsController extends Controller
      */
     public function edit(Admin $admin)
     {
-        $departments = AdminDepartment::get(['id', 'name']);
+        $collages = Collage::get(['id', 'name']);
 
-        return view('admin.admins.edit', compact('admin', 'departments'));
+        return view('admin.admins.edit', compact('admin', 'collages'));
     }
 
     /**
@@ -103,6 +102,6 @@ class AdminsController extends Controller
     {
         $admin->delete();
 
-        return redirect()->route('admin.admins.index')->with('sucess', 'تم حذف المشرف');
+        return redirect()->route('admin.admins.index')->with('sucess', 'تم حذف البيانات');
     }
 }

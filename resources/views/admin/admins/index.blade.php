@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'المشرفين')
+@section('page.title', 'المديرين')
 <!-- Start Content Section -->
 @section('content')
     <!-- Start Card -->
@@ -12,7 +12,7 @@
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
-                <span>اضافة مشرف</span>
+                <span>اضافة مدير</span>
             </a>
         </div>
         <!-- End Card Header -->
@@ -21,9 +21,9 @@
                 <table class="table is-fullwidth">
                     <thead>
                     <tr>
-                        <th>اسم المشرف</th>
+                        <th>الاسم</th>
                         <th>البريد الالكتروني</th>
-                        <th>القسم</th>
+                        <th>الكلية</th>
                         <th>الحالة</th>
                         <th>الاجراءات</th>
                     </tr>
@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->department ? $admin->department->name : ' - - ' }}</td>
+                        <td>{{ $admin->collage ? $admin->collage->name : ' - - ' }}</td>
                         <td>{{ $admin->active ? 'مفعل' : 'غير مفعل' }}</td>
                         <td>
                             <div class="buttons has-addons">
