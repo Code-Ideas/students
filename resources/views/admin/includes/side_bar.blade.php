@@ -10,5 +10,9 @@
             <span class="avatar-name">{{ auth()->guard('admin')->user()->name }}</span>
         </div>
     @endif
-    @include('admin.includes.main_menu')
+    @if(auth()->guard('admin')->user()->role == 'super_admin')
+        @include('admin.includes.main_menu')
+    @elseif(auth()->guard('admin')->user()->role == 'staff')
+        @include('admin.includes.staff_menu')
+    @endif
 </div>
