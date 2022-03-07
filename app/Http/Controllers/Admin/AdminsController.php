@@ -17,7 +17,7 @@ class AdminsController extends Controller
      */
     public function index()
     {
-        $admins = Admin::where('id', '!=', 1)->with('department:id,name')->paginate(20);
+        $admins = Admin::admins()->with('collage:id,name')->paginate(20);
 
         return view('admin.admins.index', compact('admins'));
     }

@@ -17,9 +17,19 @@ class Admin extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function collage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Collage::class);
+    }
+
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AdminDepartment::class, 'admin_department_id');
+    }
+
+    public function staffDepartment(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'admin_department_id');
     }
 
     public function scopeActive(Builder $builder)
