@@ -42,7 +42,7 @@ class Admin extends Authenticatable
         $builder->where('role', 'admin');
     }
 
-    public function scopeSupervisor(Builder $builder)
+    public function scopeSupervisors(Builder $builder)
     {
         $builder->where('role', 'supervisor');
     }
