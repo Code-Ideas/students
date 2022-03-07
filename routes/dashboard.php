@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('admins', 'AdminsController', ['except' => 'show']);
     // Staff
     Route::resource('staff_members', 'StaffMembersController');
+    // Supervisors
+    Route::resource('supervisors', 'SupervisorsController');
     // E-Books
     Route::resource('e_books', 'EBooksController');
     // Services
