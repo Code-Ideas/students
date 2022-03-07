@@ -42,7 +42,10 @@ class RouteServiceProvider extends ServiceProvider
             return ServiceLayerAttachment::whereId($id)->firstOrFail();
         });
         Route::bind('staff_member', function ($id) {
-            return Admin::whereId($id)->firstOrFail();
+            return Admin::where([['id', $id], ['role' , 'staff']])->firstOrFail();
+        });
+        Route::bind('supervisor', function ($id) {
+            return Admin::where([['id', $id], ['role' , 'supervisor']])->firstOrFail();
         });
 
         $this->configureRateLimiting();
