@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
 use App\Models\ServiceLayerAttachment;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -39,6 +40,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::bind('service_layer_attachment', function ($id) {
             return ServiceLayerAttachment::whereId($id)->firstOrFail();
+        });
+        Route::bind('staff_member', function ($id) {
+            return Admin::whereId($id)->firstOrFail();
         });
 
         $this->configureRateLimiting();
