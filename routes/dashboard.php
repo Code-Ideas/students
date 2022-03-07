@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('supervisors', 'SupervisorsController');
     // E-Books
     Route::resource('e_books', 'EBooksController');
+    Route::patch('e_books/{e_book}/approved', 'EBooksController@approved')->name('e_books.approved');
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Service Layers
