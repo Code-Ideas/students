@@ -28,6 +28,7 @@ class EbookRequest extends FormRequest
             'book' => ($this->method() === 'POST' ? 'required|' : '') . 'mimes:pdf|max:10240',
             'department_id' => 'required|numeric|exists:departments,id',
             'year_id' => 'required|numeric|exists:years,id',
+            'accepted' => 'required|in:1'
         ];
     }
 
@@ -37,7 +38,8 @@ class EbookRequest extends FormRequest
             'title' => 'اسم الكتاب',
             'department_id' => 'القسم',
             'year_id' => 'الفرقة الدراسية',
-            'book' => 'الكتاب'
+            'book' => 'الكتاب',
+            'accepted' => 'الموافقة علي شروط النشر'
         ];
     }
 }

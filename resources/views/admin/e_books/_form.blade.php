@@ -54,6 +54,31 @@
           </div>
       </div>
   </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label"> شروط النشر</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::textarea('description_ar', \App\Models\Setting::first()->publication_policy, ['class' => 'textarea', 'rows' => 4  , 'disabled'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">الموافقة علي شروط النشر</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::checkbox('accepted', true, null) !!}
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">
