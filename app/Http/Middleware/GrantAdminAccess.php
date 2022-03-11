@@ -20,7 +20,7 @@ class GrantAdminAccess
             return redirect()->route('login_form')->withErrors('برجاء تسجيل الدخول اولا !');
         }
         if (auth()->guard('admin')->user()->active) {
-            if (auth()->guard('admin')->user()->role == 'admin') {
+            if (auth()->guard('admin')->user()->role == 'super_admin' || auth()->guard('admin')->user()->role == 'admin') {
                 return $next($request);
             } else {
                 return redirect()->back()->withErrors('عذرا انت لاتمتلك صلاحية الوصول !');
