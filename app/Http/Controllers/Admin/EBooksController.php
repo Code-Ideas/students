@@ -49,7 +49,7 @@ class EBooksController extends Controller
         $eBook = EBook::create($request->input() + [
                 'path' => $request->file('book')->storeAs('e_books', $fileName, 'public'),
                 'collage_id' => auth()->guard('admin')->user()->collage_id,
-                'staff_id' => auth()->id(),
+                'staff_id' => auth()->guard('admin')->id(),
             ]);
 
         return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم اضافة الكتاب');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,24 @@ class EBook extends Model
                 Storage::disk('public')->delete($eBook->path);
             }
         });
+    }
+
+    /**
+     * @param Builder $builder
+     * @return void
+     */
+    public function scopeApproved(Builder $builder)
+    {
+        $builder->where('approved', true);
+    }
+
+    /**
+     * @param Builder $builder
+     * @return void
+     */
+    public function scopePublished(Builder $builder)
+    {
+        $builder->where('published', true);
     }
 
     /**
