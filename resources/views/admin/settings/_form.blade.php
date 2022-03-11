@@ -97,6 +97,18 @@
     </div>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
+            <label class="label required">شروط النشر</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::textarea('publication_policy', null, ['class' => 'textarea', 'rows' => 6  , 'required'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
             <label class="label required">العنوان</label>
         </div>
         <div class="field-body">
