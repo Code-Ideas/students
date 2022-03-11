@@ -66,7 +66,9 @@ class BooksController extends Controller
 
     public function published(EBook $eBook)
     {
-        //
+        $eBook->update(['published' => true]);
+
+        return redirect()->route('admin.books.index')->with('success', 'تم تأكيد نشر الكتاب');
     }
 
     /**

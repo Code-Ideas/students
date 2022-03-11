@@ -108,7 +108,7 @@ class EBooksController extends Controller
     {
         $EBook->update(['approved' => true]);
 
-        return redirect()->route('admin.e_books.index')->with('success', 'تم اضافة الكتاب بنجاح');
+        return redirect()->route('admin.e_books.index')->with('success', 'تم مراجعة واضافة الكتاب بنجاح');
     }
 
     /**
