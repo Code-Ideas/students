@@ -15,14 +15,18 @@
         <a class="link-item" href="{{ route('admin.staff_members.create') }}">اضافة عضو</a>
         <a class="link-item" href="{{ route('admin.staff_members.index') }}">قائمة الاعضاء</a>
     </collapse-item>
-    <collapse-item title="المديرين" icon="fa fa-user-lock">
-        <a class="link-item" href="{{ route('admin.admins.create') }}">اضافة مدير</a>
-        <a class="link-item" href="{{ route('admin.admins.index') }}">قائمة المديرين</a>
+    <collapse-item title="مراجعي الكتب" icon="fa fa-user-check">
+        <a class="link-item" href="{{ route('admin.admins.create') }}">اضافة مراجع</a>
+        <a class="link-item" href="{{ route('admin.admins.index') }}">قائمة المراجعين</a>
     </collapse-item>
-    <collapse-item title="المشرفين" icon="fa fa-user-check">
+    <collapse-item title="المشرفين" icon="fa fa-user-lock">
         <a class="link-item" href="{{ route('admin.admin_departments.index') }}">أقسام المشرفين</a>
         <a class="link-item" href="{{ route('admin.supervisors.create') }}">اضافة مشرف</a>
         <a class="link-item" href="{{ route('admin.supervisors.index') }}">قائمة المشرفين</a>
+    </collapse-item>
+    <collapse-item title="الكتب الالكترونية" icon="fa fa-book">
+        <a class="link-item" href="{{ route('admin.books.create') }}">اضافة كتاب</a>
+        <a class="link-item" href="{{ route('admin.books.index') }}">قائمة الكتب</a>
     </collapse-item>
     <collapse-item title="الخدمات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.services.create') }}">اضافة خدمة</a>
