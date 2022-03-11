@@ -10,7 +10,7 @@
         <div class="card-header">
             <a href="{{ route('admin.admins.index') }}" class="button is-success">
           <span class="icon is-small">
-            <i class="fa fa-user-lock"></i>
+            <i class="fa fa-user-check"></i>
           </span>
                 <span>قائمة المديرين</span>
             </a>

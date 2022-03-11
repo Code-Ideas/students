@@ -10,7 +10,7 @@
         <div class="card-header">
             <a href="{{ route('admin.supervisors.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa fa-user-check"></i>
+          <i class="fa fa-user-lock"></i>
         </span>
                 <span>قائمة المشرفين</span>
             </a>
