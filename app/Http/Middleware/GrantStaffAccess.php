@@ -16,6 +16,19 @@ class GrantStaffAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (!auth()->guard('admin')->check()) {
+            return redirect()->route('login_form')->withErrors('برجاء تسجيل الدخول اولا !');
+        }
+        if (auth()->guard('admin')->user()->active) {
+            if (auth()->guard('admin')->user()->role == 'staff') {
+                return $next($request);
+            } else {
+                return redirect()->back()->withErrors('عذرا انت لاتمتلك صلاحية الوصول !');
+            }
+        } else {
+            auth()->guard('admin')->logout();
+
+            return redirect()->route('login_form')->withErrors('عفوا تم تعطيل الحساب الخاص بكم !');
+        }
     }
 }

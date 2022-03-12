@@ -7,11 +7,14 @@ use App\Http\Requests\Admin\EbookRequest;
 use App\Models\Department;
 use App\Models\EBook;
 use App\Models\Year;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class EBooksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('staff');
+    }
     /**
      * Display a listing of the resource.
      *
