@@ -57,9 +57,9 @@ class BooksController extends Controller
         return view('admin.books.show', compact('eBook'));
     }
 
-    public function returned(EBook $eBook)
+    public function returned(EBook $eBook, Request $request)
     {
-        $eBook->update(['approved' => false]);
+        $eBook->update(['approved' => false, 'return_reason' => $request->get('return_reason')]);
 
         return redirect()->route('admin.books.index')->with('success', 'تم تأكيد ارجاع الكتاب');
     }

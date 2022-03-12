@@ -190,7 +190,7 @@
                     <div class="content">
                         <div class="card-title is-tile is-styled has-text-right">
                             <div class="card-stat accent has-text-right is-size-4 has-text-weight-bold">
-                                {{ \App\Models\EBook::count() }}</div>
+                                {{ \App\Models\EBook::whereStaffId(auth()->guard('admin')->id())->count() }}</div>
                         </div>
                         <div class="mt-2 more">
                             <a class="accent" href="{{ route('admin.e_books.index') }}">المزيد</a>

@@ -63,7 +63,11 @@ class EBooksController extends Controller
      */
     public function show(EBook $eBook)
     {
-        return view('admin.e_books.show', compact('eBook'));
+        if ($eBook->staff_id == auth()->guard('admin')->id() && !$eBook->approved) {
+            return view('admin.e_books.show', compact('eBook'));
+        } else {
+            return redirect()->back()->withErrors('عذرا انت لاتمتلك صلاحية الوصول !');
+        }
     }
 
     /**
@@ -74,10 +78,15 @@ class EBooksController extends Controller
      */
     public function edit(EBook $eBook)
     {
-        $departments = Department::where('collage_id', auth()->guard('admin')->user()->collage_id)->get(['id', 'name']);
-        $years = Year::active()->get(['id', 'name']);
+        if ($eBook->staff_id == auth()->guard('admin')->id() && !$eBook->approved) {
+            $departments = Department::where('collage_id', auth()->guard('admin')->user()->collage_id)
+                                     ->get(['id', 'name']);
+            $years = Year::active()->get(['id', 'name']);
 
-        return view('admin.e_books.edit', compact('departments', 'years', 'eBook'));
+            return view('admin.e_books.edit', compact('departments', 'years', 'eBook'));
+        } else {
+            return redirect()->back()->withErrors('عذرا انت لاتمتلك صلاحية الوصول !');
+        }
     }
 
     /**
@@ -104,11 +113,18 @@ class EBooksController extends Controller
         }
     }
 
-    public function approved(EBook $EBook)
+    public function approved(EBook $eBook)
     {
-        $EBook->update(['approved' => true]);
-
-        return redirect()->route('admin.e_books.index')->with('success', 'تم مراجعة واضافة الكتاب بنجاح');
+        if ($eBook->staff_id == auth()->guard('admin')->id()) {
+            if (!$eBook->approved) {
+                $eBook->update(['approved' => true]);
+                return redirect()->route('admin.e_books.index')->with('success', 'تم مراجعة واضافة الكتاب بنجاح');
+            } else {
+                return redirect()->back()->withErrors('هذا الكتاب تمت مراجعته من قبل !');
+            }
+        } else {
+            return redirect()->back()->withErrors('عذرا انت لاتمتلك صلاحية الوصول !');
+        }
     }
 
     /**
