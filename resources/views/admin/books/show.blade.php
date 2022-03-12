@@ -44,7 +44,7 @@
         </div>
         <div class="card-footer">
             <div class="buttons has-addons">
-                @if($eBook->approved)
+                @if(!$eBook->published && $eBook->approved)
                 <span class="modal-open button is-danger" status-name="تأكيد ارجاع الكتاب"  traget-modal=".status-modal" data_id="{{ $eBook->id }}" data_name="{{ $eBook->title }}" data-url="{{ route('admin.books.returned', $eBook->id) }}"> ارجاع الكتاب</span>
                 @endif
                 @if($eBook->approved && !$eBook->published)

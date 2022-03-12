@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'تعديل بيانات المدير')
+@section('page.title', 'تعديل بيانات المراجع')
 <!-- Start Content Section -->
 @section('content')
     <!-- Start Card -->
@@ -12,7 +12,7 @@
         <span class="icon is-small">
           <i class="fa fa-user-check"></i>
         </span>
-                <span>قائمة المديرين</span>
+                <span>قائمة المراجعين</span>
             </a>
         </div><!-- End Card Header -->
         <!-- Start Form -->

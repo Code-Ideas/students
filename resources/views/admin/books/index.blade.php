@@ -33,7 +33,7 @@
               <tr>
                 <td>{{ $book->title }}</td>
                 <td>{{ ($book->collage ? $book->collage->name : ' - - ').' - '.($book->department ? $book->department->name : '') }}</td>
-                <td>{{ $book->published ? 'تم تأكيد النشر' : 'في انتظار التأكيد'}}</td>
+                <td>{{ $book->published ? 'تم النشر' : 'في انتظار التأكيد'}}</td>
                 <td>
                   <div class="buttons has-addons">
                     <a class="button is-primary" target="_blank" href="{{ route('admin.books.show', $book->id) }}"> عرض </a>

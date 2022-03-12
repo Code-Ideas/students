@@ -49,7 +49,7 @@
                 <div class="control">
                     <div class="is-fullwidth">
                         <single-select :inputs="{{ $collages }}" forname="collage_id"
-                                       @if(isset($staffMember) && $staffMember->collage) :oldvalues="{{ $staffMember->collage()->get(['id', 'name']) }}" @endif>
+                                       @if(isset($admin) && $admin->collage) :oldvalues="{{ $admin->collage()->get(['id', 'name']) }}" @endif>
                         </single-select>
                     </div>
                 </div>

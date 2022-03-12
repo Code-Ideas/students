@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'المديرين')
+@section('page.title', 'مراجعي الكتب')
 <!-- Start Content Section -->
 @section('content')
     <!-- Start Card -->
@@ -12,7 +12,7 @@
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
-                <span>اضافة مدير</span>
+                <span>اضافة مراجع</span>
             </a>
         </div>
         <!-- End Card Header -->

@@ -24,6 +24,7 @@
           <tr>
             <th>اسم الكتاب</th>
             <th>القسم</th>
+            <th>الحالة</th>
             <th>الاجراءات</th>
           </tr>
           </thead>
@@ -32,10 +33,12 @@
               <tr>
                 <td>{{ $book->title }}</td>
                 <td>{{ $book->department ? $book->department->name : ' - - ' }}</td>
+                <td>{{ $book->approved ? 'تمت المراجعة' : 'في انتظار المراجعة'}}</td>
                 <td>
                   <div class="buttons has-addons">
                   @if(!$book->approved)
                     <a class="button is-info" href="{{ route('admin.e_books.edit', $book->id) }}"> تعديل </a>
+                    <a class="button is-primary" href="{{ route('admin.e_books.show', $book->id) }}"> مراجعة </a>
                   @endif
                   </div>
                 </td>

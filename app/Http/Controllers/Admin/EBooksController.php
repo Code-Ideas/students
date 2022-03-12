@@ -19,7 +19,7 @@ class EBooksController extends Controller
      */
     public function index()
     {
-        $books = EBook::whereStaffId(auth()->id())->with('department:id,name')->paginate(10);
+        $books = EBook::whereStaffId(auth()->guard('admin')->id())->with('department:id,name')->paginate(10);
 
         return view('admin.e_books.index', compact('books'));
     }
