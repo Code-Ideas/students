@@ -37,6 +37,7 @@
                 <td>
                   <div class="buttons has-addons">
                     <a class="button is-primary" target="_blank" href="{{ route('admin.books.show', $book->id) }}"> عرض </a>
+                    <a class="button is-warning" target="_blank" href="{{ route('admin.books.log', $book->id) }}"> السجل </a>
                   </div>
                 </td>
               </tr>

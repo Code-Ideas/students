@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EbookRequest;
 use App\Models\Department;
 use App\Models\EBook;
+use App\Models\EBookLog;
 use App\Models\Year;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,6 +55,10 @@ class EBooksController extends Controller
                 'collage_id' => auth()->guard('admin')->user()->collage_id,
                 'staff_id' => auth()->guard('admin')->id(),
             ]);
+        if ($eBook) {
+            EBookLog::create(['title' => 'تم اضافة الكتاب', 'e_book_id' => $eBook->id,
+                'created_by' => auth()->guard('admin')->id(), 'role' => 'staff']);
+        }
 
         return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم اضافة الكتاب');
     }
@@ -121,6 +126,8 @@ class EBooksController extends Controller
         if ($eBook->staff_id == auth()->guard('admin')->id()) {
             if (!$eBook->approved) {
                 $eBook->update(['approved' => true]);
+                EBookLog::create(['title' => 'تم تأكيد مراجعة الكتاب', 'e_book_id' => $eBook->id,
+                    'created_by' => auth()->guard('admin')->id(), 'role' => 'staff']);
                 return redirect()->route('admin.e_books.index')->with('success', 'تم مراجعة واضافة الكتاب بنجاح');
             } else {
                 return redirect()->back()->withErrors('هذا الكتاب تمت مراجعته من قبل !');

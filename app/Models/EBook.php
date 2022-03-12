@@ -71,4 +71,9 @@ class EBook extends Model
     {
         return $this->belongsTo(Year::class, 'year_id');
     }
+
+    public function logs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(EBookLog::class, 'e_book_id');
+    }
 }

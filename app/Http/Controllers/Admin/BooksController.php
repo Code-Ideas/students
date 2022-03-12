@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EBook;
+use App\Models\EBookLog;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -57,9 +58,22 @@ class BooksController extends Controller
         return view('admin.books.show', compact('eBook'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\EBook  $eBook
+     * @return \Illuminate\Http\Response
+     */
+    public function log(EBook $eBook)
+    {
+        return view('admin.books.log', compact('eBook'));
+    }
+
     public function returned(EBook $eBook, Request $request)
     {
         $eBook->update(['approved' => false, 'return_reason' => $request->get('return_reason')]);
+        EBookLog::create(['title' => 'تم ارجاع الكتاب', 'e_book_id' => $eBook->id,
+            'created_by' => auth()->guard('admin')->id(), 'role' => 'admin']);
 
         return redirect()->route('admin.books.index')->with('success', 'تم تأكيد ارجاع الكتاب');
     }
@@ -67,6 +81,8 @@ class BooksController extends Controller
     public function published(EBook $eBook)
     {
         $eBook->update(['published' => true]);
+        EBookLog::create(['title' => 'تم تأكيد نشر الكتاب', 'e_book_id' => $eBook->id,
+            'created_by' => auth()->guard('admin')->id(), 'role' => 'staff']);
 
         return redirect()->route('admin.books.index')->with('success', 'تم تأكيد نشر الكتاب');
     }

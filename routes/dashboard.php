@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('books', 'BooksController');
     Route::patch('books/{book}/published', 'BooksController@published')->name('books.published');
     Route::post('books/{book}/returned', 'BooksController@returned')->name('books.returned');
+    Route::get('books/{book}/log', 'BooksController@log')->name('books.log');
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Service Layers
