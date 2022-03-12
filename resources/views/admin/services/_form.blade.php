@@ -27,48 +27,23 @@
               </div>
           </div>
       </div>
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label">اختيار الخدمة الرئيسية </label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <div class="select is-fullwidth">
-                        {!! Form::select('parent_id', $services, null) !!}
+<!--        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">اختيار الخدمة الرئيسية </label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            {!! Form::select('parent_id', $services, null, ['placeholder' => 'اختيار الخدمة الرئيسية']) !!}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>-->
     <hr />
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label">محتوي الخدمة</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <div class="select is-fullwidth">
-                        {!! Form::select('type', ['page' => 'محتوي', 'link' => 'رابط خارجي'],
-                                    null, ['class' => 'input', 'required'] )!!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label">الرابط الخارجي للخدمة</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    {!! Form::text('link', null, ['class' => 'input'] )!!}
-                </div>
-            </div>
-        </div>
-    </div>
+    <service-type @if(isset($service)) old-type="{{ $service->type }}" @endif
+    @if(isset($service) && $service->type == 'link') old-link="{{ $service->link }}" @endif></service-type>
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
