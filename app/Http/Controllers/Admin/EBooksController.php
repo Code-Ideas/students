@@ -60,7 +60,7 @@ class EBooksController extends Controller
                 'created_by' => auth()->guard('admin')->id(), 'role' => 'staff']);
         }
 
-        return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم اضافة الكتاب');
+        return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم اضافة الكتاب الرجاء تاكيد مراجعته');
     }
 
     /**

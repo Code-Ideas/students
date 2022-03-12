@@ -33,15 +33,15 @@ class ServiceLayersController extends Controller
     public function create(Service $service, Request $request)
     {
         $type = $request->get('content_type', 'content');
-        $departments = Department::with('collage:id,name')->get(['id', 'name', 'collage_id'])
-                                 ->map(function ($department) {
-                                     return [
-                                         'id' => $department->id,
-                                         'name' => $department->name.' - '.$department->collage->name
-                                     ];
-                                 });
-        //$collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
         $years = Year::active()->get(['id', 'name']);
+        $departments = Department::whereIn('collage_id', $service->collages)->with('collage:id,name')
+                                ->get(['id', 'name', 'collage_id'])
+                                ->map(function ($department) {
+                                    return [
+                                        'id' => $department->id,
+                                        'name' => $department->collage->name.' - '.$department->name
+                                    ];
+                                });
 
         return view('admin.service_layers.create', compact('service', 'departments', 'years', 'type'));
     }
@@ -89,6 +89,7 @@ class ServiceLayersController extends Controller
     public function edit(Service $service, ServiceLayer $serviceLayer)
     {
         $type = $serviceLayer->type;
+        $years = Year::active()->get(['id', 'name']);
         $departments = Department::with('collage:id,name')->get(['id', 'name', 'collage_id'])
                                  ->map(function ($department) {
                                      return [
@@ -96,8 +97,6 @@ class ServiceLayersController extends Controller
                                          'name' => $department->name.' - '.$department->collage->name
                                      ];
                                  });
-        //$collages = Collage::whereIn('id', $service->collages)->get(['id', 'name']);
-        $years = Year::active()->get(['id', 'name']);
 
         return view('admin.service_layers.edit', compact('service', 'serviceLayer', 'departments', 'years', 'type'));
     }
