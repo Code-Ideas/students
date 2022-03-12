@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class EBook extends Model
 {
     protected $fillable = ['title', 'path', 'staff_id', 'collage_id', 'department_id', 'year_id',
-        'published', 'approved', 'admin_id'];
+        'published', 'approved', 'admin_id', 'return_reason'];
 
     protected static function boot()
     {

@@ -14,6 +14,16 @@
         </div>
         <div class="card-content">
             <div class="is-fullwidth">
+                @if(!$eBook->approved && $eBook->return_reason)
+                <div class="column is-12">
+                    <div class="info-content">
+                        <div class="info">
+                            <label class="label">ملاحظات الارجاع</label>
+                            <span class="value">{{ $eBook->return_reason }}</span>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="column is-12">
                     <div class="info-content">
                         <div class="info">

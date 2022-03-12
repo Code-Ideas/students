@@ -17,6 +17,7 @@ class CreateEBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('path');
+            $table->text('return_reason')->nullable();
             $table->boolean('approved')->default(false);
             $table->boolean('published')->default(false);
             $table->unsignedBigInteger('staff_id')->nullable();
