@@ -45,16 +45,16 @@
         <div class="card-footer">
             <div class="buttons has-addons">
                 @if(!$eBook->published && $eBook->approved)
-                <span class="modal-open button is-danger" status-name="تأكيد ارجاع الكتاب"  traget-modal=".status-modal" data_id="{{ $eBook->id }}" data_name="{{ $eBook->title }}" data-url="{{ route('admin.books.returned', $eBook->id) }}"> ارجاع الكتاب</span>
+                    <span class="modal-open button is-danger" traget-modal=".send-reply-modal" status-name="تأكيد ارجاع الكتاب" data_id="{{ $eBook->id }}" data_name="{{ $eBook->title }}" data-url="{{ route('admin.books.returned', $eBook->id) }}">ارجاع الكتاب </span>
                 @endif
                 @if($eBook->approved && !$eBook->published)
-                <span class="modal-open button is-warning" status-name="تأكيد نشر الكتاب"  traget-modal=".status-modal" data_id="{{ $eBook->id }}" data_name="{{ $eBook->title }}" data-url="{{ route('admin.books.published', $eBook->id) }}">تاكيد النشر</span>
+                    <span class="modal-open button is-warning" status-name="تأكيد نشر الكتاب"  traget-modal=".status-modal" data_id="{{ $eBook->id }}" data_name="{{ $eBook->title }}" data-url="{{ route('admin.books.published', $eBook->id) }}">تاكيد النشر</span>
                 @endif
             </div>
         </div>
     </div>
-
     @include('admin.partials.statusModal')
+    @include('admin.partials.replyModal')
 @endsection
 
 
