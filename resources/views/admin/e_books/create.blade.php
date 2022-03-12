@@ -12,7 +12,7 @@
           <span class="icon is-small">
             <i class="fa fa-book"></i>
           </span>
-        <span>قائمة الاخبار</span>
+        <span>قائمة الكتب</span>
       </a>
     </div><!-- End Card Header -->
     <!-- Start Form -->
