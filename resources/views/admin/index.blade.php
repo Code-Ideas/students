@@ -43,7 +43,7 @@
                             {{ \App\Models\Admin::where('role', 'staff')->count() }}</div>
                     </div>
                     <div class="mt-2 more">
-                        <a class="accent" href="{{ route('admin.admins.index') }}">المزيد</a>
+                        <a class="accent" href="{{ route('admin.staff_members.index') }}">المزيد</a>
                     </div>
                 </div>
             </div>

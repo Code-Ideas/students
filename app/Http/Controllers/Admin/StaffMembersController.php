@@ -17,7 +17,7 @@ class StaffMembersController extends Controller
      */
     public function index()
     {
-        $staffMembers = Admin::staff()->with('collage:id,name')->paginate(10);
+        $staffMembers = Admin::staff()->with('collage:id,name')->withCount('eBooks')->paginate(10);
 
         return view('admin.staff_members.index', compact('staffMembers'));
     }

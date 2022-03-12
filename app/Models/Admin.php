@@ -32,6 +32,11 @@ class Admin extends Authenticatable
         return $this->belongsTo(Department::class, 'admin_department_id');
     }
 
+    public function eBooks()
+    {
+        return $this->hasMany(EBook::class, 'staff_id');
+    }
+
     public function scopeActive(Builder $builder)
     {
         $builder->where('active', true);

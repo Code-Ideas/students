@@ -24,6 +24,7 @@
                         <th>الاسم</th>
                         <th>البريد الالكتروني</th>
                         <th>الكلية</th>
+                        <th>عدد الكتب</th>
                         <th>الحالة</th>
                         <th>الاجراءات</th>
                     </tr>
@@ -34,6 +35,7 @@
                         <td>{{ $member->name }}</td>
                         <td>{{ $member->email }}</td>
                         <td>{{ $member->collage ? $member->collage->name : ' - - ' }}</td>
+                        <td>{{ $member->e_books_count }}</td>
                         <td>{{ $member->active ? 'مفعل' : 'غير مفعل' }}</td>
                         <td>
                             <div class="buttons has-addons">
