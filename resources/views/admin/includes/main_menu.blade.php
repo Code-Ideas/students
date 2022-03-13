@@ -24,6 +24,10 @@
         <a class="link-item" href="{{ route('admin.posts.create') }}">اضافة خبر</a>
         <a class="link-item" href="{{ route('admin.posts.index') }}">قائمة الاخبار</a>
     </collapse-item>
+    <collapse-item title="العيادة الطبية" icon="fa fa-stethoscope">
+        <a class="link-item" href="{{ route('admin.medical_departments.index') }}">قائمة الأقسام</a>
+        <a class="link-item" href="{{ route('admin.medical_reservations.index') }}">الرسائل</a>
+    </collapse-item>
     <a href="{{ route('admin.contacts.index') }}" class="card link-item-no-collapse"><i class="fa fa-envelope"></i><span>رسائل التواصل</span></a>
     <a href="{{ route('admin.settings.edit') }}" class="card link-item-no-collapse"><i class="fa fa-cogs"></i><span>الاعدادات</span></a>
     <a href="{{ route('admin_logout') }}" onclick="event.preventDefault();

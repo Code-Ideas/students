@@ -25,6 +25,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
          ->name('layer_attachments.store');
     Route::delete('/service_layer_attachments/{service_layer_attachment}', 'ServiceLayerAttachmentsController@destroy')
          ->name('layer_attachments.destroy');
+
+    Route::resource('medical_departments', 'MedicalDepartmentController');
+    Route::resource('medical_reservations', 'MedicalReservationController');
+
+
     // Articles
     Route::resource('posts', 'PostsController');
     Route::name('get_collages')->get('get_collages', 'PostsController@collagesList');
@@ -40,6 +45,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::name('settings.edit')->get('settings/edit', 'SettingsController@edit');
     Route::name('settings.update')->patch('settings/edit', 'SettingsController@update');
 });
+
 
 Route::group(['namespace' => 'Admin'], function () {
     Route::get('dashboard_login', 'AuthController@loginForm')->name('login_form');

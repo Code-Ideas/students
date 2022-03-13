@@ -15,6 +15,13 @@ class CreateMedicalReservationsTable extends Migration
     {
         Schema::create('medical_reservations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('email');
+            $table->string('phone');
+            $table->longText('message');
+            $table->unsignedBigInteger('medical_department_id');
+            $table->foreign('medical_department_id')->references('id')->on('medical_departments')->onDelete('cascade');
             $table->timestamps();
         });
     }
