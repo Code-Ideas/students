@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     protected $fillable = ['site_name', 'site_description', 'phone', 'email', 'whatsapp', 'facebook', 'youtube',
-        'twitter', 'address', 'latitude', 'longitude'];
+        'twitter', 'address', 'latitude', 'longitude', 'publication_policy'];
 }

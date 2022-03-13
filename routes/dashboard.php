@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 /* Dashboard Routes */
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['admin']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['dashboard']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => ['admin']], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => ['dashboard']], function () {
     Route::name('dashboard')->get('/', 'HomeController@index');
     // Collages
     Route::resource('collages', 'CollagesController', ['except' => 'show']);
@@ -17,6 +17,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::resource('admin_departments', 'AdminDepartmentsController', ['except' => 'show']);
     // Admins
     Route::resource('admins', 'AdminsController', ['except' => 'show']);
+    // Staff
+    Route::resource('staff_members', 'StaffMembersController');
+    // Supervisors
+    Route::resource('supervisors', 'SupervisorsController');
+    // E-Books
+    Route::resource('e_books', 'EBooksController');
+    Route::patch('e_books/{e_book}/approved', 'EBooksController@approved')->name('e_books.approved');
+    // Books
+    Route::resource('books', 'BooksController');
+    Route::patch('books/{book}/published', 'BooksController@published')->name('books.published');
+    Route::post('books/{book}/returned', 'BooksController@returned')->name('books.returned');
+    Route::get('books/{book}/log', 'BooksController@log')->name('books.log');
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Service Layers

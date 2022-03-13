@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminAccess;
+use App\Http\Middleware\GrantAdminAccess;
+use App\Http\Middleware\GrantDashboardAccess;
+use App\Http\Middleware\GrantStaffAccess;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,6 +65,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => AdminAccess::class,
+        'admin' => GrantAdminAccess::class,
+        'dashboard' => GrantDashboardAccess::class,
+        'staff' => GrantStaffAccess::class,
     ];
 }

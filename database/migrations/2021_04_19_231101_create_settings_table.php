@@ -16,9 +16,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-
             $table->string('site_name');
             $table->text('site_description');
+            $table->longText('publication_policy');
             $table->string('email');
             $table->string('phone');
             $table->string('whatsapp');
@@ -31,7 +31,8 @@ class CreateSettingsTable extends Migration
             $table->timestamps();
         });
         Setting::create(['site_name' => 'لوحه التحكم', 'site_description' => 'لوحه التحكم',
-            'email' => 'info@codeideas.dev', 'phone' => '01020304050', 'whatsapp' => '+201020304050']);
+            'email' => 'info@codeideas.dev', 'phone' => '01020304050', 'whatsapp' => '+201020304050',
+            'publication_policy' => 'شروط النشر']);
     }
 
     /**

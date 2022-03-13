@@ -1,7 +1,7 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">اسم المشرف</label>
+            <label class="label required">الاسم</label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -42,14 +42,14 @@
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label">اختيار القسم </label>
+            <label class="label">اختيار الكلية </label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
                     <div class="is-fullwidth">
-                        <single-select :inputs="{{ $departments }}" forname="admin_department_id"
-                                       @if(isset($admin) && $admin->department) :oldvalues="{{ $admin->department()->get(['id', 'name']) }}" @endif>
+                        <single-select :inputs="{{ $collages }}" forname="collage_id"
+                                       @if(isset($admin) && $admin->collage) :oldvalues="{{ $admin->collage()->get(['id', 'name']) }}" @endif>
                         </single-select>
                     </div>
                 </div>

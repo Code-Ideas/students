@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'تعديل بيانات المشرف')
+@section('page.title', 'تعديل بيانات المراجع')
 <!-- Start Content Section -->
 @section('content')
     <!-- Start Card -->
@@ -10,9 +10,9 @@
         <div class="card-header">
             <a href="{{ route('admin.admins.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa fa-user-tie"></i>
+          <i class="fa fa-user-check"></i>
         </span>
-                <span>قائمة المشرفين</span>
+                <span>قائمة المراجعين</span>
             </a>
         </div><!-- End Card Header -->
         <!-- Start Form -->

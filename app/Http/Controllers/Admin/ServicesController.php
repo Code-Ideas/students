@@ -81,7 +81,9 @@ class ServicesController extends Controller
      */
     public function update(ServiceRequest $request, Service $service)
     {
-        $service->update($request->except('collages') + ['collages' => array_map('intval', $request->collages)]);
+        $service->update($request->except('collages') + [
+            'collages' => array_map('intval', $request->collages),
+            'link' => $request->get('link', null)]);
 
         return redirect()->route('admin.services.index')->with('success', 'تم تحديث البيانات');
     }

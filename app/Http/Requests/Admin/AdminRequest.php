@@ -27,7 +27,7 @@ class AdminRequest extends FormRequest
             'name' => 'required|string|min:3|max:50',
             'email' => 'required|string|email|max:255|unique:admins,email,'.optional($this->admin)->id,
             'password' => $this->method() === 'POST' ? 'required|string|min:6|' : '',
-            'admin_department_id' => 'required|numeric|exists:admin_departments,id',
+            'collage_id' => 'required|numeric|exists:collages,id',
         ];
     }
 
@@ -37,10 +37,10 @@ class AdminRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'اسم المشرف',
+            'name' => 'الاسم',
             'email' => 'البريد الالكتروني',
             'password' => 'كلمة المرور',
-            'admin_department_id' => 'القسم',
+            'collage_id' => 'الكلية',
         ];
     }
 }

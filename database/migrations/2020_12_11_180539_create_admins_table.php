@@ -18,6 +18,9 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->enum('role', ['super_admin', 'admin', 'supervisor', 'staff'])->default('supervisor');
+            $table->unsignedBigInteger('collage_id')->nullable();
+            $table->foreign('collage_id')->references('id')->on('collages')->onDelete('set null');
             $table->unsignedBigInteger('admin_department_id')->nullable();
             $table->foreign('admin_department_id')->references('id')->on('admin_departments')->onDelete('set null');
             $table->boolean('active')->default(true);
