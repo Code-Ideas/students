@@ -26,8 +26,9 @@ class MedicalRequest extends FormRequest
         return [
             // 'name' => 'required|string|min:3',
             'email' => 'required|string|email',
-            'phone' => 'required|digits:11',
-            'message' => 'required|string|min:10'
+            'phone' => 'required|numeric|digits:11',
+            'message' => 'required|string|min:10',
+            'medical_department_id'=>'exists:medical_departments,id'
         ];
     }
 
@@ -37,6 +38,7 @@ class MedicalRequest extends FormRequest
             'email' => 'البريد الالكتروني',
             'phone' => 'رقم الهاتف',
             'message' => 'محتوي الرسالة',
+            'medical_department_id' => 'القسم الطبي'
         ];
     }
 }

@@ -42,36 +42,34 @@ class MedicalController extends Controller
      *      ),
      *     )
      */
-    public function show()
+    public function index()
     {
-        $medical_departments = MedicalResource::collection(MedicalDepartment::active()->get());
-        return  $medical_departments;
+        return MedicalResource::collection(MedicalDepartment::get());
+
     }
 
      /**
      * @OA\Post(
-     *      path="/medical_reservations/{department_id}",
+     *      path="/medical_reservations/",
      *      operationId="medical reservation",
      *      tags={"Medical"},
      *      summary="Medical Reservation",
      *      description="Medical Reservation",
      *      security={{"Bearer":{}}},
-     *      @OA\Parameter(
-     *            description="ID of medical_department",
-     *            in="path",
-     *            name="department_id",
-     *            required=true,
-     *            example="1",
-     *           ),
      *      @OA\RequestBody(
      *          required=true,
      *          @OA\MediaType(mediaType="multipart/form-data",
      *              @OA\Schema(
-     *                  required={"email","phone","message"},     *
+     *                  required={"email","phone","message","medical_department_id"},
      *                  @OA\Property(
      *                      property="email",
      *                      type="string",
      *                      description="Sender Email"
+     *                  ),
+     *               @OA\Property(
+     *                      property="medical_department_id",
+     *                      type="integer",
+     *                      description="ID of medical_department"
      *                  ),
      *                  @OA\Property(
      *                      property="phone",
@@ -113,10 +111,10 @@ class MedicalController extends Controller
      * @param MedicalRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function __invoke(MedicalRequest $request, MedicalDepartment $medical_departments)
+    public function store(MedicalRequest $request, MedicalDepartment $medical_departments)
     {
-        MedicalReservation::with('user','medicalDepartment:id,name')->create($request->input()+
-         ['user_id'=>auth()->user()->id ,'medical_department_id' => $request->department_id ]);
+        MedicalReservation::create($request->input()+
+         ['user_id'=>auth()->user()->id ]);
 
         return response()->json(['message' => 'Request Send Successfully'], 200);
     }

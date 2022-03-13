@@ -24,12 +24,12 @@ Route::get('services', 'ServiceController')->name('services.index');
 Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
 /*====== Contact =======*/
 Route::post('contact', 'ContactController');
-Route::get('medical_departments','MedicalController@show');
+Route::get('medical_departments','MedicalController@index');
 
 
 Route::middleware('auth:api')->group(function () {
     // Logout
     Route::post('logout', 'AuthController@logout');
-    Route::post('/medical_reservations/{department_id}','MedicalController@__invoke');
+    Route::post('/medical_reservations','MedicalController@store');
 
 });
