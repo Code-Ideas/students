@@ -59,7 +59,7 @@
         </div>
         <hr />
     @endif
-    @if($type == 'files' || $type == 'content_files')
+    @if(($type == 'files' || $type == 'content_files') && request()->route()->getActionMethod() == 'create')
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label required">المرفقات</label>
@@ -81,7 +81,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::number('priority', isset($serviceLayer) ? $serviceLayer->priority : 1 , ['class' => 'input', 'min' => 1] )!!}
+                    {!! Form::number('priority', isset($serviceLayer) ? $serviceLayer->priority : count($service->layers)+1 , ['class' => 'input', 'min' => 1] )!!}
                 </div>
             </div>
         </div>

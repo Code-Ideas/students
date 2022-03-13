@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ServiceLayerRequest;
 use App\Models\Collage;
 use App\Models\Department;
 use App\Models\Service;
@@ -49,10 +50,11 @@ class ServiceLayersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param ServiceLayerRequest $request
+     * @param Service $service
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, Service $service)
+    public function store(ServiceLayerRequest $request, Service $service)
     {
         $layer = ServiceLayer::create($request->input() + [
                 'service_id' => $service->id, 'content_type' => $request->content_type]);
@@ -88,7 +90,7 @@ class ServiceLayersController extends Controller
      */
     public function edit(Service $service, ServiceLayer $serviceLayer)
     {
-        $type = $serviceLayer->type;
+        $type = $serviceLayer->content_type;
         $years = Year::active()->get(['id', 'name']);
         $departments = Department::with('collage:id,name')->get(['id', 'name', 'collage_id'])
                                  ->map(function ($department) {
@@ -110,6 +112,7 @@ class ServiceLayersController extends Controller
      */
     public function update(Request $request, Service $service, ServiceLayer $serviceLayer)
     {
+        Request::route()->getActionMethod();
         $serviceLayer->update($request->input());
 
         return redirect()->route('admin.services.service_layers.index', $service->id)
