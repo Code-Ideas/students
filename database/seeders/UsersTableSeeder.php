@@ -19,6 +19,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'studnet@collage.com',
             'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
-            'department_id' => 6 , 'year_id' => 1, 'collage_id' => 1]);
+            'department_id' => 1 , 'year_id' => 2, 'collage_id' => 1]);
     }
 }
