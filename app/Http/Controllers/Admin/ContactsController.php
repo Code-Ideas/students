@@ -13,7 +13,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::latest()->paginate(10);
+        $contacts = Contact::with('adminDepartment:id,name')->latest()->paginate(10);
 
         return view('admin.contacts.index', compact('contacts'));
     }

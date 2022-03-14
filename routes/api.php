@@ -22,7 +22,9 @@ Route::get('sliders', 'SliderController');
 Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
 /* ====== Posts =======*/
 Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
-/*====== Contact =======*/
+/*====== Admin Departments =======*/
+Route::get('admin_departments','ContactController@index');
+/*====== Contacts=======*/
 Route::post('contact', 'ContactController');
 /*====== Medical Departments =======*/
 Route::get('medical_departments', 'MedicalController@index');
@@ -31,6 +33,7 @@ Route::get('medical_departments', 'MedicalController@index');
 Route::middleware('auth:api')->group(function () {
     // Logout
     Route::post('logout', 'AuthController@logout');
+    // Medical Reservations
     Route::post('/medical_reservations', 'MedicalController@store');
 
 });

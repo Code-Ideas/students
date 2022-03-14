@@ -27,7 +27,9 @@ class ContactRequest extends FormRequest
             'name' => 'required|string|min:3',
             'email' => 'required|string|email',
             'phone' => 'required|digits:11',
-            'message' => 'required|string|min:10'
+            'message' => 'required|string|min:10',
+            'admin_department_id'=>'exists:admin_departments,id'
+
         ];
     }
     /**
@@ -39,7 +41,9 @@ class ContactRequest extends FormRequest
             'name' => 'الاسم',
             'email' => 'البريد الالكتروني',
             'phone' => 'رقم الهاتف',
-            'message' => 'محتوي الرسالة'
+            'message' => 'محتوي الرسالة',
+            'admin_department_id' => 'القسم المشرف'
+
         ];
     }
 }

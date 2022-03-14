@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    protected $fillable = ['name', 'phone', 'email', 'message'];
+    protected $fillable = ['name', 'phone', 'email', 'message','admin_department_id'];
+
+    public function adminDepartment():  \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(AdminDepartment::class);
+    }
 }
