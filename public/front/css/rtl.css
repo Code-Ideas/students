@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap');
+body , body *{
+    direction: rtl ;
+    text-align: start;
+    font-family: 'Cairo', sans-serif;
+}
+#home-section , #home-section * , .testimonial-section , .testimonial-section * , .slick-slider-container *{
+    direction: ltr;
+}
+#home-section .tp-mask-wrap , #home-section .tp-mask-wrap * , .testimonial-post , .testimonial-post *{ 
+    direction: rtl!important ;
+    text-align: start!important;
+}
+section.feature-section .feature-box .feature-post , .left-part , .blog-post{
+    text-align: start;
+}
+section.feature-section .feature-box .feature-post div.icon-holder{
+    margin-left: 30px;
+    margin-right: unset;
+}
+.blog-post .post-content a.category , .blog-post .post-content .post-meta{
+    padding-left: 24px;
+    padding-right: 0px;
+}
+.testimonial-section .owl-pagination{
+    text-align: center!important;
+}
+.dropdown li.drop-link > a:after{
+    left: 0px;
+    right: unset;
+    border-width: 4px 6px 4px 0px;
+    border-color: transparent #dee2e6 transparent transparent;
+}
+.dropdown li .dropdown.level2{
+    right: 100%;
+    left: unset;
+}
+.sidebar .search-widget button{
+    left: 0;
+    right: unset;
+}
+section.page-banner-section ul.page-depth li:before {
+    content: "\f104";
+    margin-left: 8px;
+    margin-right: unset;
+}
+.blog-post .post-content .post-meta i {
+    margin-left: 8px;
+    margin-right: 0px;
+    float: right;
+}
+.sidebar .widget h2:before{
+    right: -1.75rem;
+    left: unset;
+}
+.post-nav .post-nav-btn .post-nav-link i {
+    right: 0;
+    left: unset;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.post-nav .post-nav-btn .post-nav-link.prev {
+    padding-right: 36px;
+    padding-left: 0;
+}
+.post-nav .post-nav-btn .post-nav-link.next{
+    padding-left: 36px;
+    padding-right: 0;
+}
+.post-nav .post-nav-btn .post-nav-link.next i {
+    left: 0;
+    right: initial;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+footer .up-footer .footer-widget.text-widget ul li .contact-info-icon {
+    margin-right: 0px;
+    margin-left: 12px;
+}
+
+ 
