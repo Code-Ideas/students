@@ -30,7 +30,7 @@ class CreateSettingsTable extends Migration
             $table->string('longitude')->nullable()->default('46.738586');
             $table->timestamps();
         });
-        Setting::create(['site_name' => 'لوحه التحكم', 'site_description' => 'لوحه التحكم',
+        Setting::create(['site_name' => 'خدمات الطلاب', 'site_description' => 'موقع لخدمات الطلاب بجامعة بورسعيد',
             'email' => 'info@codeideas.dev', 'phone' => '01020304050', 'whatsapp' => '+201020304050',
             'publication_policy' => 'شروط النشر']);
     }
