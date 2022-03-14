@@ -17,6 +17,8 @@ class CreateCollagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('logo');
+            $table->text('link')->nullable();
+            $table->string('icon_class')->nullable();
             $table->boolean('active')->default(true);
             $table->unsignedInteger('priority')->default(0);
             $table->timestamps();

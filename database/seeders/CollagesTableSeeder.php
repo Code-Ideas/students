@@ -24,6 +24,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Engineering-circle-1.png',
                 'priority' => 1,
                 'created_at' => Carbon::now(),
+                'link' => 'http://eng.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 2,
@@ -31,6 +32,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Commerce-circle.png',
                 'priority' => 2,
                 'created_at' => Carbon::now(),
+                'link' => 'http://com.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 3,
@@ -38,6 +40,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Science-circle-150x150.png',
                 'priority' => 3,
                 'created_at' => Carbon::now(),
+                'link' => 'http://sci.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 4,
@@ -45,6 +48,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Law-circle-150x150.png',
                 'priority' => 4,
                 'created_at' => Carbon::now(),
+                'link' => 'http://law.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 5,
@@ -52,6 +56,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Education-circle-1-150x150.png',
                 'priority' => 5,
                 'created_at' => Carbon::now(),
+                'link' => 'http://edu.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 6,
@@ -59,6 +64,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Specific-Education-circle-150x150.png',
                 'priority' => 6,
                 'created_at' => Carbon::now(),
+                'link' => 'http://spcd.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 7,
@@ -66,6 +72,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Physical-Education-circle-150x150.png',
                 'priority' => 7,
                 'created_at' => Carbon::now(),
+                'link' => 'http://phyd.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 8,
@@ -73,6 +80,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Education-circle-150x150.png',
                 'priority' => 8,
                 'created_at' => Carbon::now(),
+                'link' => 'http://kind.psu.edu.eg/index.php?lang=arab'
             ],
             [
                 'id' => 9,
@@ -80,6 +88,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Arts-circle-150x150.png',
                 'priority' => 9,
                 'created_at' => Carbon::now(),
+                'link' => 'http://arts.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 10,
@@ -87,6 +96,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/med-logo.jpeg',
                 'priority' => 10,
                 'created_at' => Carbon::now(),
+                'link' => 'http://med.psu.edu.eg/'
             ],
             [
                 'id' => 11,
@@ -94,6 +104,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-pharmacy-circle-1.png',
                 'priority' => 11,
                 'created_at' => Carbon::now(),
+                'link' => 'http://pharm.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id' => 12,
@@ -101,6 +112,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Nursing-circle-150x150.png',
                 'priority' => 12,
                 'created_at' => Carbon::now(),
+                'link' => 'http://nur.psu.edu.eg/index.php?lang=ar'
             ],
             [
                 'id'   => 13,
@@ -108,6 +120,7 @@ class CollagesTableSeeder extends Seeder
                 'logo' => 'http://psu.edu.eg/wp-content/uploads/2022/02/Faculty-of-Management-circle-150x150.png',
                 'priority' => 13,
                 'created_at' => Carbon::now(),
+                'link' => 'http://himc.psu.edu.eg/index.php?lang=ar'
             ],
         ];
 
