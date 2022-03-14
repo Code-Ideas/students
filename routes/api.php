@@ -19,17 +19,18 @@ Route::post('register', 'AuthController@register')->name('register');
 /*====== Sliders =======*/
 Route::get('sliders', 'SliderController');
 /*====== Services =======*/
-Route::get('services', 'ServiceController')->name('services.index');
+Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
 /* ====== Posts =======*/
 Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
 /*====== Contact =======*/
 Route::post('contact', 'ContactController');
-Route::get('medical_departments','MedicalController@index');
+/*====== Medical Departments =======*/
+Route::get('medical_departments', 'MedicalController@index');
 
 
 Route::middleware('auth:api')->group(function () {
     // Logout
     Route::post('logout', 'AuthController@logout');
-    Route::post('/medical_reservations','MedicalController@store');
+    Route::post('/medical_reservations', 'MedicalController@store');
 
 });
