@@ -16,10 +16,12 @@ class ServicesTableSeeder extends Seeder
     public function run()
     {
         Service::create(['name' => 'الجداول الدراسية', 'type' => 'page', 'priority' => 1,
-            'collages' => Collage::pluck('id')->toArray()]);
+            'collages' => Collage::pluck('id')->toArray(), 'icon_class' => 'fa fa-calendar']);
         Service::create(['name' => 'جداول الامتحانات', 'type' => 'page', 'priority' => 2,
-            'collages' => Collage::pluck('id')->toArray()]);
-        Service::create(['name' => 'نتائج الامتحانات', 'type' => 'link', 'priority' => 3,
-            'collages' => Collage::pluck('id')->toArray(), 'link' => 'http://']);
+            'collages' => Collage::pluck('id')->toArray(), 'icon_class' => 'fa fa-calendar-check-o']);
+        Service::create(['name' => 'الامتحانات السابقة', 'type' => 'page', 'priority' => 3,
+            'collages' => Collage::pluck('id')->toArray(), 'icon_class' => 'fa fa-files-o']);
+        Service::create(['name' => 'نتائج الامتحانات', 'type' => 'link', 'priority' => 4,
+            'collages' => Collage::pluck('id')->toArray(), 'link' => 'http://', 'icon_class' => 'fa fa-address-card']);
     }
 }
