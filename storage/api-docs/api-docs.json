@@ -105,6 +105,36 @@
                 ]
             }
         },
+        "/admin_departments": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Get list of admin_departments",
+                "description": "Returns list of admin_departments",
+                "operationId": "getAdminDepartmentsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/contact": {
             "post": {
                 "tags": [
@@ -122,7 +152,8 @@
                                     "name",
                                     "email",
                                     "phone",
-                                    "message"
+                                    "message",
+                                    "admin_department_id"
                                 ],
                                 "properties": {
                                     "name": {
@@ -132,6 +163,104 @@
                                     "email": {
                                         "description": "Sender Email",
                                         "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Sender Phone",
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "description": "Message Content",
+                                        "type": "string"
+                                    },
+                                    "admin_department_id": {
+                                        "description": "ID of admin_department",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/medical_departments": {
+            "get": {
+                "tags": [
+                    "Medical"
+                ],
+                "summary": "Get list of medical_departments",
+                "description": "Returns list of medical_departments",
+                "operationId": "getMedicalDepartmentsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/medical_reservations/": {
+            "post": {
+                "tags": [
+                    "Medical"
+                ],
+                "summary": "Medical Reservation",
+                "description": "Medical Reservation",
+                "operationId": "medical reservation",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "phone",
+                                    "message",
+                                    "medical_department_id"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "Sender Email",
+                                        "type": "string"
+                                    },
+                                    "medical_department_id": {
+                                        "description": "ID of medical_department",
+                                        "type": "integer"
                                     },
                                     "phone": {
                                         "description": "Sender Phone",
@@ -166,7 +295,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/posts": {
@@ -248,6 +382,47 @@
                 "summary": "Get list of services",
                 "description": "Returns list of services",
                 "operationId": "getServicesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/services/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get Content of Service",
+                "description": "Return Content of Service",
+                "operationId": "getServiceContent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
