@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->enum('type', ['page', 'link'])->default('page');
             $table->text('link')->nullable();
+            $table->string('icon_class')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedInteger('priority')->default(0);
             $table->boolean('active')->default(true);

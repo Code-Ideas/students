@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Collage extends Model
 {
-    protected $fillable = ['name', 'logo', 'active', 'priority', 'link', 'icon_class'];
+    protected $fillable = ['name', 'logo', 'active', 'priority', 'link'];
 
     public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
