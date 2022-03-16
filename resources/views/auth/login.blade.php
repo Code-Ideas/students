@@ -1,85 +1,45 @@
-@extends('layouts.app')
-@section('page.title', 'Login')
 
-@section('content')
-<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
-        <div class="w-full">
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                <div class="px-6 py-5 font-semibold text-gray-700 bg-gray-200 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    {{ __('Login') }}
-                </div>
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
-                    @csrf
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="/front/css/loginForm.css" rel="stylesheet" >
+    
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-                    <div class="flex flex-wrap">
-                        <label for="email" class="block mb-2 text-sm font-bold text-gray-700 sm:mb-4">
-                            {{ __('E-Mail Address') }}:
-                        </label>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                        @error('email')
-                        <p class="mt-4 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <label for="password" class="block mb-2 text-sm font-bold text-gray-700 sm:mb-4">
-                            {{ __('Password') }}:
-                        </label>
-
-                        <input id="password" type="password"
-                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
-                            required>
-
-                        @error('password')
-                        <p class="mt-4 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="flex items-center">
-                        <label class="inline-flex items-center text-sm text-gray-700" for="remember">
-                            <input type="checkbox" name="remember" id="remember" class="form-checkbox"
-                                {{ old('remember') ? 'checked' : '' }}>
-                            <span class="ml-2">{{ __('Remember Me') }}</span>
-                        </label>
-
-                        @if (Route::has('password.request'))
-                        <a class="ml-auto text-sm text-green-500 no-underline whitespace-no-wrap hover:text-green-700 hover:underline"
-                            href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                        @endif
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <button type="submit"
-                        class="w-full p-3 text-base font-bold leading-normal text-gray-100 no-underline whitespace-no-wrap bg-green-500 rounded-lg select-none hover:bg-green-700 sm:py-4">
-                            {{ __('Login') }}
-                        </button>
-
-                        @if (Route::has('register'))
-                        <p class="w-full my-6 text-xs text-center text-gray-700 sm:text-sm sm:my-8">
-                            {{ __("Don't have an account?") }}
-                            <a class="text-green-500 no-underline hover:text-green-700 hover:underline" href="{{ route('register') }}">
-                                {{ __('Register') }}
-                            </a>
-                        </p>
-                        @endif
-                    </div>
-                </form>
-
-            </section>
-        </div>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="/images/university.jpg" id="icon" alt="User Icon" />
+      <h1 class="text-primary">                   تسجيل الدخول
+</h1>
     </div>
-</main>
-@endsection
+
+    <!-- Login Form -->
+    <form method="POST" action="{{ route('login') }}">
+    
+    @csrf
+
+      <input type="text" id="login" class="fadeIn second" name="email" placeholder="البريد الالكتروني">
+      @error('email')
+                        <p class="mt-4 text-xs italic text-red-500">
+                            {{ $message }}
+                        </p>
+                        @enderror
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="الرقم السري">
+      @error('password')
+                        <p class="mt-4 text-xs italic text-red-500">
+                            {{ $message }}
+                        </p>
+                        @enderror
+      <input type="submit" class="fadeIn fourth" value="تسجيل الدخول">
+    </form>
+
+    
+
+  </div>
+</div>

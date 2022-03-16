@@ -12,7 +12,8 @@ return [
     | such as the size rules. Feel free to tweak each of these messages.
     |
     */
-
+    'Reqiured'=>'يجب ان يكون هماك قيمه',
+"required"=>"يجب ان يكون هناك قيمه للحقل",
     "accepted"         => "يجب قبول الحقل :attribute",
     "active_url"       => "الحقل :attribute لا يُمثّل رابطًا صحيحًا",
     "after"            => "يجب على الحقل :attribute أن يكون تاريخًا لاحقًا للتاريخ :date.",
@@ -112,6 +113,11 @@ return [
         "password" => "كلمة السر",
         "password_confirmation" => "تأكيد كلمة السر",
         "image" => "الصورة",
+        'message'=>"الرساله",
+        'phone'=>"رقم الهاتف",
+        "admin_id"=>"اسم المشرف",
+        "age"=>"العمر"
+
     ],
 
 ];

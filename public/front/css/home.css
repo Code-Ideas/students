@@ -1,0 +1,126 @@
+body {
+    /* background: #333; */
+    color: white;
+    direction: rtl;
+    font-family: Poppins-Regular;
+    
+
+}
+
+.navbar {
+    border-bottom: rgb(229, 226, 235) 3px solid;
+    direction: rtl ;
+}
+
+@font-face {
+font-family: Poppins-Regular;
+}
+
+
+
+
+
+#home-section .dark-overlay
+ {
+    position: absolute;
+    top: 90;
+    left: 0; 
+    width: 100%;
+
+}
+.my-card
+{
+    position:absolute;
+    position:center;
+    left: 36%;
+    top:-20px;
+    border-radius:100px;
+}  
+
+.listItem{
+    list-style: none;
+    text-align: right;
+}
+
+
+
+
+.show {display: block;}
+.contain_service{    border: rgb(250, 248, 252) 3px solid;
+}
+.head{
+    padding-top: 60px;;
+}
+.service_body{
+background-image: url('../services.jpg');
+background-repeat: no-repeat;
+backface-visibility: visible;
+background-size:cover;
+background-attachment: fixed;
+background-position: center;
+    background-color: rgb(12, 12, 11);
+opacity: .9;}
+.container-2{
+
+    margin-top: 200px;
+}
+.container-2:hover{
+    opacity: 1;
+  }
+  .news_body{background-image: url('../news.jpg');
+    background-repeat: no-repeat;
+    backface-visibility: visible;
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: .8;}
+    .news {
+        width: 160px
+    }
+    
+    .news-scroll a {
+        text-decoration: none
+    }
+    
+    .dot {
+        height: 6px;
+        width: 6px;
+        margin-left: 3px;
+        margin-right: 3px;
+        margin-top: 2px !important;
+        background-color: rgb(207, 23, 23);
+        border-radius: 50%;
+        display: inline-block
+    }
+   
+     
+      
+.mainPage{
+    color: black !important;
+    font-size:larger;
+
+}
+.btn_nav{
+    font-size:larger;
+
+}
+.nav_brand{
+    font-size:xx-large !important;
+
+}
+.btn_nav{
+    background-color: rgb(216, 55, 55);
+    color: white;
+}.btn_nav:hover{
+    background-color: rgb(129, 123, 123);
+}
+
+.btn-submit{
+    background-color:rgb(48, 3, 48) ;
+    color: aliceblue;
+}
+.body-form{
+    background-color:rgb(245, 248, 250);
+   padding: 30px;
+   padding-top: 40px;;
+}
