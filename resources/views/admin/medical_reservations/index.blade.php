@@ -21,6 +21,7 @@
                         <th>اسم المرسل</th>
                         <th> البريد الإلكتروني</th>
                         <th> قسم العيادة </th>
+                        <th>الحالة</th>
                         <th>الاجراءات</th>
                     </tr>
                     </thead>
@@ -31,9 +32,16 @@
                             <td><a href="mailto:{{ $medical_reservation->user->email }}">{{ $medical_reservation->user->email }}</a></td>
                             <td>{{ $medical_reservation->medicalDepartment->name }}</td>
                             <td>
+                                @if (is_null($medical_reservation->reservation_date))
+                                في انتظار موعد
+                                @else
+                                تم الحجز
+                            @endif
+                            </td>
+                            <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.medical_reservations.show', $medical_reservation->id) }}"> عرض </a>
-                                    {{-- <a class="button is-info" href="{{ route('admin.medical_reservations.show', $medical_reservation->id) }}"> تحديد </a> --}}
+                                    {{-- <a class="button is-info" href="{{ route('admin.medical_reservations.reserved', $medical_reservation->id) }}"> تحديد موعد </a> --}}
                                     <span class="modal-open button is-danger" traget-modal=".delete-modal" data_id="{{ $medical_reservation->id }}"  data-url="{{ route('admin.medical_reservations.destroy', $medical_reservation->id)}}">حذف</span>
 
                                 </div>

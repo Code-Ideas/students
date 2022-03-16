@@ -22,6 +22,8 @@ class CreateMedicalReservationsTable extends Migration
             $table->longText('message');
             $table->unsignedBigInteger('medical_department_id');
             $table->foreign('medical_department_id')->references('id')->on('medical_departments')->onDelete('cascade');
+            $table->date('reservation_date')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

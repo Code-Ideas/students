@@ -40,6 +40,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
 
     Route::resource('medical_departments', 'MedicalDepartmentController');
     Route::resource('medical_reservations', 'MedicalReservationController');
+    Route::get('medical_reservations/{medical_reservation}/reserve','MedicalReservationController@reserve')->name('medical_reservations.reserve');
+
 
 
     // Articles

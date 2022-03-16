@@ -3,7 +3,7 @@
 @section('page.title', 'مشاهدة الرسالة')
 
 @section('content')
-<div class="card main-card">
+ <div class="card main-card">
     <div class="card-header">
         <a href="{{ route('admin.medical_reservations.index') }}" class="button is-success">
         <span class="icon is-small"><i class="fa fa-envelope"></i></span>
@@ -29,9 +29,19 @@
                                 <span class="value"><a href="mailto:{{ $medical_reservation->email }}">{{ $medical_reservation->email }}</a></span>
                             </div>
                             <div class="info">
+                                <label class="label">قسم العيادة</label>
+                                <span class="value">{{ $medical_reservation->medicalDepartment->name }}</span>
+                            </div>
+                            <div class="info">
                                 <label class="label">محتوي الرسالة </label>
                                 <span class="value">{{ $medical_reservation->message }}</span>
                             </div>
+                            @if (!is_null($medical_reservation->reservation_date))
+                            <div class="info">
+                                <label class="label">تاريخ الحجز </label>
+                                <span class="value">{{ $medical_reservation->reservation_date }}</span>
+                            </div>
+                            @endif
                             <div class="info left-buttons">
                                 <ul>
                                     <li class=" tooltip is-tooltip-right" data-tooltip="تاريخ الرسالة">
@@ -47,7 +57,18 @@
             </collapse-item>
         </collapse>
     </div>
+    <div class="card-footer">
+         <div class="buttons has-addons">
+            @if (is_null($medical_reservation->reservation_date))
+            {{-- <a class="button is-info" href="{{ route('admin.medical_reservations.reserve',$medical_reservation->id) }}">حجز موعد</a> --}}
+            <span class="modal-open button is-danger" traget-modal=".contact-modal" status-name="تأكيد الحجز" data_id="{{ $medical_reservation->id }}" data-url="{{ route('admin.medical_reservations.reserve',$medical_reservation->id) }}">حجز موعد</span>
+
+            @endif
+        </div>
+    </div>
 </div>
+@include('admin.partials.contactModal')
+
 @endsection
 
 

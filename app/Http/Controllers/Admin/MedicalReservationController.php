@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\ReservationDateRequest;
 use App\Models\MedicalReservation;
 
 class MedicalReservationController extends Controller
@@ -45,6 +46,7 @@ class MedicalReservationController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\MedicalReservation  $medical_reservation
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function show(MedicalReservation $medical_reservation)
@@ -52,6 +54,31 @@ class MedicalReservationController extends Controller
         return view('admin.medical_reservations.show', compact('medical_reservation'));
 
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\MedicalReservation  $medical_reservation
+     * @param  \Illuminate\Http\ReservationDateRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function reserve(MedicalReservation $medical_reservation,ReservationDateRequest $request)
+    {
+        // return view('admin.medical_reservations.reserve', compact('medical_reservation'));
+        $medical_reservation->update(['reservation_date'=> $request->get('reservation_date'),
+        'notes'=>$request->get('notes')]);
+
+        return redirect()->route('admin.medical_reservations.index')->with('success', 'تم تأكيد الحجز');
+    }
+   
+    // public function reserved(MedicalReservation $medical_reservation, Request $request)
+    // {
+
+    //     $medical_reservation->update(['reservation_date'=> $request->get('reservation_date'),
+    //     'notes'=>$request->get('notes')]);
+
+    //     return redirect()->route('admin.medical_reservations.index')->with('success', 'تم تأكيد الحجز');
+
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,10 +95,10 @@ class MedicalReservationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\MedicalReservation  $medical_reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MedicalReservation $medical_reservation)
     {
         //
     }
