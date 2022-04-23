@@ -41,25 +41,29 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="drop-link">
+							<li class="drop-link" style="list-style:none">
 								<a class="active" href="{{route('home')}}">الصفحه الرئيسيه</a>
 							</li>
 							
 							
 							
 						</ul>
-                        <?php if(auth()->guard()->guest()): ?>
-                            <?php if(Route::has('login')): ?>
-                                <a href="<?php echo e(route('login')); ?>" class="register-modal-opener login-button"><i class="material-icons">perm_identity</i>  
-                                 تسجيل الدخول</a>
-
-
-                            <?php endif; ?>
-                            <?php else: ?>
-
-						<a href="#" class="register-modal-opener login-button"><i class="material-icons">perm_identity</i>   <?php echo e(Auth::user()->name); ?></a>
-                        <?php endif; ?>
-					</div>
+						@guest
+                        <a href="{{ route('login') }}" class="register-modal-opener login-button text-white"><i class="material-icons">perm_identity</i>الطلاب</a>
+                        @else
+                            <li class="drop-link login-button">
+                                <a href="#" class="text-white">{{ str_limit(auth()->user()->name, 20) }} <i class="material-icons">perm_identity</i><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('logout') }}"
+                                           class="register-modal-opener"
+                                           onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">تسجيل الخروج</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                            {{ csrf_field() }}
+                                        </form></li>
+                                </ul>
+                            </li>
+                        @endguest
 				</div>
 			</nav>
 
