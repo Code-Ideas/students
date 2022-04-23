@@ -6,7 +6,7 @@
 @endsection
 <body class="service_body">
 
-<div class="bg-light container container-2">
+<div class="bg-light container container-2 ">
 </br>
 </br>
  <h1 class="text-center  text-dark ">{{$services->name}}</h1> 
@@ -17,10 +17,10 @@
  <div class="p-4">
  @foreach($layer->attachments as $att)
  @if ($att->type=='file')
-
- <a style="color:black;" class="btn btn-block btn-outline-primary"  href="{{$att->path}}" >{{$att->file_name}} </a>
+<div class="text-center">
+ <a style="color:black;" class="btn btn-secondary btn-block"  href="storage/{{$att->path}}" >{{$att->file_name}} </a></div>
  @elseif($att->file_name=='image')
- <img src="{{$att->path}}">
+ <img src="storage/{{$att->path}}">
 
  @elseif($att->file_name=='video')
  <video width="500" height="240" controls>
