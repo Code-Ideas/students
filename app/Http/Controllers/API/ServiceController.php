@@ -54,6 +54,7 @@ class ServiceController extends Controller
      *      tags={"Services"},
      *      summary="Get Content of Service",
      *      description="Return Content of Service",
+     *      security={{"Bearer":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          description="Service id",
@@ -90,7 +91,10 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        $layers = ServiceLayer::where('service_id', $service->id)->active()->get();
+        $layers = ServiceLayer::where([['service_id', $service->id], ['department_id', auth()->user()->department_id],
+                                        ['year_id', auth()->user()->year_id]])
+                          //->orWhere([['service_id', $service->id], ['department_id', auth()->user()->department_id]])
+                            ->active()->get();
 
         return ServiceLayersResource::collection($layers);
     }

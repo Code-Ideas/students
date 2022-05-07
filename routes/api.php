@@ -18,8 +18,6 @@ Route::post('login', 'AuthController@login')->name('login');
 Route::post('register', 'AuthController@register')->name('register');
 /*====== Sliders =======*/
 Route::get('sliders', 'SliderController');
-/*====== Services =======*/
-Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
 /* ====== Posts =======*/
 Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
 /*====== Contact =======*/
@@ -32,5 +30,6 @@ Route::middleware('auth:api')->group(function () {
     // Logout
     Route::post('logout', 'AuthController@logout');
     Route::post('/medical_reservations', 'MedicalController@store');
-
+    /*====== Services =======*/
+    Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
 });
