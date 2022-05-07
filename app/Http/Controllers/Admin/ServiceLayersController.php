@@ -112,7 +112,6 @@ class ServiceLayersController extends Controller
      */
     public function update(Request $request, Service $service, ServiceLayer $serviceLayer)
     {
-        Request::route()->getActionMethod();
         $serviceLayer->update($request->input());
 
         return redirect()->route('admin.services.service_layers.index', $service->id)
