@@ -20,7 +20,8 @@
 	<link rel="stylesheet" type="text/css" href="/front/css/rtl.css">
 
 </head>
-<body>
+<body style="
+  font-family:Raleway">
 
 	<!-- Container -->
 	<div id="container">
@@ -41,9 +42,6 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="drop-link" style="list-style:none">
-								<a class="active" href="{{route('home')}}">الصفحه الرئيسيه</a>
-							</li>
 							
 							
 							
@@ -71,9 +69,79 @@
 			</div>
 
 		</header>
+		<!--Main Navigation-->
+<header>
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+              <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-5">
+				<a href="{{route('electronicbook')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5"><i
+                      class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونيه</span></a>
+				@foreach($services as $service)
+   
+   @if($service->type=='page')
+  <a href="{{route('services',['year_id'=>Auth::user()->year_id,'department_id'=>Auth::user()->department_id,'service_id'=>$service->id])}}" class="list-group-item list-group-item-action py-2 ripple"><i
+  class="fa fa-table fa-fw me-3 text-primary pl-2"></i><span> 
+  {{$service->name}} 									</a>
+@else
+
+  <a href="{{$service->link}}"class="list-group-item list-group-item-action py-2 ripple"><i
+  class="fa fa-link fa-fw me-3 text-primary pl-2"></i><span>  
+  {{$service->name}} 									</a>
+@endif
+@endforeach
+				
+                  <a href="{{route('complain')}}" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-times fa-fw me-3 text-primary pl-2"></i><span>الشكاوي</span></a>
+                  <a href="{{route('clinic')}}" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-hospital fa-fw me-3 text-primary pl-2"></i><span>العياده الطبيه</span></a>
+                  <a href="{{route('illiteracy')}}" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الاميه</span>
+                  </a>
+                  
+                  <a href="{{route('phoneDownload')}}" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-mobile fa-fw me-3 text-primary pl-2"></i><span>تحميل التطبيق</span></a>
+					
+
+                </div>
+              </div>
+            </nav>
+            <!-- Sidebar -->
+
+           
+          </header>
+          <!--Main Navigation-->
+
+          <!--Main layout-->
+          <main style="margin-top: 58px;">
+            <div class="container pt-4"></div>
+          </main>
+          <!--Main layout-->
+
+		
 
       @yield('content')
-     
+	  <div class="container-fluid fixed-bottom pb-5" >
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                <marquee class="news-scroll" behavior="scroll" direction="right" onmouseover="this.stop();" onmouseout="this.start();"> @foreach($posts as $post)<a  href="{{route('singleNews',$post->id)}}"> 
+                    {{$post->title}}
+                    
+                
+                </a>
+                &nbsp;
+                <span class="dot "></span> 
+                &nbsp;
+                @endforeach
+                 </a> </marquee>
+                <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-primary py-2 text-white px-1 news"><span class="d-flex align-items-center p-2">&nbsp;اخر الاخبار</span></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
       <div class="bg-light text-center p-3 fixed-bottom text-dark ">@coptright 2021</div> 
 
       <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

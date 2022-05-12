@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\Post;
 use App\Models\Photo;
 use App\Models\User;
+use App\Models\EBook;
 
 class HomeController extends Controller
 {
@@ -30,9 +31,11 @@ class HomeController extends Controller
     {   
          $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
         $posts=Post::with('photo')->get();
+        $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
 
 
-        return view('welcome',compact('services','posts'));
+
+        return view('electronicbook',compact('services','posts','books'));
     }
 }
 
