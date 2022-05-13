@@ -11,7 +11,7 @@
         <div class="container contain_service p-5">
             <div></div>
          @foreach($services2->layers as $layer)
-         <div class="text-dark text-right">{!! $layer->content !!}</div>
+         <div class="text-dark text-center">{!! $layer->content !!}</div>
          <div class="p-4">
          @foreach($layer->attachments as $attachment)
              @if ($attachment->type == 'file')

@@ -14,6 +14,7 @@
 
       <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <title>محو الاميه</title>
    </head>
    <body>
      <div class="mt-5 pt-5 text-center">
@@ -25,7 +26,7 @@
 </div>
      <div class="pt-5 container"  >
        @for($i =0 ;$i<6 ; $i++)
-      <form class = "row " role = "form" style="padding-right:110px">
+      <form class = "row " role = "form" style="padding-right:250px">
       <div class = "col-md-3  p-3  col-sm-3">
             <label class = "sr-only" for = "name">الاسم</label>
             <input type = "text" class = "form-control" id = "name" placeholder = "ادخل اسم المتعلم بالكامل">
