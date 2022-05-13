@@ -72,7 +72,7 @@
 		<!--Main Navigation-->
 <header>
             <!-- Sidebar -->
-            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white ml-4">
               <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-5">
 				<a href="{{route('electronicbook')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5"><i
@@ -99,8 +99,8 @@
                     <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الاميه</span>
                   </a>
                   
-                  <a href="{{route('phoneDownload')}}" class="list-group-item list-group-item-action py-2 ripple"><i
-                      class="fas fa-mobile fa-fw me-3 text-primary pl-2"></i><span>تحميل التطبيق</span></a>
+                  <!-- <a href="{{route('phoneDownload')}}" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-mobile fa-fw me-3 text-primary pl-2"></i><span>تحميل التطبيق</span></a> -->
 					
 
                 </div>
@@ -110,13 +110,7 @@
 
            
           </header>
-          <!--Main Navigation-->
-
-          <!--Main layout-->
-          <main style="margin-top: 58px;">
-            <div class="container pt-4"></div>
-          </main>
-          <!--Main layout-->
+       
 
 		
 

@@ -25,14 +25,14 @@
 </div>
      <div class="pt-5 container"  >
        @for($i =0 ;$i<6 ; $i++)
-      <form class = "row" role = "form">
-      <div class = "col-md-3  p-3">
+      <form class = "row " role = "form" style="padding-right:110px">
+      <div class = "col-md-3  p-3  col-sm-3">
             <label class = "sr-only" for = "name">الاسم</label>
             <input type = "text" class = "form-control" id = "name" placeholder = "ادخل اسم المتعلم بالكامل">
-            </div> <div class = "col-md-3 p-3">
+            </div> <div class = "col-md-3 p-3 col-sm-3">
             <label class = "sr-only" for = "name">Age</label>
             <input type = "number" class = "form-control" id = "age" placeholder = "ادخل سن المتعلم">
-         </div>  <div class = "col-md-5  p-3">
+         </div>  <div class = "col-md-5  p-3 col-sm-5">
             <label class = "sr-only" for = "name">العنوان</label>
             <input type = "text" class = "form-control" id = "address"  rows="100"placeholder = "ادخل العنوان">
          </div>
@@ -43,7 +43,7 @@
 @endfor
 </div>
 <div class="text-center">
-<a href="#" class="btn  btn-lg btn-rounded  px-5  my-4 btn-dark illiteracy_button">تاكيد المتعلمين</a>
+<a href="#" class="btn   btn-rounded  px-5  my-4 btn-dark illiteracy_button">تاكيد المتعلمين</a>
 <div>
 </div>
    </body>

@@ -7,7 +7,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<title>تسجيل الدخول</title>
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
