@@ -25,7 +25,7 @@ class MedicalRequest extends FormRequest
     {
         return [
             // 'name' => 'required|string|min:3',
-            'email' => 'required|string|email',
+            //'email' => 'required|string|email',
             'phone' => 'required|numeric|digits:11',
             'message' => 'required|string|min:10',
             'medical_department_id'=>'exists:medical_departments,id'

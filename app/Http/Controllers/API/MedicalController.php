@@ -45,7 +45,6 @@ class MedicalController extends Controller
     public function index()
     {
         return MedicalResource::collection(MedicalDepartment::get());
-
     }
 
      /**
@@ -60,12 +59,7 @@ class MedicalController extends Controller
      *          required=true,
      *          @OA\MediaType(mediaType="multipart/form-data",
      *              @OA\Schema(
-     *                  required={"email","phone","message","medical_department_id"},
-     *                  @OA\Property(
-     *                      property="email",
-     *                      type="string",
-     *                      description="Sender Email"
-     *                  ),
+     *                  required={"phone", "message", "medical_department_id"},
      *               @OA\Property(
      *                      property="medical_department_id",
      *                      type="integer",
@@ -111,10 +105,9 @@ class MedicalController extends Controller
      * @param MedicalRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(MedicalRequest $request, MedicalDepartment $medical_departments)
+    public function store(MedicalRequest $request)
     {
-        MedicalReservation::create($request->input()+
-         ['user_id'=>auth()->user()->id ]);
+        MedicalReservation::create($request->input() + ['user_id'=>auth()->user()->id ]);
 
         return response()->json(['message' => 'Request Send Successfully'], 200);
     }

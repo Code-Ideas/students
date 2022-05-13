@@ -21,9 +21,11 @@ class WebController extends Controller
 {
  public function complain(){
  $admins=AdminDepartment::pluck('name', 'id');
+ $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+ $posts=Post::with('photo')->get();
+
     
-    
-    return view('complain',compact('admins'));}
+    return view('complain',compact('admins','services','posts'));}
 public function storeComplain(request  $request){
      $validateData=$request->validate([
       'name'=>'required|min:5',
@@ -50,8 +52,10 @@ public function storeComplain(request  $request){
 public function clinic(){
     $collages=Collage::pluck('name', 'id');
     $medicaldepartments=MedicalDepartment::pluck('name', 'id');
+    $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+    $posts=Post::with('photo')->get();
 
-    return view('clinic',compact('collages','medicaldepartments'));
+    return view('clinic',compact('collages','medicaldepartments','services','posts'));
     }
     
     public function storeClinic(request  $request){
@@ -78,33 +82,50 @@ public function clinic(){
     }
     
     public function phoneDownload(){
-        return view("phoneDownload");
+        $medicaldepartments=MedicalDepartment::pluck('name', 'id');
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+        $posts=Post::with('photo')->get();
+
+    
+        return view("phoneDownload",compact('services','posts'));
     }
 
     public function showService($service_id,$year_id,$department_id){
-        $services=Service::with('layers')->find($service_id);
+        $services2=Service::with('layers')->find($service_id);
         $services_attachments=ServiceLayer::with('attachments')->where('year_id',$year_id)->where('department_id',$department_id)->find($service_id);
-        return view('service_layer',compact('services','services_attachments'));
+        $posts=Post::with('photo')->get();
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+
+        return view('service_layer',compact('services2','services_attachments','services','posts'));
 
 
     }
     public function news(){
         $posts=Post::with('photo')->get();
-        return view('news',compact('posts'));
+        $services_attachments=ServiceLayer::with('attachments')->where('year_id',$year_id)->where('department_id',$department_id)->find($service_id);
+
+        return view('news',compact('posts','services'));
     }
     public function singleNews($news_id){
         $posts=Post::with('photo')->find($news_id);
         $allposts=Post::with('photo')->get();
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
 
 
-        return view('singleNews',compact('posts',"allposts"));
+
+        return view('singleNews',compact('posts',"allposts",'services'));
     }
     public function electronicbook(){
         $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+        $posts=Post::with('photo')->get();
 
-        return view('electronicbook',compact('books'));
+
+        return view('electronicbook',compact('books','services','posts'));
     }  public function illiteracy(){
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+        $posts=Post::with('photo')->get();
 
-        return view('illetracy');
+        return view('illetracy',compact('services','posts'));
     }
 }

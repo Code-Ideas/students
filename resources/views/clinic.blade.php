@@ -31,7 +31,6 @@
             <div class="col-md-6">
               
 
-            <!-- <p><img src="{{asset('images/undraw-contact.svg')}}" alt="Image" class="img-fluid"></p> -->
             <p><img src="/images/hospital.jpg" alt="Image" class="img-fluid"></p>
 
 

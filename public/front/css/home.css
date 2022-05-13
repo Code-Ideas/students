@@ -1,7 +1,7 @@
 
 .container-2{
 
-    margin-top: 200px;
+    margin-top: 100px;
 }
 .container-2:hover{
     opacity: 1;
@@ -38,28 +38,4 @@
     color: black !important;
     font-size:larger;
 
-}
-.btn_nav{
-    font-size:larger;
-
-}
-.nav_brand{
-    font-size:xx-large !important;
-
-}
-.btn_nav{
-    background-color: rgb(216, 55, 55);
-    color: white;
-}.btn_nav:hover{
-    background-color: rgb(129, 123, 123);
-}
-
-.btn-submit{
-    background-color:rgb(48, 3, 48) ;
-    color: aliceblue;
-}
-.body-form{
-    background-color:rgb(245, 248, 250);
-   padding: 30px;
-   padding-top: 40px;;
 }

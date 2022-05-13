@@ -19,6 +19,7 @@ class ServicesResource extends JsonResource
             'name' => $this->name,
             'type' => $this->type,
             'link' => $this->link ?: null,
+            'icon' => $this->icon_class ?: null,
             //'sub_services' => $this->subServices()->get(['id', 'name']),
         ];
     }
