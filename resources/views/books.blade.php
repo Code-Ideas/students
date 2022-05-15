@@ -10,6 +10,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
             <!-- /.col end-->

@@ -32,7 +32,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 				<div class="container">
 					<a class="navbar-brand" href="{{route('home')}}">
-						<img src="/images/university.jpg"  width="80px" alt="">البوابه الالكترونيه لخدمه طلاب جامعه بورسعيد
+						<img src="/images/university.jpg"  width="80px" alt="">البوابة الالكترونية لخدمة طلاب جامعة بورسعيد
 					</a>
 					<a href="#" class="mobile-nav-toggle">
 						<span></span>
@@ -80,9 +80,9 @@
                   <a href="{{route('complain')}}" class="list-group-item list-group-item-action py-2 ripple"><i
                       class="fas fa-times fa-fw me-3 text-primary pl-2"></i><span>الشكاوي</span></a>
                   <a href="{{route('clinic')}}" class="list-group-item list-group-item-action py-2 ripple"><i
-                      class="fas fa-hospital fa-fw me-3 text-primary pl-2"></i><span>العياده الطبيه</span></a>
+                      class="fas fa-hospital fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a>
                   <a href="{{route('illiteracy')}}" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الاميه</span>
+                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الامية</span>
                   </a>
                 </div>
               </div>
