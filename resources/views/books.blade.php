@@ -1,19 +1,15 @@
-
 @extends('layouts.app')
+@section('page.title', 'الكتب الالكترونية ')
+
 @section('content')
 
-@endsection
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="/front/css/electronicbook.css" rel="stylesheet" />
-<title>الكتاب الالكتروني</title>
 <div class="event-schedule-area-two bg-color pad100">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-</br>
-</br>
-</br>                    
                 </div>
             </div>
             <!-- /.col end-->
@@ -27,7 +23,6 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" scope="col">تاريخ النشر</th>
                                         <th scope="col">اسم الكتاب</th>
                                         <th class="text-center" scope="col">الاجراءات</th>
                                     </tr>
@@ -35,21 +30,14 @@
                                 <tbody>
                                     @foreach ($books as $book)
                                     <tr class="inner-box">
-                                        <th scope="row">
-                                            <div class="event-date">
-                                                <p>{{$book->created_at}}</p>
-                                            </div>
-                                        </th>
                                         <td>
                                             <div class="text-dark">
-                                               <p>{{$book->title}}</p>
+                                               <p>{{ $book->title }}</p>
                                             </div>
                                         </td>
-                                       
-                                       
                                         <td>
                                             <div class="primary-btn">
-                                            <a class="btn btn-primary" href="storage/{{$book->path}}">عرض وتحميل الكتاب</a>
+                                            <a class="btn btn-primary" download="{{ $book->title }}" href="{{ asset('storage/' . $book->path) }}">تحميل</a>
                                             </div>
                                         </td>
                                         @endforeach
@@ -61,3 +49,4 @@
         <!-- /row end-->
     </div>
 </div>
+@endsection

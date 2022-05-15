@@ -27,15 +27,9 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-
-    {   
-         $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-        $posts=Post::with('photo')->get();
+    {
         $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
 
-
-
-        return view('electronicbook',compact('services','posts','books'));
+        return view('books', compact('books'));
     }
 }
-

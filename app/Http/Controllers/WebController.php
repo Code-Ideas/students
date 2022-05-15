@@ -24,7 +24,7 @@ class WebController extends Controller
  $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
  $posts=Post::with('photo')->get();
 
-    
+
     return view('complain',compact('admins','services','posts'));}
 public function storeComplain(request  $request){
      $validateData=$request->validate([
@@ -36,7 +36,7 @@ public function storeComplain(request  $request){
 
 
      ]
-    
+
     );
     Contact::create([
         'name'=>$request->name
@@ -57,7 +57,7 @@ public function clinic(){
 
     return view('clinic',compact('collages','medicaldepartments','services','posts'));
     }
-    
+
     public function storeClinic(request  $request){
         $validateData=$request->validate([
             'email'=>'required|email',
@@ -65,10 +65,10 @@ public function clinic(){
             'message'=>'required|min:15',
             'medical_department_id'=>'required',
             'collage_id'=>'required'
-      
-      
+
+
            ]
-          
+
           );
         MedicalReservation::create([
             'user_id'=>auth()->user()->id,
@@ -80,52 +80,49 @@ public function clinic(){
         ]);
     return view('success');
     }
-    
-    public function phoneDownload(){
+
+    public function phoneDownload()
+    {
         $medicaldepartments=MedicalDepartment::pluck('name', 'id');
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
         $posts=Post::with('photo')->get();
 
-    
-        return view("phoneDownload",compact('services','posts'));
+        return view("phoneDownload", compact('posts'));
     }
 
-    public function showService($service_id,$year_id,$department_id){
-        $services2=Service::with('layers')->find($service_id);
-        $services_attachments=ServiceLayer::with('attachments')->where('year_id',$year_id)->where('department_id',$department_id)->find($service_id);
-        $posts=Post::with('photo')->get();
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+    public function showService(Service $service)
+    {
+        $layers = ServiceLayer::where([['service_id', $service->id], ['department_id' , auth()->user()->department_id],
+            ['year_id', auth()->user()->year_id]])->with('attachments')->get();
 
-        return view('service_layer',compact('services2','services_attachments','services','posts'));
-
-
+        return view('service_layer', compact('layers', 'service'));
     }
-    public function news(){
-        $posts=Post::with('photo')->get();
-        $services_attachments=ServiceLayer::with('attachments')->where('year_id',$year_id)->where('department_id',$department_id)->find($service_id);
 
-        return view('news',compact('posts','services'));
+    public function news()
+    {
+        $posts = Post::with('photo')->get();
+
+        return view('news', compact('posts'));
     }
-    public function singleNews($news_id){
-        $posts=Post::with('photo')->find($news_id);
-        $allposts=Post::with('photo')->get();
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+    public function singleNews(Post $post)
+    {
+        $posts = Post::with('photo')->get();
 
-
-
-        return view('singleNews',compact('posts',"allposts",'services'));
+        return view('singleNews', compact('post', "posts"));
     }
-    public function electronicbook(){
+    public function eBooks()
+    {
         $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
+        $services = Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+        $posts = Post::with('photo')->get();
+
+        return view('books', compact('books', 'services', 'posts'));
+    }
+
+    public function illiteracy()
+    {
         $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
         $posts=Post::with('photo')->get();
 
-
-        return view('electronicbook',compact('books','services','posts'));
-    }  public function illiteracy(){
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-        $posts=Post::with('photo')->get();
-
-        return view('illetracy',compact('services','posts'));
+        return view('illetracy', compact('services', 'posts'));
     }
 }

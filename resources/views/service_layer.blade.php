@@ -1,16 +1,16 @@
 @extends('layouts.app')
+@section('page.title', $service->name)
 @section('content')
-<title>{{$services2->name}}</title>
 
 <link rel="stylesheet" type="text/css" href="/front/css/home.css">
 <body class="service_body">
     <div class="bg-light container container-2">
     <br>
     <br>
-        <h1 class="text-center  text-dark ">{{ $services2->name }}</h1>
+        <h1 class="text-center  text-dark ">{{ $service->name }}</h1>
         <div class="container contain_service p-5">
             <div></div>
-         @foreach($services2->layers as $layer)
+         @foreach($layers as $layer)
          <div class="text-dark text-center">{!! $layer->content !!}</div>
          <div class="p-4">
          @foreach($layer->attachments as $attachment)
