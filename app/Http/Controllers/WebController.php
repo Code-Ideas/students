@@ -49,36 +49,23 @@ public function storeComplain(request  $request){
     return view('success');
 
 }
-public function clinic(){
-    $collages=Collage::pluck('name', 'id');
-    $medicaldepartments=MedicalDepartment::pluck('name', 'id');
-    $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-    $posts=Post::with('photo')->get();
+    public function clinic()
+    {
+        $medicalDepartments = MedicalDepartment::pluck('name', 'id');
 
-    return view('clinic',compact('collages','medicaldepartments','services','posts'));
+        return view('clinic', compact('medicalDepartments'));
     }
 
-    public function storeClinic(request  $request){
-        $validateData=$request->validate([
-            'email'=>'required|email',
-            'phone'=>'required|integer|digits:11',
-            'message'=>'required|min:15',
-            'medical_department_id'=>'required',
-            'collage_id'=>'required'
+    public function storeClinic(request  $request)
+    {
+        $request->validate([
+            'phone' => 'required|numeric|digits:11',
+            'message' => 'required|string|min:15',
+            'medical_department_id' => 'required|numeric|exists:medical_departments,id'
+           ]);
+        MedicalReservation::create($request->input() + ['user_id'=>auth()->user()->id]);
 
-
-           ]
-
-          );
-        MedicalReservation::create([
-            'user_id'=>auth()->user()->id,
-            'email'=>$request->email
-            ,'phone'=>$request->phone
-            ,'message'=>$request->message
-            ,'medical_department_id'=>$request->medical_department_id,
-            'collage_id'=>$request->collage_id
-        ]);
-    return view('success');
+        return view('success');
     }
 
     public function phoneDownload()
@@ -103,26 +90,23 @@ public function clinic(){
 
         return view('news', compact('posts'));
     }
+
     public function singleNews(Post $post)
     {
         $posts = Post::with('photo')->get();
 
         return view('singleNews', compact('post', "posts"));
     }
+
     public function eBooks()
     {
         $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
-        $services = Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-        $posts = Post::with('photo')->get();
 
-        return view('books', compact('books', 'services', 'posts'));
+        return view('books', compact('books'));
     }
 
     public function illiteracy()
     {
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-        $posts=Post::with('photo')->get();
-
-        return view('illetracy', compact('services', 'posts'));
+        return view('illiteracy');
     }
 }

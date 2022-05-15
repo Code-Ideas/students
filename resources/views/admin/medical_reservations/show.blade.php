@@ -26,7 +26,7 @@
                             </div>
                             <div class="info">
                                 <label class="label">البريد الإلكتروني </label>
-                                <span class="value"><a href="mailto:{{ $medical_reservation->email }}">{{ $medical_reservation->email }}</a></span>
+                                <span class="value"><a href="mailto:{{ $medical_reservation->user->email }}">{{ $medical_reservation->user->email }}</a></span>
                             </div>
                             <div class="info">
                                 <label class="label">قسم العيادة</label>
