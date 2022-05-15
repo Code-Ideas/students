@@ -3,7 +3,7 @@
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="/front/css/loginForm.css" rel="stylesheet" >
-    
+
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -21,7 +21,7 @@
 
     <!-- Login Form -->
     <form method="POST" action="{{ route('login') }}">
-    
+
     @csrf
 
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="البريد الالكتروني">
@@ -30,7 +30,7 @@
                             {{ $message }}
                         </p>
                         @enderror
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="الرقم السري">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="الرقم السري">
       @error('password')
                         <p class="mt-4 text-xs italic text-red-500">
                             {{ $message }}
@@ -39,7 +39,7 @@
       <input type="submit" class="fadeIn fourth" value="تسجيل الدخول">
     </form>
 
-    
+
 
   </div>
 </div>
