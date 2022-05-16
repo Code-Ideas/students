@@ -17,7 +17,7 @@ class CreateMedicalReservationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->longText('message');
             $table->unsignedBigInteger('medical_department_id');

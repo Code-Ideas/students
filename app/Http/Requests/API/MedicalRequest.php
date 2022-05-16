@@ -28,7 +28,7 @@ class MedicalRequest extends FormRequest
             //'email' => 'required|string|email',
             'phone' => 'required|numeric|digits:11',
             'message' => 'required|string|min:10',
-            'medical_department_id'=>'exists:medical_departments,id'
+            'medical_department_id' => 'required|numeric|exists:medical_departments,id'
         ];
     }
 

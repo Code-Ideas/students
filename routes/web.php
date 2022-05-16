@@ -30,10 +30,10 @@ Route::get('/complain',"WebController@complain")->name('complain');
  Route::get('/clinic',"WebController@clinic")->name('clinic');
  Route::get('/storeClinic','WebController@storeClinic')->name('storeClinic');
  Route::get('/phoneDownload', "WebController@phoneDownload")->name('phoneDownload');
- Route::get('/services/{service_id}/{department_id}/{year_id}', "WebController@showService")->name('services');
- Route::get('/news','WebController@news')->name('news');
- Route::get('/singleNews/{id}','WebController@singleNews')->name('singleNews');
- Route::get('/electronicbook','WebController@electronicbook')->name('electronicbook');
+ Route::get('/services/{service}', "WebController@showService")->name('showService');
+ Route::get('/news', 'WebController@news')->name('news');
+ Route::get('/posts/{post}', 'WebController@singleNews')->name('singleNews');
+ Route::get('/e-books', 'WebController@eBooks')->name('e-books');
  Route::get('/illiteracy','WebController@illiteracy')->name('illiteracy');
 
 
