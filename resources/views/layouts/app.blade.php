@@ -63,7 +63,7 @@
     </div>
 		<!--Main Navigation-->
             <!-- Sidebar -->
-            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white ml-4">
+            <nav id="sidebarMenu" class=" d-lg-block sidebar  bg-white ml-4 fixed-right">
               <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-5">
 				<a href="{{route('e-books')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5 sideA"><i
@@ -110,7 +110,7 @@
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en"></script>
 	<script src="/front/js/gmap3.min.js"></script>
 	<script type="text/javascript" src="/front/js/extensions/revolution.extension.slideanims.min.js"></script>
-	<script type="text/javascript" src="/front/js/extensions/revolution.extension.actions.min.js"></script>
+	<!-- <script type="text/javascript" src="/front/js/extensions/revolution.extension.actions.min.js"></script> -->
 	<script type="text/javascript" src="/front/js/extensions/revolution.extension.layeranimation.min.js"></script>
 	<script type="text/javascript" src="/front/js/extensions/revolution.extension.navigation.min.js"></script>
 	<script type="text/javascript" src="/front/js/extensions/revolution.extension.parallax.min.js"></script>

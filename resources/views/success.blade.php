@@ -51,7 +51,7 @@
         <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
       </div>
       <div class="pt-5">
-      <a href="{{route('home')}}" >العوده للصفحه الرئيسيه</a>
+      <a href="{{route('e-books')}}" >العوده للصفحه الرئيسيه</a>
     </div>
     </body>
 </html>

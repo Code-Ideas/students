@@ -43,7 +43,7 @@ public function storeComplain(request  $request){
         ,'email'=>$request->email
         ,'phone'=>$request->phone
         ,'message'=>$request->message
-        ,'admin_id'=>$request->admin_id
+        ,'admin_department_id'=>$request->admin_id
 
     ]);
     return view('success');
@@ -61,8 +61,7 @@ public function storeComplain(request  $request){
         $request->validate([
             'phone' => 'required|numeric|digits:11',
             'message' => 'required|string|min:15',
-            'medical_department_id' => 'required|numeric|exists:medical_departments,id'
-           ]);
+            'medical_department_id' => 'required|numeric|exists:medical_departments,id'    ]);
         MedicalReservation::create($request->input() + ['user_id'=>auth()->user()->id]);
 
         return view('success');

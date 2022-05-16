@@ -21,7 +21,7 @@
 
      <div class="pt-5 container" >
            @for($i =0 ;$i<6 ; $i++)
-          <form class = "row " role = "form" style="padding-right:250px">
+          <form class = "row " role = "form" style="padding-right:100px">
               <div class = "col-md-3  p-3  col-sm-3">
                     <label class = "sr-only" for = "name">الاسم</label>
                     <input type = "text" class = "form-control" id = "name" placeholder = "ادخل اسم المتعلم بالكامل">
