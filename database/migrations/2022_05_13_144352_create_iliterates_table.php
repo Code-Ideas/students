@@ -18,8 +18,10 @@ class CreateIliteratesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
-            $table->string('age');
-            $table->longText('address');
+            $table->string('illiterate_id');
+            $table->string('address');
+            $table->enum('classroom_type', ['energizing', 'free', 'immediate_exam'])->default('energizing');
+            $table->enum('classroom', ['home', 'mosque', 'association','college'])->default('college');
             $table->timestamps();
         });
     }
