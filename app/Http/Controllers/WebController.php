@@ -79,7 +79,8 @@ public function storeComplain(request  $request){
     public function showService(Service $service)
     {
         $layers = ServiceLayer::where([['service_id', $service->id], ['department_id' , auth()->user()->department_id],
-            ['year_id', auth()->user()->year_id]])->with('attachments')->get();
+            ['year_id', auth()->user()->year_id]])->orWhere([['service_id', $service->id], ['year_id', null],
+            ['department_id' , auth()->user()->department_id]])->with('attachments')->get();
 
         return view('service_layer', compact('layers', 'service'));
     }
