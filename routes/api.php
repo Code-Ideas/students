@@ -28,6 +28,8 @@ Route::post('contact', 'ContactController');
 Route::get('medical_departments', 'MedicalController@index');
 
 
+
+
 Route::middleware('auth:api')->group(function () {
     // Logout
     Route::post('logout', 'AuthController@logout');
@@ -35,4 +37,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/medical_reservations', 'MedicalController@store');
     /*====== Services =======*/
     Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
+
+    Route::get('e_books', 'EBookController@index');
+
+
 });
