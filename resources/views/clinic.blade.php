@@ -58,7 +58,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-12">
+                      <div class="col-12 text-left">
                         <input type="submit" value="ارسال" class="btn btn-dark rounded-0  px-4">
                       <span class="submitting"></span>
                       </div>

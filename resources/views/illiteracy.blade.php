@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-@section('page.title', 'العيادة الطبية ')
+@section('page.title', 'محو الاميه ')
 @section('content')
 
 <!doctype html>

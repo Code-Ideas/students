@@ -1,6 +1,7 @@
 @extends('layouts.app')
-@section('content')
+@section('page.title', 'تقديم الشكاوي ')
 
+@section('content')
 
 <!doctype html>
 <html lang="en">
@@ -8,7 +9,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
-<title>complain</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 
@@ -19,10 +19,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="/front/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/front/css/success.css">
     
-<title>الشكاوي</title>
   </head>
   <body >
   
@@ -105,10 +103,9 @@
      
 
 
-                <div class="row">
-                  <div class="col-12">
+                <div class="row ">
+                  <div class="col-12 text-left">
                     <input type="submit" value="Send Message" class="btn btn-dark rounded-0  px-4">
-                  <span class="submitting"></span>
                   </div>
                 </div>
               </form>
