@@ -204,6 +204,41 @@
                 }
             }
         },
+        "/e_books": {
+            "get": {
+                "tags": [
+                    "EBooks"
+                ],
+                "summary": "Get list of e_books",
+                "description": "Returns list of e_books",
+                "operationId": "getEBooks",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/medical_departments": {
             "get": {
                 "tags": [
@@ -248,16 +283,11 @@
                         "multipart/form-data": {
                             "schema": {
                                 "required": [
-                                    "email",
                                     "phone",
                                     "message",
                                     "medical_department_id"
                                 ],
                                 "properties": {
-                                    "email": {
-                                        "description": "Sender Email",
-                                        "type": "string"
-                                    },
                                     "medical_department_id": {
                                         "description": "ID of medical_department",
                                         "type": "integer"
@@ -442,7 +472,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/sliders": {
