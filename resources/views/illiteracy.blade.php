@@ -18,6 +18,7 @@
   <p class="pt-5 text-center mt-5 "> يلزم علي كليه اداب وتربيه وتجاره استكمال اجراءات محو الاميه للتخرج وذلك بتسجل حد ادني خمسه متعلمين</p>
 </blockquote>
     </div>
+    @if($iliterates->count()<5)
         <div class="content">
             <div class="container">
             <div class="row justify-content-center">
@@ -90,7 +91,6 @@
                     <div class="row">
                       <div class="col-12 text-left">
                         <input type="submit" value="ارسال" class="btn btn-rounded px-5 my-4 btn-dark illiteracy_button">
-
                       </div>
                     </div>
                   </form>
@@ -100,6 +100,7 @@
   </div>
 
         </div>
+        @endif
         <div class="container p-5">
             <table class="table  table-striped pt-5">
               <thead>
