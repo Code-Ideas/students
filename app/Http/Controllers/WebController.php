@@ -16,6 +16,7 @@ use App\Models\MedicalDepartment;
 use App\Models\Admin;
 use App\Models\AdminDepartment;
 use App\Models\ServiceLayer;
+use App\Models\ILiterate;
 
 class WebController extends Controller
 {
@@ -25,7 +26,9 @@ class WebController extends Controller
  $posts=Post::with('photo')->get();
 
 
-    return view('complain',compact('admins','services','posts'));}
+    return view('complain',compact('admins','services','posts'));
+}
+
 public function storeComplain(request  $request){
      $validateData=$request->validate([
       'name'=>'required|min:5',
@@ -33,10 +36,7 @@ public function storeComplain(request  $request){
       'phone'=>'required|integer|digits:11',
       'message'=>'required|min:15',
       'admin_id'=>'required'
-
-
      ]
-
     );
     Contact::create([
         'name'=>$request->name
@@ -107,6 +107,22 @@ public function storeComplain(request  $request){
 
     public function illiteracy()
     {
-        return view('illiteracy');
+        $iliterates = ILiterate::where(['user_id'=>auth()->user()->id])->get();
+        return view('illiteracy', compact('iliterates'));
+    }
+
+    public function storeIlliteracy(request  $request)
+    {
+        $request->validate([
+            'name' => 'required|min:5',
+            'illiterate_id' => 'required|numeric|digits:14',
+            'address' => 'required|min:3',
+            'classroom_type' => 'required',
+            'classroom' => 'required',
+           ]);
+           ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
+           return view('success') ;
+
+
     }
 }

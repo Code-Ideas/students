@@ -35,5 +35,6 @@ Route::get('/complain',"WebController@complain")->name('complain');
  Route::get('/posts/{post}', 'WebController@singleNews')->name('singleNews');
  Route::get('/e-books', 'WebController@eBooks')->name('e-books');
  Route::get('/illiteracy','WebController@illiteracy')->name('illiteracy');
+ Route::get('/storeIlliteracy','WebController@storeIlliteracy')->name('storeIlliteracy');
 
 

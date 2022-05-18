@@ -1,6 +1,5 @@
-
 @extends('layouts.app')
-@section('page.title', 'العيادة الطبية ')
+@section('page.title', 'محو الأمية')
 @section('content')
 
 <!doctype html>
@@ -19,7 +18,6 @@
   <p class="pt-5 text-center mt-5 "> يلزم علي كليه اداب وتربيه وتجاره استكمال اجراءات محو الاميه للتخرج وذلك بتسجل حد ادني خمسه متعلمين</p>
 </blockquote>
     </div>
-
         <div class="content">
             <div class="container">
             <div class="row justify-content-center">
@@ -29,18 +27,19 @@
                 <p><img src="{{asset('images/illiteracy.jpg')}}" alt="Image" class="img-fluid" width="300px"></p>
                 </div>
                 <div class="col-md-6 body-form">
-                  <form class="mb-5" action="#" id="contactForm" name="contactForm" >
+                  <form class="mb-5" action="{{route('storeIlliteracy')}}" id="illiteracyForm" name="illiteracyForm" >
                     @csrf
                     <div class="row">
                       <div class="col-md-12 form-group">
-                      <input id="phone" class="form-control" type="text" name="name" placeholder="اسم المتعلم....." required>
+                      <input id="name" class="form-control" type="text" name="name" placeholder="اسم المتعلم....." required>
                         @error('name')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
                       </div>
-                    </div> <div class="row">
+                    </div>
+                    <div class="row">
                       <div class="col-md-12 form-group">
-                      <input id="phone" class="form-control" type="text" name="illiterate_id" placeholder="الرقم القومي....." required>
+                      <input id="illiterate_id" class="form-control" type="text" name="illiterate_id" placeholder="الرقم القومي....." required>
                         @error('illiterate_id')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
@@ -48,53 +47,37 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12 form-group">
-                      <input id="phone" class="form-control" type="text" name="address" placeholder="عنوان المتعلم....." required>
+                      <input id="address" class="form-control" type="text" name="address" placeholder="عنوان المتعلم....." required>
                         @error('address')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-12 form-group">
+                    <div class="col-md-12 form-group">
                     <div class="field is-horizontal">
                     <div class="field-body">
                     <div class="field">
                     <div class="control">
                         <div class="select is-fullwidth">
-                           <form>
-                              <select >
-                              <option value="" disabled selected>نوع الفصل</option>
-                             <option name="classroom_type">تنشيطي </option>
-                              <option name="classroom_type">حر </option>
-                              <option name="classroom_type">امتحان فوري </option>
-
-                              </select>
-                           </form>
-
+             {!! Form::select('classroom_type', array('energizing'=>'تنشيطي','free'=>'حر',
+                'immediate_exam'=>'امتحان فوري'), null, ['required','placeholder' => "نوع الفصل"]) !!}
                         @error('classroom_type')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
                         </div>
                     </div>
-</div>
                     </div>
-                    </div><div class="field is-horizontal">
+                    </div>
+                    </div>
+                    <div class="field is-horizontal">
                     <div class="field-body">
                     <div class="field">
                     <div class="control">
                         <div class="select is-fullwidth">
-                           <form>
-                              <select >
-                              <option value="" disabled selected> مكان الفصل</option>
-                             <option name="classroom">مسجد </option>
-                              <option name="classroom">منزل </option>
-                              <option name="classroom">جمعيه </option>
-                              <option name="classroom">كليه </option>
-
-                              </select>
-                           </form>
-
-                        @error('medical_department_id')
+     {!! Form::select('classroom', array('mosque'=>'مسجد','home'=>'منزل',
+     'association'=>'جمعيه','college'=>'كليه'), null, ['required','placeholder' => "نوع الفصل"]) !!}
+                        @error('classroom_type')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
                         </div>
@@ -106,37 +89,44 @@
 </div>
                     <div class="row">
                       <div class="col-12 text-left">
-                        <input type="submit" value="ارسال" class="btn   btn-rounded  px-5  my-4 btn-dark illiteracy_button ">
+                        <input type="submit" value="ارسال" class="btn btn-rounded px-5 my-4 btn-dark illiteracy_button">
+
                       </div>
                     </div>
                   </form>
               </div>
-
               </div>
         </div>
   </div>
-  <hr />
 
         </div>
-<div class="container p-5">
-<table class="table  table-striped pt-5">
-  <thead>
-    <tr>
-      <th scope="col">الاسم</th>
-      <th scope="col">العنوان</th>
-      <th scope="col">نوع الفصل </th>
-      <th scope="col">مكان الفصل</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">الاء اشرف</th>
-      <td>بورسعيد حي الضواحي</td>
-      <td>تنشيطي</td>
-      <td>مسجد</td>
-    </tr>
-  </tbody>
-</table>
+        <div class="container p-5">
+            <table class="table  table-striped pt-5">
+              <thead>
+                <tr>
+                  <th scope="col">الاسم</th>
+                  <th scope="col">الرقم القومي</th>
+                  <th scope="col">العنوان</th>
+                  <th scope="col">نوع الفصل </th>
+                  <th scope="col">مكان الفصل</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($iliterates as $iliterate)
+                <tr>
+                  <td>{{$iliterate->name }}</td>
+                  <td>{{$iliterate->illiterate_id}}</td>
+                  <td>{{$iliterate->address}}</td>
+                  <td>{{$iliterate->classroom_type}}</td>
+                  <td>{{$iliterate->classroom}}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+
 
 </body>
 </html>

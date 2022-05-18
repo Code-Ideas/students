@@ -13,7 +13,7 @@ class CreateIliteratesTable extends Migration
      */
     public function up()
     {
-        Schema::create('iliterates', function (Blueprint $table) {
+        Schema::create('i_literates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -33,6 +33,6 @@ class CreateIliteratesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iliterates');
+        Schema::dropIfExists('i_literates');
     }
 }
