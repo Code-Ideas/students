@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('page.title', 'تقديم الشكاوي ')
 
 
 <!doctype html>
@@ -8,7 +9,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
-<title>complain</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 
@@ -22,12 +22,11 @@
     <!-- <link rel="stylesheet" href="/front/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/front/css/success.css">
     
-<title>الشكاوي</title>
   </head>
   <body >
   
   <div class="head">
-<h1 class="text-dark p-5 text-center my-5  "> تقديم شكوي</h1>
+
 <div>
 
   <div class="content">
@@ -106,11 +105,10 @@
 
 
                 <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Send Message" class="btn btn-dark rounded-0  px-4">
-                  <span class="submitting"></span>
-                  </div>
-                </div>
+                      <div class="col-12 text-left">
+                        <input type="submit" value="ارسال" class="btn btn-dark rounded-0  px-4">
+                      </div>
+                    </div>
               </form>
 
           </div>

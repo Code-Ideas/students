@@ -78,7 +78,7 @@
                     <div class="control">
                         <div class="select is-fullwidth">
      {!! Form::select('classroom', array('mosque'=>'مسجد','home'=>'منزل',
-     'association'=>'جمعيه','college'=>'كليه'), null, ['required','placeholder' => "نوع الفصل"]) !!}
+     'association'=>'جمعيه','college'=>'كليه'), null, ['required','placeholder' => " مكان الفصل"]) !!}
                         @error('classroom_type')
                         <div class="text-danger">{{$message}}</div>
                         @enderror

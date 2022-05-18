@@ -367,22 +367,7 @@ a:not([href]):not([tabindex]):focus {
 }
 
 .text-sm {
-    font-size: .825rem
+    font-size: 10px;
+
 }
 
-.h-1x {
-    height: 1.25rem;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical
-}
-
-.w-48 {
-    width: 48px !important;
-    height: 48px !important
-}
-
-a:link {
-    text-decoration: none
-}

@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="/front/css/singleNews.css">
 <link rel="stylesheet" href="/front/css/rtl.css">
 <body class="body_news">
-<div class="container my-5">
+<div class="container ">
 
     <div class="row">
-        <div class="col-lg-8 col-md-7 news_content ">
+        <div class="col-lg-8  news_content ">
         <h3 class="text-dark display pb-3  ">{{$post->title}}</h3>
         <div class="post-meta date text-danger m-2">
         <i class="fas fa-clock"></i> {{$post->created_at}}
@@ -48,15 +48,16 @@
 
 
                 <div class="list ">
+                    <ul>
                  @foreach($posts as $post)
                     <div class="list-item row">
-                        <div class="col-lg-2"><a href="{{route('singleNews',$post->id)}}"><span class="w-48 avatar "><img src="{{$post->image}}" class="rounded"/></span></a></div>
-                        <div class="no-wrap col-lg-3"> <a href="{{route('singleNews',$post->id)}}"  class="item-author text-color">{{$post->title}}</a>
+                        <!-- <div class="col-lg-2"><a href="{{route('singleNews',$post->id)}}"><span class="w-48 avatar "><img src="{{$post->image}}" class="rounded"/></span></a></div> -->
+                        <div class="no-wrap col-lg-3"><li> <a href="{{route('singleNews',$post->id)}}"   class=" text-muted"><small>{{$post->title}}</small></a></li>
                         </div>
 
                     </div>
                     @endforeach
-
+</ul>
                 </div>
             </div>
         </div>
