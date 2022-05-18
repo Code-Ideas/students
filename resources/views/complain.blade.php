@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@section('page.title', 'تقديم الشكاوي ')
 
 
 <!doctype html>
@@ -26,7 +25,7 @@
   <body >
   
   <div class="head">
-
+<h1 class="text-dark p-5 text-center my-5  "> تقديم شكوي</h1>
 <div>
 
   <div class="content">
