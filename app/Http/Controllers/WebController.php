@@ -122,7 +122,5 @@ public function storeComplain(request  $request){
            ]);
            ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
            return view('success') ;
-
-
     }
 }

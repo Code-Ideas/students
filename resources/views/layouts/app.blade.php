@@ -81,8 +81,11 @@
                       class="fas fa-times fa-fw me-3 text-primary pl-2"></i><span>الشكاوي</span></a>
                   <a href="{{route('clinic')}}" class="list-group-item list-group-item-action py-2 ripple"><i
                       class="fas fa-hospital fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a>
-                  <a href="{{route('illiteracy')}}" class="list-group-item list-group-item-action py-2 ripple">
+                      <a href="{{route('illiteracy')}}" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الامية</span>
+                  </a>
+                  <a href="{{route('news')}}" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>مركز الاخبار</span>
                   </a>
                 </div>
               </div>

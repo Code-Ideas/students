@@ -25,7 +25,6 @@ class CreateIliteratesTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

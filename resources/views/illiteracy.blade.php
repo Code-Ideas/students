@@ -1,5 +1,6 @@
+
 @extends('layouts.app')
-@section('page.title', 'محو الأمية')
+@section('page.title', 'محو الاميه ')
 @section('content')
 
 <!doctype html>
@@ -98,7 +99,6 @@
               </div>
         </div>
   </div>
-
         </div>
         @endif
         <div class="container p-5">
@@ -122,13 +122,10 @@
                   <td>{{$iliterate->classroom}}</td>
                 </tr>
                 @endforeach
-              </tbody>
+              </tbody>              
             </table>
         </div>
     </div>
-
-
-
 </body>
 </html>
 
