@@ -109,10 +109,11 @@
   </div>
         </div>
 
-
         @endif
+        <div class='content'>
+
         <div class="container p-5">
-            <table class="table  table-striped pt-5" style="padding-right:250px">
+            <table class="table  table-striped pt-5 mr-5" style="padding-right:250px">
               <thead>
                 <tr>
                   <th scope="col">الاسم</th>

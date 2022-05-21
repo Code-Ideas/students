@@ -1,7 +1,7 @@
 
 body {
   font-family: "Raleway", sans-serif !important ;
-height:1000px;}
+height:800px;}
 
 
 
@@ -2480,9 +2480,7 @@ section.clients-section {
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
-    position: fixed;
     height: 100%;
-    overflow: auto;
       position: fixed;
       top: 93px;
       bottom: 0;
@@ -2519,7 +2517,9 @@ section.clients-section {
         width: 100%;
         height: auto;
         position: relative;
+
       }
+     
       .sideA {float: right;}
       div.content {margin-right: 0;}
     }
@@ -2541,7 +2541,7 @@ section.clients-section {
     .content {
       margin-right: 200px;
       padding: 1px 16px;
-      height: 1000px;
+      height: 500px;
       margin-top:93px
     }
     
