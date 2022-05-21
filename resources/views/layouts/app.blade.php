@@ -66,7 +66,7 @@
             <nav id="sidebarMenu" class=" d-lg-block sidebar  bg-white ml-4 fixed-right">
               <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 ">
-				<a href="{{route('e-books')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5 sideA"><i
+				<a href="{{route('e-books')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5 "><i
                       class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونية</span></a>
 				@foreach($services as $service)
                 @if($service->type=='page')
