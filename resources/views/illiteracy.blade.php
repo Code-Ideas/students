@@ -19,6 +19,14 @@
   <p class="pt-5 text-center mt-5 "> يلزم علي كليه اداب وتربيه وتجاره استكمال اجراءات محو الاميه للتخرج وذلك بتسجل حد ادني خمسه متعلمين</p>
 </blockquote>
     </div>
+
+    @if(session()->has('success'))
+    <div class="alert alert-success" role="alert"
+     style=" display:block ;margin:auto;width:30%;text-align:center">
+        {{ session()->get('success') }} 
+    </div>
+    @endif
+
     @if($iliterates->count()<5)
         <div class="content">
             <div class="container">
@@ -100,9 +108,11 @@
         </div>
   </div>
         </div>
+
+
         @endif
         <div class="container p-5">
-            <table class="table  table-striped pt-5">
+            <table class="table  table-striped pt-5" style="padding-right:250px">
               <thead>
                 <tr>
                   <th scope="col">الاسم</th>
@@ -122,7 +132,7 @@
                   <td>{{$iliterate->classroom}}</td>
                 </tr>
                 @endforeach
-              </tbody>              
+              </tbody>
             </table>
         </div>
     </div>

@@ -121,6 +121,6 @@ public function storeComplain(request  $request){
             'classroom' => 'required',
            ]);
            ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
-           return view('success') ;
+           return redirect()->back()->with('success', 'تم الإضافة بنجاح') ;
     }
 }
