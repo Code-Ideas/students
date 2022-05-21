@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/fonts/icomoon/style.css">
 <link href="{{ asset('/admin/css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 
@@ -23,7 +22,7 @@
     @if(session()->has('success'))
     <div class="alert alert-success" role="alert"
      style=" display:block ;margin:auto;width:30%;text-align:center">
-        {{ session()->get('success') }} 
+        {{ session()->get('success') }}
     </div>
     @endif
 
@@ -34,7 +33,7 @@
             <div class="col-md-10">
               <div class="row justify-content-center">
                 <div class="col-md-6">
-                <p><img src="{{asset('images/illiteracy.jpg')}}" alt="Image" class="img-fluid" width="300px"></p>
+                <p><img src="{{ asset('images/illiteracy.jpg')}}" alt="Image" class="img-fluid" width="300px"></p>
                 </div>
                 <div class="col-md-6 body-form">
                   <form class="mb-5" action="{{route('storeIlliteracy')}}" id="illiteracyForm" name="illiteracyForm" >
