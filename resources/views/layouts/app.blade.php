@@ -39,10 +39,17 @@
 					</a>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
+                            <li>
+                                <a href="{{ route('notifications') }}">
+                                    @if(count(auth()->user()->newNotifications()))
+                                        <span class="badge badge-light">{{ count(auth()->user()->newNotifications()) }}</span>
+                                        <i class="fas fa-bell"></i>
+                                    @else
+                                        <i class="fas fa-bell"></i>
+                                    @endif
+                                </a>
+                            </li>
 						</ul>
-						@guest
-                        <a href="{{ route('login') }}" class="register-modal-opener login-button text-white"><i class="material-icons">perm_identity</i>الطلاب</a>
-                        @else
                             <li class="drop-link login-button">
                                 <a href="#" class="text-white">{{ str_limit(auth()->user()->name, 20) }} <i class="material-icons">perm_identity</i><i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown">
@@ -55,18 +62,14 @@
                                         </form></li>
                                 </ul>
                             </li>
-                        @endguest
 				</div>
                 </div>
 			</nav>
             <div class="mobile-menu">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu-list">
-                       
                     </ul>
                     <ul>
-                        
-                    
                    <li> <a href="{{route('e-books')}}" class="text-dark mt-2 "><i
                       class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونية</span></a></li>
 				@foreach($services as $service)
@@ -88,14 +91,18 @@
                   <li><a href="{{route('news')}}" class="text-dark mt-2">
                     <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>مركز الاخبار</span>
                   </a></li>
-                  <li><a href="{{ route('logout') }}" class="text-dark"
-                               class="register-modal-opener"
+                    <li>
+                        <a href="{{ route('notifications') }}" class="text-dark mt-2">
+                            <i class="fas fa-bell fa-fw me-3 text-primary pl-2"></i><span>الاشعارات</span>
+                        </a>
+                    </li>
+                  <li><a href="{{ route('logout') }}" class="text-dark register-modal-opener"
                                onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><span><span>تسجيل الخروج</a>
+                    document.getElementById('logout-form').submit();">تسجيل الخروج</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                                 {{ csrf_field() }}
                             </form></li>
-</ul>
+                    </ul>
                 </nav>
             </div>
         </header>

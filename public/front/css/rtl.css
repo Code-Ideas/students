@@ -7,7 +7,7 @@ body , body *{
 #home-section , #home-section * , .testimonial-section , .testimonial-section * , .slick-slider-container *{
     direction: ltr;
 }
-#home-section .tp-mask-wrap , #home-section .tp-mask-wrap * , .testimonial-post , .testimonial-post *{ 
+#home-section .tp-mask-wrap , #home-section .tp-mask-wrap * , .testimonial-post , .testimonial-post *{
     direction: rtl!important ;
     text-align: start!important;
 }
@@ -73,9 +73,19 @@ section.page-banner-section ul.page-depth li:before {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+.badge {
+    background-color:#F9A134;
+    font-size:xx-small;
+    color: #20619B;
+    position: relative;
+    top: -10px;
+    left: -10px;
+    right: initial;
+    border: 1px black;
+    border-radius: 50%;
+}
 footer .up-footer .footer-widget.text-widget ul li .contact-info-icon {
     margin-right: 0px;
     margin-left: 12px;
 }
 
- 

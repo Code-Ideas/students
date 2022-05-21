@@ -20,40 +20,33 @@ use App\Models\ILiterate;
 
 class WebController extends Controller
 {
- public function complain(){
- $admins=AdminDepartment::pluck('name', 'id');
- $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
- $posts=Post::with('photo')->get();
+    public function complain()
+    {
+        $admins=AdminDepartment::pluck('name', 'id');
+        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
+        $posts=Post::with('photo')->get();
 
+        return view('front.complain', compact('admins', 'services', 'posts'));
+    }
 
-    return view('complain',compact('admins','services','posts'));
-}
+    public function storeComplain(request  $request)
+    {
+         $validateData=$request->validate([
+          'name'=>'required|min:5',
+          'email'=>'required|email',
+          'phone'=>'required|integer|digits:11',
+          'message'=>'required|min:15',
+          'admin_id'=>'required'
+         ]);
+        Contact::create($request->input() + ['admin_department_id'=>$request->admin_id]);
 
-public function storeComplain(request  $request){
-     $validateData=$request->validate([
-      'name'=>'required|min:5',
-      'email'=>'required|email',
-      'phone'=>'required|integer|digits:11',
-      'message'=>'required|min:15',
-      'admin_id'=>'required'
-     ]
-    );
-    Contact::create([
-        'name'=>$request->name
-        ,'email'=>$request->email
-        ,'phone'=>$request->phone
-        ,'message'=>$request->message
-        ,'admin_department_id'=>$request->admin_id
-
-    ]);
-    return view('success');
-
-}
+        return view('front.success');
+    }
     public function clinic()
     {
         $medicalDepartments = MedicalDepartment::pluck('name', 'id');
 
-        return view('clinic', compact('medicalDepartments'));
+        return view('front.clinic', compact('medicalDepartments'));
     }
 
     public function storeClinic(request  $request)
@@ -61,10 +54,10 @@ public function storeComplain(request  $request){
         $request->validate([
             'phone' => 'required|numeric|digits:11',
             'message' => 'required|string|min:15',
-            'medical_department_id' => 'required|numeric|exists:medical_departments,id'    ]);
+            'medical_department_id' => 'required|numeric|exists:medical_departments,id']);
         MedicalReservation::create($request->input() + ['user_id'=>auth()->user()->id]);
 
-        return view('success');
+        return view('front.success');
     }
 
     public function phoneDownload()
@@ -72,7 +65,7 @@ public function storeComplain(request  $request){
         $medicaldepartments=MedicalDepartment::pluck('name', 'id');
         $posts=Post::with('photo')->get();
 
-        return view("phoneDownload", compact('posts'));
+        return view('front.phoneDownload', compact('posts'));
     }
 
     public function showService(Service $service)
@@ -81,34 +74,35 @@ public function storeComplain(request  $request){
             ['year_id', auth()->user()->year_id]])->orWhere([['service_id', $service->id], ['year_id', null],
             ['department_id' , auth()->user()->department_id]])->with('attachments')->get();
 
-        return view('service_layer', compact('layers', 'service'));
+        return view('front.service_layer', compact('layers', 'service'));
     }
 
     public function news()
     {
         $posts = Post::with('photo')->get();
 
-        return view('news', compact('posts'));
+        return view('front.news', compact('posts'));
     }
 
     public function singleNews(Post $post)
     {
         $posts = Post::with('photo')->get();
 
-        return view('singleNews', compact('post', "posts"));
+        return view('front.singleNews', compact('post', "posts"));
     }
 
     public function eBooks()
     {
         $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
 
-        return view('books', compact('books'));
+        return view('front.books', compact('books'));
     }
 
     public function illiteracy()
     {
-        $iliterates = ILiterate::where(['user_id'=>auth()->user()->id])->get();
-        return view('illiteracy', compact('iliterates'));
+        $iliterates = ILiterate::where(['user_id' => auth()->id()])->get();
+
+        return view('front.illiteracy', compact('iliterates'));
     }
 
     public function storeIlliteracy(request  $request)
@@ -121,6 +115,18 @@ public function storeComplain(request  $request){
             'classroom' => 'required',
            ]);
            ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
+
            return redirect()->back()->with('success', 'تم الإضافة بنجاح') ;
+    }
+
+    public function notifications()
+    {
+        $userNotifications = auth()->user()->notifications();
+        if (count(auth()->user()->newNotifications())) {
+            $userNotifications->whereJsonDoesntContain('seen_users', auth()->id())->update(['seen_users' => [auth()->id()]]);
+        }
+        $notifications = $userNotifications->paginate(10);
+
+        return view('front.notifications', compact('notifications'));
     }
 }
