@@ -38,4 +38,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Year::class);
     }
+
+    public function notifications()
+    {
+        return UserNotification::whereJsonContains('users', auth()->id());
+    }
+
+    public function seenNotifications()
+    {
+        return $this->notifications()->whereJsonContains('seen_users', auth()->id())->get();
+    }
+
+    public function newNotifications()
+    {
+        return $this->notifications()->whereJsonDoesntContain('seen_users', auth()->id())->get();
+    }
 }
