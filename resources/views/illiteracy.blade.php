@@ -108,11 +108,11 @@
         </div>
   </div>
         </div>
-
+     </div>
         @endif
         <div class='content'>
 
-        <div class="container p-5">
+        <div class=" ">
             <table class="table  table-striped pt-5 mr-5" style="padding-right:250px">
               <thead>
                 <tr>
