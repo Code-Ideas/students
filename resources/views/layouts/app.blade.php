@@ -62,26 +62,47 @@
             <div class="mobile-menu">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu-list">
-                        <li>
-                            <a href="{{ route('home') }}">الرئيسية</a>
-                        </li>
+                       
                     </ul>
                     <ul>
-                        <li><a href="{{ route('logout') }}"
+                        
+                    
+                   <li> <a href="{{route('e-books')}}" class="text-dark mt-2 "><i
+                      class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونية</span></a></li>
+				@foreach($services as $service)
+                @if($service->type=='page')
+                     <li> <a href="{{ route('showService', $service->id)}}" class="text-dark mt-2"><i
+                      class="fa fa-table fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a></li>
+            @else
+             <li> <a href="{{$service->link}}" target="_blank" class="text-dark mt-2"><i
+              class="fa fa-link fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a></li>
+            @endif
+            @endforeach
+                <li>  <a href="{{route('complain')}}" class="text-dark mt-2"><i
+                      class="fas fa-times fa-fw me-3 text-primary pl-2 "></i><span>الشكاوي</span></a></li>
+                <li>  <a href="{{route('clinic')}}" class="text-dark mt-2"><i
+                      class="fas fa-hospital fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a></li>
+                     <li> <a href="{{route('illiteracy')}}" class="text-dark mt-2">
+                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>محو الامية</span>
+                  </a></li>
+                  <li><a href="{{route('news')}}" class="text-dark mt-2">
+                    <i class="fas fa-book fa-fw me-3 text-primary pl-2"></i><span>مركز الاخبار</span>
+                  </a></li>
+                  <li><a href="{{ route('logout') }}" class="text-dark"
                                class="register-modal-opener"
                                onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">تسجيل الخروج</a>
+                    document.getElementById('logout-form').submit();"><span><span>تسجيل الخروج</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                                 {{ csrf_field() }}
                             </form></li>
-                    </ul>
+</ul>
                 </nav>
             </div>
         </header>
     </div>
 		<!--Main Navigation-->
             <!-- Sidebar -->
-            <nav id="sidebarMenu" class=" d-lg-block sidebar  bg-white ml-4 fixed-right">
+            <nav id="sidebarMenu" class=" d-lg-block sidebar collapse bg-white ml-4 fixed-right">
               <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 ">
 				<a href="{{route('e-books')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5 "><i

@@ -302,7 +302,7 @@ a.mobile-nav-toggle {
   top: 0;
   right: -300px;
   width: 300px;
-  background-color: #212529;
+  background-color: white;
   height: 100%;
   z-index: 999999;
   overflow-y: scroll;
