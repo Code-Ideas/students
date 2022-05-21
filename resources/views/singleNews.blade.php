@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="/front/css/singleNews.css">
 <link rel="stylesheet" href="/front/css/rtl.css">
 <body class="body_news">
-<div class="container ">
+<div>
 
     <div class="row">
-        <div class="col-lg-8  news_content ">
+        <div class="col-lg-7  news_content m-4 ">
         <h3 class="text-dark display pb-3  ">{{$post->title}}</h3>
-        <div class="post-meta date text-danger m-2">
+        <div class="post-meta date text-danger ">
         <i class="fas fa-clock"></i> {{$post->created_at}}
 					</div>
 

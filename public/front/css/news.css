@@ -42,7 +42,7 @@ h2::after {
 	/* box-shadow: 0 2px 3px rgba(0,0,0,0.2); */
 }
 .carousel .item .img-box {
-	height: 120px;
+	height: 200px;
 	margin-bottom: 20px;
 	width: 100%;
 	position: relative;
@@ -98,9 +98,7 @@ h2::after {
 .star-rating li {
 	padding: 0;
 }
-.container-xl:{
-    padding-top: 200px !important;
-}
+
 .box{margin-top:10px;
     padding:20px;
     height:350px;
@@ -115,3 +113,10 @@ h2::after {
 }
 .container-xl{
 margin: auto;} 
+
+@media screen and (max-width: 300px) {
+	.container-xl{
+
+	margin: 0;
+	}
+  }

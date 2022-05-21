@@ -4,7 +4,7 @@
 <link href="{{ asset('/admin/css/app.css') }}" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" type="text/css" href="/front/css/home.css">
-<body class="service_body content">
+<body class=" content">
      <div class="bg-light container container-2">
     <br>
     <br>
