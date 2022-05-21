@@ -59,6 +59,24 @@
 				</div>
                 </div>
 			</nav>
+            <div class="mobile-menu">
+                <nav class="mobile-nav">
+                    <ul class="mobile-menu-list">
+                        <li>
+                            <a href="{{ route('home') }}">الرئيسية</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="{{ route('logout') }}"
+                               class="register-modal-opener"
+                               onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">تسجيل الخروج</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                {{ csrf_field() }}
+                            </form></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
     </div>
 		<!--Main Navigation-->
