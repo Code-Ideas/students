@@ -13,6 +13,8 @@
 
 <body>
   <div class="head">
+      <br>
+      <br>
     <h1 class="text-dark p-5 text-center my-5 ">  التسجيل في العيادة الطبية</h1>
         <div class="content">
             <div class="container">
