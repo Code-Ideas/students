@@ -39,7 +39,7 @@ h2::after {
 	border-radius: 6px;
 	text-align: center;
 	position: relative;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+	/* box-shadow: 0 2px 3px rgba(0,0,0,0.2); */
 }
 .carousel .item .img-box {
 	height: 120px;
@@ -92,13 +92,7 @@ h2::after {
 .carousel-indicators {
 	bottom: -50px;
 }
-.carousel-indicators li, .carousel-indicators li.active {
-	width: 10px;
-	height: 10px;
-	margin: 4px;
-	border-radius: 50%;
-	border: none;
-}
+
 
 
 .star-rating li {
@@ -110,7 +104,7 @@ h2::after {
 .box{margin-top:10px;
     padding:20px;
     height:350px;
-    border: 1px ridge;
+    border: .25px solid rgb(190, 188, 188);
 }
 .pos{
 
