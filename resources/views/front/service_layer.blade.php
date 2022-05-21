@@ -1,10 +1,21 @@
 @extends('layouts.app')
 @section('page.title', $service->name)
 @section('content')
-<link href="{{ asset('/admin/css/app.css') }}" rel="stylesheet" type="text/css">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+    <link href="{{ asset('/admin/css/app.css') }}" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="/front/css/home.css">
-<body class="content">
+    <link href="{{ asset('/admin/css/app.css') }}" rel="stylesheet" type="text/css">
+
+    <style>
+    </style>
+</head>
+<body>
+<div class=" content " >
      <div class="bg-light ">
     <br>
     <br>
@@ -33,4 +44,5 @@
          @endforeach
     </div>
     </div>
+</div>
 </body>
