@@ -17,6 +17,7 @@ class MedicalController extends Controller
      *      tags={"Medical"},
      *      summary="Get list of medical_departments",
      *      description="Returns list of medical_departments",
+      *      security={{"Bearer":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",

@@ -17,6 +17,7 @@ class ServiceController extends Controller
      *      tags={"Services"},
      *      summary="Get list of services",
      *      description="Returns list of services",
+     *      security={{"Bearer":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
