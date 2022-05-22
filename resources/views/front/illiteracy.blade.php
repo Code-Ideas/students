@@ -109,10 +109,11 @@
         </div>
      </div>
         @endif
-        <div class=' container content'>
-
-        <div class=" table-cont" >
-            <table class="table  table-striped pt-5 mr-5" >
+        <div class='container '>
+            <div class="teacher-content">
+            <div class="row">
+            <div class="col-lg-10" style="padding-right:200px;">
+            <table class="table  table-striped pt-5">
               <thead>
                 <tr>
                   <th scope="col">الاسم</th>
@@ -136,6 +137,8 @@
             </table>
         </div>
     </div>
+  </div>
+  </div>
 </body>
 </html>
 
