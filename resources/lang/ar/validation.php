@@ -116,7 +116,11 @@ return [
         'message'=>"الرساله",
         'phone'=>"رقم الهاتف",
         "admin_id"=>"اسم المشرف",
-        "age"=>"العمر"
+        "age"=>"العمر",
+        'classroom_type'=>'نوع الفصل',
+        'classroom_type'=>'مكان الفصل',
+        'illiterate_id'=>'الرقم القومي للمتعلم',
+        'address'=>'العنوان'
 
     ],
 
