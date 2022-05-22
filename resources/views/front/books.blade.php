@@ -18,7 +18,7 @@
             <!-- /.col end-->
         </div>
         <!-- row end-->
-        <div class="row p-5">
+        <div class="row p-3">
             <div class="col-lg-12">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="home" role="tabpanel">
