@@ -181,7 +181,7 @@ header {
     .navbar-nav > li > a i {
       color: #454545 !important;
       font-size: 16px !important;
-      margin-left: 6px;!important }
+      margin-left: 6px!important; }
   .navbar-nav > li:last-child > a {
     padding-right: 0 !important;
     margin-right: 0; }
@@ -262,7 +262,8 @@ a.mobile-nav-toggle {
   position: relative;
   padding: 10px;
   display: none;
-  margin-right: 15px; }
+   margin-right: 15px; 
+}
   a.mobile-nav-toggle span {
     vertical-align: middle;
     position: relative;
@@ -310,69 +311,54 @@ a.mobile-nav-toggle {
   -moz-transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out; }
+  .mobile-menu2 {
+    position: fixed;
+    top: 104px;
+    right: 0 ;
+    width: 270px;
+    background-color: white;
+    height: 100%;
+    overflow-y: scroll;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    font-size: 14px;
+    padding-bottom: 100px;
+
+     }
+  
   .mobile-menu.open {
     right: 0; }
-  .mobile-menu .search-form-box {
-    padding: 24px 20px; }
-    .mobile-menu .search-form-box form {
-      position: relative; }
-      .mobile-menu .search-form-box form input {
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-        border-color: transparent;
-        color: #6c757d;
-        padding: 8px 12px;
-        font-size: 14px;
-        outline: none; }
-      .mobile-menu .search-form-box form button {
-        position: absolute;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        color: #6c757d;
-        top: 7px;
-        right: 4px; }
-  .mobile-menu .shopping-cart-box {
-    padding: 0 20px 24px;
-    border-bottom: 1px solid #2c3237; }
-    .mobile-menu .shopping-cart-box a {
-      color: #fff;
-      display: flex;
-      align-items: center;
-      font-size: 15px;
-      text-transform: uppercase; }
-      .mobile-menu .shopping-cart-box a i {
-        margin-right: 6px; }
-      .mobile-menu .shopping-cart-box a span {
-        margin-left: 10px;
-        background-color: #4783f3;
-        min-width: 15px;
-        height: 15px;
-        line-height: 15px;
-        font-size: 11px;
-        border-radius: 3px;
-        margin-top: -20px;
-        margin-left: 8px;
-        text-align: center; }
+ 
+
       .mobile-menu .shopping-cart-box a:hover {
         color: #fff; }
-  .mobile-menu nav.mobile-nav {
-    padding: 24px 20px; }
-    .mobile-menu nav.mobile-nav ul li {
-      display: block; }
-      .mobile-menu nav.mobile-nav ul li a {
-        color: #fff;
-        font-size: 18px;
-        padding: 6px 0; }
-        .mobile-menu nav.mobile-nav ul li a:hover {
+        .mobile-menu nav.mobile-nav {
+          padding: 24px 20px; }
+          .mobile-menu nav.mobile-nav ul li {
+            display: block; }
+            .mobile-menu nav.mobile-nav ul li a {
+              color: #fff;
+              font-size: 18px;
+              padding: 6px 0; }
+              .mobile-menu2 nav.mobile-nav {
+                padding: 24px 20px; }
+                .mobile-menu2 nav.mobile-nav ul li {
+                  display: block; }
+                  .mobile-menu2 nav.mobile-nav ul li a {
+                    color: #fff;
+                    font-size: 18px;
+                    padding: 6px 0; }
+                          .mobile-menu nav.mobile-nav ul li a:hover {
           color: #4783f3 !important; }
-    .mobile-menu nav.mobile-nav ul.drop-level {
-      padding-left: 16px;
-      border-left: 1px solid #333940; }
-      .mobile-menu nav.mobile-nav ul.drop-level li a {
-        font-size: 14px;
-        color: #adb5bd; }
 
+        @media (max-width: 991px) {
+          header .navbar-brand {
+            padding: 25px; }
+          a.mobile-nav-toggle {
+            display: flex;
+            justify-content: flex-end; } }
 @media (max-width: 991px) {
   .right-top-line {
     display: none !important; }
@@ -387,7 +373,11 @@ a.mobile-nav-toggle {
   a.mobile-nav-toggle {
     display: flex;
     justify-content: flex-end; } }
-
+    @media (max-width: 991px) {
+.text-nav{display: none;}
+  .mobile-menu2{
+    display: none;
+  }}
 /**
  * Allows you to use retina images at various pixel densities.
  * Examples:
@@ -1441,200 +1431,6 @@ section.testimonial-section {
     padding-bottom: 0;
     margin-bottom: 0;
     border-bottom: none; }
-  .sidebar .products-widget ul.products-list li > a {
-    margin-right: 10px; }
-  .sidebar .products-widget ul.products-list li img {
-    width: 65px;
-    height: 65px; }
-  .sidebar .products-widget ul.products-list li h3 {
-    font-size: 15px;
-    line-height: 22px;
-    margin-bottom: 0px; }
-    .sidebar .products-widget ul.products-list li h3 a {
-      color: #2f2f32; }
-      .sidebar .products-widget ul.products-list li h3 a:hover {
-        color: #4783f3; }
-  .sidebar .products-widget ul.products-list li span {
-    font-size: 13px;
-    color: #f9a134;
-    margin: 0; }
-
-.sidebar .buy-widget table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 40px;
-  border-radius: 0; }
-  .sidebar .buy-widget table tr th {
-    padding: 15px 0;
-    text-align: left;
-    line-height: 1.4;
-    font-weight: 400;
-    color: #495057;
-    font-size: 14px;
-    vertical-align: middle;
-    border: 0;
-    border-bottom: 1px solid #efefef; }
-  .sidebar .buy-widget table tr td {
-    padding: 9px 0 8px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #888;
-    border-bottom: 1px solid #efefef; }
-    .sidebar .buy-widget table tr td span {
-      color: #f9a134; }
-    .sidebar .buy-widget table tr td input {
-      width: 60px;
-      outline: none;
-      border: 1px solid #dfdfdf;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-      padding: 8px 10px; }
-
-.sidebar .buy-widget > a {
-  width: 100%;
-  text-align: center; }
-
-.sidebar div.course-widget p.price {
-  margin-bottom: 24px; }
-  .sidebar div.course-widget p.price span.price-label {
-    display: block;
-    color: #adb5bd; }
-  .sidebar div.course-widget p.price span.amount {
-    color: #464749;
-    font-size: 26px;
-    line-height: 30px; }
-    .sidebar div.course-widget p.price span.amount del {
-      font-size: 15px;
-      margin-right: 6px; }
-
-.sidebar div.course-widget a.button-one {
-  margin-bottom: 26px;
-  width: 100%;
-  text-align: center; }
-
-.sidebar div.course-widget h3 {
-  font-weight: 500;
-  margin-bottom: 4px; }
-
-.sidebar div.course-widget .product-meta-info-list .meta-info-unit {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #e9ecef;
-  padding-top: 12px;
-  padding-bottom: 12px; }
-  .sidebar div.course-widget .product-meta-info-list .meta-info-unit .icon {
-    color: #f9a134;
-    font-size: 16px;
-    margin-right: 15px;
-    line-height: 10px; }
-  .sidebar div.course-widget .product-meta-info-list .meta-info-unit .value {
-    color: #7d7e7f;
-    font-size: 15px;
-    line-height: 26px; }
-
-.sidebar div.course-widget ul.share-list {
-  margin-top: 30px;
-  text-align: center; }
-  .sidebar div.course-widget ul.share-list li {
-    display: inline-block;
-    margin: 0 2px; }
-    .sidebar div.course-widget ul.share-list li a {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      color: rgba(0, 0, 0, 0.6);
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #e5e5e5;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      border-radius: 50%; }
-      .sidebar div.course-widget ul.share-list li a:hover {
-        border-color: transparent;
-        color: #fff; }
-      .sidebar div.course-widget ul.share-list li a.facebook:hover {
-        background: #7073e5; }
-      .sidebar div.course-widget ul.share-list li a.google:hover {
-        background: #e6545f; }
-      .sidebar div.course-widget ul.share-list li a.linkedin:hover {
-        background: #0077b5; }
-      .sidebar div.course-widget ul.share-list li a.twitter:hover {
-        background: #63bde3; }
-
-.sidebar .profile-widget .top-part {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; }
-  .sidebar .profile-widget .top-part img {
-    max-width: 100%;
-    width: 80px;
-    height: auto;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%; }
-  .sidebar .profile-widget .top-part .name {
-    line-height: normal;
-    flex-grow: 1;
-    padding-left: 20px; }
-    .sidebar .profile-widget .top-part .name h3 {
-      margin-bottom: 4px; }
-    .sidebar .profile-widget .top-part .name span {
-      color: #adb5bd; }
-
-.sidebar .profile-widget p {
-  line-height: 28px; }
-
-.sidebar .cart-widget table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 30px; }
-  .sidebar .cart-widget table tr {
-    border-bottom: 1px solid #eaeaea; }
-    .sidebar .cart-widget table tr th {
-      padding: 15px 0;
-      vertical-align: baseline;
-      padding-right: 50px;
-      width: 60px;
-      font-size: 15px;
-      color: #2f2f32;
-      font-weight: 400; }
-    .sidebar .cart-widget table tr td {
-      padding: 15px;
-      font-size: 15px;
-      color: #7d7e7f; }
-      .sidebar .cart-widget table tr td.name-pro {
-        min-width: 240px; }
-      .sidebar .cart-widget table tr td.total-price {
-        color: #2f2f32;
-        font-size: 22px; }
-
-.sidebar .cart-widget a {
-  color: #fff;
-  text-align: center;
-  border: 0;
-  padding: 10px 22px;
-  width: 100%;
-  vertical-align: bottom;
-  font-weight: 400;
-  font-size: 16px;
-  text-shadow: none;
-  display: inline-block;
-  background-color: #f9a134;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  border-radius: 50px;
-  transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  cursor: pointer; }
-  .sidebar .cart-widget a:hover {
-    opacity: 0.86; }
 
 /*------------------------------------------------- */
 /* =  single post */
@@ -2462,23 +2258,7 @@ section.clients-section {
 
 
 
-    .sidebar{
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    height: 100%;
-      position: fixed;
-      top: 93px;
-      bottom: 0;
-      right: 0;
-      /* padding: 10px 0 0;  */
-      box-shadow: 0 2px 1px 0 rgba(231, 227, 227, 0.05), 0 2px 10px 0 rgb(0 0 0 / 5%);
-      width: 250px;
-      font-size: 17px;
-
   
-  }
   
   .sidebar a {
     display: block;
@@ -2530,4 +2310,4 @@ section.clients-section {
       margin-top:93px
     }
     
-    
+      

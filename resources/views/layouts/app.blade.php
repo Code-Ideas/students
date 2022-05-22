@@ -21,7 +21,6 @@
 </head>
 <body style="
   font-family:Raleway">
-
 	<!-- Container -->
 	<div id="container">
 		<!-- Header
@@ -30,8 +29,8 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 				<div class="container">
 					<a class="navbar-brand" href="{{route('home')}}">
-						<img src="/images/university.jpg"  width="80px" alt="">البوابة الالكترونية لخدمة طلاب جامعة بورسعيد
-					</a>
+						<img src="/images/university.jpg"  width="80px" alt=""><span  class='text-nav'>البوابة الالكترونية لخدمة طلاب جامعة بورسعيد</span>
+
 					<a href="#" class="mobile-nav-toggle">
 						<span></span>
 					</a>
@@ -63,13 +62,12 @@
 				</div>
                 </div>
 			</nav>
-            <div class="mobile-menu">
+      <div class="mobile-menu">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu-list">
-                    </ul>
-                    <ul>
-                   <li> <a href="{{route('e-books')}}" class="text-dark mt-2 "><i
+                    <li> <a href="{{route('e-books')}}" class="text-dark mt-2 "><i
                       class="fas fa-file-pdf-o fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونية</span></a></li>
+
 				@foreach($services as $service)
                 @if($service->type=='page')
                      <li> <a href="{{ route('showService', $service->id)}}" class="text-dark mt-2"><i
@@ -79,6 +77,7 @@
               class="fa fa-link fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a></li>
             @endif
             @endforeach
+
                 <li>  <a href="{{route('complain')}}" class="text-dark mt-2"><i
                       class="fa fa-edit fa-fw me-3 text-primary pl-2 "></i><span>الشكاوي</span></a></li>
                 <li>  <a href="{{route('clinic')}}" class="text-dark mt-2"><i
@@ -105,35 +104,37 @@
             </div>
         </header>
     </div>
-		<!--Main Navigation-->
-            <!-- Sidebar -->
-            <nav id="sidebarMenu" class=" d-lg-block sidebar collapse bg-white ml-4 fixed-right">
-              <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 ">
-				<a href="{{route('e-books')}}" class="list-group-item list-group-item-action py-2 ripple  mt-5 "><i
-                      class="fas fa-file-pdf-o fa-fw me-3 text-primary pl-2"></i><span>الكتب الالكترونية</span></a>
+    <div class="mobile-menu2">
+                <nav class="mobile-nav">
+                    <ul class="mobile-menu-list">
+                    
+                    
+<li class='padA'> <a href="{{route('e-books')}}" class="text-dark mt-2"><i class="fas fa-file-pdf-o fa-fw me-3 text-primary pl-2 " ></i><span>الكتب الالكترونية</span></a></li>
+
 				@foreach($services as $service)
                 @if($service->type=='page')
-                      <a href="{{ route('showService', $service->id)}}" class="list-group-item list-group-item-action py-2 ripple"><i
-                      class="fas fa-user-graduate fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a>
+                     <li> <a href="{{ route('showService', $service->id)}}" class="text-dark mt-2"><i
+                      class="fa fa-table fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a></li>
             @else
-              <a href="{{$service->link}}" target="_blank" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fa fa-link fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a>
+             <li> <a href="{{$service->link}}" target="_blank" class="text-dark mt-2"><i
+              class="fa fa-link fa-fw me-3 text-primary pl-2"></i><span>{{$service->name}}</a></li>
             @endif
             @endforeach
-                  <a href="{{route('complain')}}" class="list-group-item list-group-item-action py-2 ripple"><i
-                      class="fa fa-edit fa-fw me-3 text-primary pl-2"></i><span>الشكاوي</span></a>
-                  <a href="{{route('clinic')}}" class="list-group-item list-group-item-action py-2 ripple"><i
-                      class="fas fa-stethoscope fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a>
-                      <a href="{{route('illiteracy')}}" class="list-group-item list-group-item-action py-2 ripple">
+                <li>  <a href="{{route('complain')}}" class="text-dark mt-2"><i
+                      class="fa fa-edit fa-fw me-3 text-primary pl-2 "></i><span>الشكاوي</span></a></li>
+                <li>  <a href="{{route('clinic')}}" class="text-dark mt-2"><i
+                      class="fas fa-stethoscope fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a></li>
+                     <li> <a href="{{route('illiteracy')}}" class="text-dark mt-2">
                     <i class="fas fa-book-open fa-fw me-3 text-primary pl-2"></i><span>محو الامية</span>
-                  </a>
-                  <a href="{{route('news')}}" class="list-group-item list-group-item-action py-2 ripple">
+                  </a></li>
+                  <li><a href="{{route('news')}}" class="text-dark mt-2">
                     <i class="fas fa-newspaper fa-fw me-3 text-primary pl-2"></i><span>مركز الاخبار</span>
-                  </a>
-                </div>
-              </div>
-            </nav>
+                  </a></li>
+                   
+                    </ul>
+                </nav>
+        </header>
+    </div>
 <div class="content">
       @yield('content')
 </div>
