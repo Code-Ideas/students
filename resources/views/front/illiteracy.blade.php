@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12 form-group">
-                      <input id="address" class="form-control" type="text" name="address" placeholder="عنوان المتعلم....." required>
+                      <input id="address" class="form-control" type="text" name="address" placeholder="العنوان - محل الاقامة....." required>
                         @error('address')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
@@ -69,8 +69,8 @@
                     <div class="field">
                     <div class="control">
                         <div class="select is-fullwidth">
-             {!! Form::select('classroom_type', array('energizing'=>'تنشيطي','free'=>'حر',
-                'immediate_exam'=>'امتحان فوري'), null, ['required','placeholder' => "نوع الفصل"]) !!}
+                         {!! Form::select('classroom_type', array('energizing'=>'تنشيطي','free'=>'حر',
+                            'immediate_exam'=>'امتحان فوري'), null, ['required','placeholder' => "نوع الفصل"]) !!}
                         @error('classroom_type')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
@@ -84,8 +84,8 @@
                     <div class="field">
                     <div class="control">
                         <div class="select is-fullwidth">
-     {!! Form::select('classroom', array('mosque'=>'مسجد','home'=>'منزل',
-     'association'=>'جمعيه','college'=>'كليه'), null, ['required','placeholder' => " مكان الفصل"]) !!}
+                         {!! Form::select('classroom', array('mosque'=>'مسجد','home'=>'منزل',
+                         'association'=>'جمعيه','college'=>'كليه'), null, ['required','placeholder' => " مكان الفصل"]) !!}
                         @error('classroom_type')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
