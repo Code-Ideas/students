@@ -34,8 +34,10 @@ class WebController extends Controller
     public function clinic()
     {
         $medicalDepartments = MedicalDepartment::pluck('name', 'id');
+        $reservations = MedicalReservation::where('user_id', auth()->id())->paginate(10);
 
-        return view('front.clinic', compact('medicalDepartments'));
+
+        return view('front.clinic', compact('medicalDepartments','reservations'));
     }
 
     public function storeClinic(ClinicRequest  $request)

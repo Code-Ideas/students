@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ReservationDateRequest;
 use App\Models\MedicalReservation;
+use App\Models\UserNotification;
 
 class MedicalReservationController extends Controller
 {
@@ -54,31 +55,6 @@ class MedicalReservationController extends Controller
         return view('admin.medical_reservations.show', compact('medical_reservation'));
 
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MedicalReservation  $medical_reservation
-     * @param  \Illuminate\Http\ReservationDateRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function reserve(MedicalReservation $medical_reservation,ReservationDateRequest $request)
-    {
-        // return view('admin.medical_reservations.reserve', compact('medical_reservation'));
-        $medical_reservation->update(['reservation_date'=> $request->get('reservation_date'),
-        'notes'=>$request->get('notes')]);
-
-        return redirect()->route('admin.medical_reservations.index')->with('success', 'تم تأكيد الحجز');
-    }
-   
-    // public function reserved(MedicalReservation $medical_reservation, Request $request)
-    // {
-
-    //     $medical_reservation->update(['reservation_date'=> $request->get('reservation_date'),
-    //     'notes'=>$request->get('notes')]);
-
-    //     return redirect()->route('admin.medical_reservations.index')->with('success', 'تم تأكيد الحجز');
-
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -100,7 +76,11 @@ class MedicalReservationController extends Controller
      */
     public function update(Request $request, MedicalReservation $medical_reservation)
     {
-        //
+        $medical_reservation->update($request->only(['notes', 'reservation_date']));
+        UserNotification::create(['title' => 'العيادة الطبية', 'body' => 'تم تحديد موعد للكشف الطبي ', 'seen_users' => [],
+            'model_name' => 'MedicalReservation', 'model_id' => $medical_reservation->id, 'users' => [$medical_reservation->user_id]]);
+
+        return redirect()->route('admin.medical_reservations.index')->with('success', 'تم تحديد تاريخ الحجز');
     }
 
     /**

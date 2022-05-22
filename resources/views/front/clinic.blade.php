@@ -70,8 +70,42 @@
         </div>
   </div>
         </div>
+        @if(count($reservations))
+        <section class="page-banner-section">
+            <div class="container">
+                <div class="teacher-content">
+                    <div class="row">
+                        <div class="col-lg-10" style="padding-right:75px;">
+                            <table class="table table-striped pt-5">
+                                <thead>
+                                <tr>
+                                    <th scope="col">القسم الطبي</th>
+                                    <th scope="col">موعد الحجز</th>
+                                    <th scope="col"> ملاحظات </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($reservations as $reservation)
+                                    <tr>
+                                        <td>{{ $reservation->medicalDepartment ? $reservation->medicalDepartment->name : ' - - ' }}</td>
+                                        <td>{{ $reservation->reservation_date ?: 'لم يتم تحديد موعد' }}</td>
+                                        <td>{{ $reservation->notes ?: ' - - ' }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            {!! $reservations->links('vendor.pagination.bootstrap-4') !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
         </div>
   </div>
+
+
+
 </body>
 </html>
 

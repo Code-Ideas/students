@@ -38,7 +38,7 @@
     </collapse-item>
     <collapse-item title="العيادة الطبية" icon="fa fa-stethoscope">
         <a class="link-item" href="{{ route('admin.medical_departments.index') }}">قائمة الأقسام</a>
-        <a class="link-item" href="{{ route('admin.medical_reservations.index') }}">الرسائل</a>
+        <a class="link-item" href="{{ route('admin.medical_reservations.index') }}">طلبات الحجز</a>
     </collapse-item>
     <a href="{{ route('admin.literacies.index') }}" class="card link-item-no-collapse"><i class="fa fa-school"></i><span>محو الأمية</span></a>
     <a href="{{ route('admin.contacts.index') }}" class="card link-item-no-collapse"><i class="fa fa-envelope"></i><span>رسائل التواصل</span></a>
