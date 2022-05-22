@@ -6,8 +6,8 @@ class Controller
     /**
      * @OA\Info(
      *      version="1.0.0",
-     *      title="Collage API",
-     *      description="Collage Api Documentation",
+     *      title="PSU Student Services",
+     *      description="PSU Student Services Api Documentation",
      *      @OA\Contact(
      *          email="ahmed.ali-gad@outlook.com"
      *      ),

@@ -16,19 +16,12 @@ use Illuminate\Support\Facades\Route;
 /* ====== Sign =======*/
 Route::post('login', 'AuthController@login')->name('login');
 Route::post('register', 'AuthController@register')->name('register');
-/*====== Sliders =======*/
-Route::get('sliders', 'SliderController');
 /* ====== Posts =======*/
 Route::apiResource('posts', 'PostsController', ['only' => ['index', 'show']]);
-/*====== Admin Departments =======*/
-Route::get('admin_departments','ContactController@index');
-/*====== Contacts=======*/
-Route::post('contact', 'ContactController');
 /*====== Medical Departments =======*/
 Route::get('medical_departments', 'MedicalController@index');
-
-
-
+/*====== Admin Departments =======*/
+Route::get('admin_departments', 'ContactController@index');
 
 Route::middleware('auth:api')->group(function () {
     // Logout
@@ -37,8 +30,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/medical_reservations', 'MedicalController@store');
     /*====== Services =======*/
     Route::apiResource('services', 'ServiceController', ['only' => ['index', 'show']]);
-
+    /*====== E-Books=======*/
     Route::get('e_books', 'EBookController@index');
-
-
+    /*====== Contacts=======*/
+    Route::post('contact', 'ContactController');
 });
