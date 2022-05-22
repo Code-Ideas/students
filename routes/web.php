@@ -26,7 +26,7 @@ Auth::routes();
 
 Route::get('/', "HomeController@index")->name('home')->middleware('auth');
 Route::get('/complain', "WebController@complain")->name('complain');
-Route::get('/storeComplain', "WebController@storeComplain")->name('storeComplain');
+Route::post('/storeComplain', "WebController@storeComplain")->name('storeComplain');
 Route::get('/clinic', "WebController@clinic")->name('clinic');
 Route::get('/storeClinic', 'WebController@storeClinic')->name('storeClinic');
 Route::get('/phoneDownload', "WebController@phoneDownload")->name('phoneDownload');

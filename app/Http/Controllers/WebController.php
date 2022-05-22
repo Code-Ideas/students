@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Department;
-use App\Models\User;
+use App\Http\Requests\Front\ClinicRequest;
+use App\Http\Requests\Front\ComplainRequest;
+use App\Http\Requests\Front\IlliteracyRequest;
 use App\Models\Contact;
 use App\Models\EBook;
-use App\Models\Collage;
 use App\Models\Post;
-use App\Models\Photo;
 use App\Models\Service;
 use App\Models\MedicalReservation;
 use App\Models\MedicalDepartment;
-use App\Models\Admin;
 use App\Models\AdminDepartment;
 use App\Models\ServiceLayer;
 use App\Models\ILiterate;
@@ -22,23 +19,15 @@ class WebController extends Controller
 {
     public function complain()
     {
-        $admins=AdminDepartment::pluck('name', 'id');
-        $services=Service::whereJsonContains('collages', auth()->user()->collage_id)->get();
-        $posts=Post::with('photo')->get();
+        $adminsDepartments =AdminDepartment::pluck('name', 'id');
 
-        return view('front.complain', compact('admins', 'services', 'posts'));
+        return view('front.complain', compact('adminsDepartments'));
     }
 
-    public function storeComplain(request  $request)
+    public function storeComplain(ComplainRequest  $request)
     {
-         $validateData=$request->validate([
-          'name'=>'required|min:5',
-          'email'=>'required|email',
-          'phone'=>'required|integer|digits:11',
-          'message'=>'required|min:15',
-          'admin_id'=>'required'
-         ]);
-        Contact::create($request->input() + ['admin_department_id'=>$request->admin_id]);
+        Contact::create($request->input() + ['user_id' => auth()->id(), 'name' => auth()->user()->name,
+                                'email' => auth()->user()->email]);
 
         return view('front.success');
     }
@@ -49,12 +38,8 @@ class WebController extends Controller
         return view('front.clinic', compact('medicalDepartments'));
     }
 
-    public function storeClinic(request  $request)
+    public function storeClinic(ClinicRequest  $request)
     {
-        $request->validate([
-            'phone' => 'required|numeric|digits:11',
-            'message' => 'required|string|min:15',
-            'medical_department_id' => 'required|numeric|exists:medical_departments,id']);
         MedicalReservation::create($request->input() + ['user_id'=>auth()->user()->id]);
 
         return view('front.success');
@@ -106,18 +91,11 @@ class WebController extends Controller
         return view('front.illiteracy', compact('iliterates'));
     }
 
-    public function storeIlliteracy(request  $request)
+    public function storeIlliteracy(IlliteracyRequest  $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'illiterate_id' => 'required|numeric|digits:14',
-            'address' => 'required|min:3',
-            'classroom_type' => 'required',
-            'classroom' => 'required',
-           ]);
-           ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
+        ILiterate::create($request->input() + ['user_id'=>auth()->user()->id]);
 
-           return redirect()->back()->with('success', 'تم الإضافة بنجاح') ;
+        return redirect()->back()->with('success', 'تم الإضافة بنجاح');
     }
 
     public function notifications()
