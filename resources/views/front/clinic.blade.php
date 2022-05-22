@@ -71,7 +71,6 @@
   </div>
         </div>
         @if(count($reservations))
-        <section class="page-banner-section">
             <div class="container">
                 <div class="teacher-content">
                     <div class="row">
@@ -99,7 +98,6 @@
                     </div>
                 </div>
             </div>
-        </section>
     @endif
         </div>
   </div>
