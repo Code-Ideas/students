@@ -58,6 +58,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     /* ====== Settings =======*/
     Route::name('settings.edit')->get('settings/edit', 'SettingsController@edit');
     Route::name('settings.update')->patch('settings/edit', 'SettingsController@update');
+    // Literacy
+    Route::resource('literacies', 'LiteraciesController', ['only' => ['index', 'show']]);
 });
 
 

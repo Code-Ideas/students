@@ -39,6 +39,11 @@ class User extends Authenticatable
         return $this->belongsTo(Year::class);
     }
 
+    public function literacies(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ILiterate::class);
+    }
+
     public function notifications()
     {
         return UserNotification::whereJsonContains('users', auth()->id());

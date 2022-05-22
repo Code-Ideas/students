@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Admin;
 use App\Models\EBook;
+use App\Models\User;
 use App\Models\ServiceLayerAttachment;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -50,6 +51,9 @@ class RouteServiceProvider extends ServiceProvider
         });
         Route::bind('book', function ($id) {
             return EBook::where('id', $id)->firstOrFail();
+        });
+        Route::bind('literacy', function ($id) {
+            return User::where('id', $id)->firstOrFail();
         });
 
         $this->configureRateLimiting();
