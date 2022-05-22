@@ -12,8 +12,6 @@ return [
     | such as the size rules. Feel free to tweak each of these messages.
     |
     */
-    'Reqiured'=>'يجب ان يكون هماك قيمه',
-"required"=>"يجب ان يكون هناك قيمه للحقل",
     "accepted"         => "يجب قبول الحقل :attribute",
     "active_url"       => "الحقل :attribute لا يُمثّل رابطًا صحيحًا",
     "after"            => "يجب على الحقل :attribute أن يكون تاريخًا لاحقًا للتاريخ :date.",
@@ -117,11 +115,6 @@ return [
         'phone'=>"رقم الهاتف",
         "admin_id"=>"اسم المشرف",
         "age"=>"العمر",
-        'classroom_type'=>'نوع الفصل',
-        'classroom_type'=>'مكان الفصل',
-        'illiterate_id'=>'الرقم القومي للمتعلم',
-        'address'=>'العنوان'
-
     ],
 
 ];
