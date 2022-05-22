@@ -13,7 +13,7 @@
       crossorigin="anonymous">
 
 	<link rel="stylesheet" href="/front/css/studiare-assets.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="/fonts/font-awesome/font-awesome.min.css" media="screen"> -->
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome/font-awesome.min.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="/fonts/iconfont/material-icons.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="/front/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/front/css/rtl.css">
