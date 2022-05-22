@@ -93,7 +93,8 @@ class WebController extends Controller
 
     public function eBooks()
     {
-        $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])->get();
+        $books = EBook::where([['department_id' , auth()->user()->department_id], ['year_id', auth()->user()->year_id]])
+                                ->published()->get();
 
         return view('front.books', compact('books'));
     }

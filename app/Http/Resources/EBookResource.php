@@ -15,8 +15,9 @@ class EBookResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
-            'path' => $this->path,
+            'path' => $this->book_path,
         ];
     }
 }

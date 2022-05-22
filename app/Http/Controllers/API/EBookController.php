@@ -12,10 +12,9 @@ class EBookController extends Controller
      /**
      * @OA\Get(
      *      path="/e_books",
-     *      operationId="getEBooks",
+     *      operationId="getStudentEBooks",
      *      tags={"EBooks"},
-     *      summary="Get list of e_books",
-     *      description="Returns list of e_books",
+     *      description="Returns Student Books",
      *      security={{"Bearer":{}}},
      *      @OA\Response(
      *          response=200,
@@ -45,7 +44,8 @@ class EBookController extends Controller
     public function index()
     {
         $ebooks = EBook::where([['department_id', auth()->user()->department_id],['year_id', auth()->user()->year_id]])
-        ->published()->get();
+                                ->published()->get();
+
         return EBookResource::collection($ebooks);
     }
 }
