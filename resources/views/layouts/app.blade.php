@@ -13,8 +13,8 @@
       crossorigin="anonymous">
 
 	<link rel="stylesheet" href="/front/css/studiare-assets.min.css">
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome/font-awesome.min.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="/fonts/iconfont/material-icons.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome/font-awesome.min.css" media="screen">
+<!--    <link rel="stylesheet" type="text/css" href="/fonts/iconfont/material-icons.css" media="screen">-->
 	<link rel="stylesheet" type="text/css" href="/front/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/front/css/rtl.css">
 
@@ -49,7 +49,7 @@
                             </li>
 						</ul>
                             <li class="drop-link login-button">
-                                <a href="#" class="text-white">{{ str_limit(auth()->user()->name, 20) }} <i class="material-icons">perm_identity</i><i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="text-white">{{ str_limit(auth()->user()->name, 20) }}<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('logout') }}"
                                            class="register-modal-opener"
