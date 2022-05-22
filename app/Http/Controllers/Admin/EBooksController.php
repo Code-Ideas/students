@@ -49,9 +49,8 @@ class EBooksController extends Controller
      */
     public function store(EbookRequest $request)
     {
-        $fileName = pathinfo($request->file('book')->getClientOriginalName(), PATHINFO_FILENAME);
         $eBook = EBook::create($request->input() + [
-                'path' => $request->file('book')->storeAs('e_books', $fileName, 'public'),
+                'path' => $request->file('book')->store('e_books', 'public'),
                 'collage_id' => auth()->guard('admin')->user()->collage_id,
                 'staff_id' => auth()->guard('admin')->id(),
             ]);
@@ -108,9 +107,8 @@ class EBooksController extends Controller
     {
         if ($request->hasFile('book')) {
             Storage::disk('public')->delete($eBook->path);
-            $fileName = pathinfo($request->file('book')->getClientOriginalName(), PATHINFO_FILENAME);
             $eBook->update($request->input() + [
-                    'path' => $request->file('book')->storeAs('e_books', $fileName, 'public')
+                    'path' => $request->file('book')->store('e_books', 'public')
                 ]);
 
             return redirect()->route('admin.e_books.show', $eBook->id)->with('success', 'تم التعديل بنجاح');
