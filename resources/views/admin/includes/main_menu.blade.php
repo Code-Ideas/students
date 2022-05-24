@@ -27,6 +27,7 @@
     <collapse-item title="الكتب الالكترونية" icon="fa fa-book">
         <a class="link-item" href="{{ route('admin.books.create') }}">اضافة كتاب</a>
         <a class="link-item" href="{{ route('admin.books.index') }}">قائمة الكتب</a>
+        <a class="link-item" href="{{ route('admin.books.students') }}">الكتب الخاصة بالطلاب</a>
     </collapse-item>
     <collapse-item title="الخدمات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.services.create') }}">اضافة خدمة</a>

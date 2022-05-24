@@ -7,14 +7,14 @@
   <!-- Start Card -->
   <div class="card main-card">
     <!-- Start Card Header -->
-    <div class="card-header is-justify-content-space-between">
-      <a href="{{ route('admin.books.create') }}" class="button is-success">
-        <span class="icon is-small">
-          <i class="fa fa-plus-circle"></i>
-        </span>
-        <span>اضافة كتاب</span>
-      </a>
-    </div><!-- End Card Header -->
+      <div class="card-header">
+          <div>
+                <span class="icon is-small">
+                  <i class="fa fa-book"></i>
+                </span>
+              <span>قائمة الكتب </span>
+          </div>
+      </div><!-- End Card Header -->
 
     <!-- Start Card Content -->
     <div class="card-content">
@@ -38,6 +38,9 @@
                   <div class="buttons has-addons">
                     <a class="button is-primary" target="_blank" href="{{ route('admin.books.show', $book->id) }}"> عرض </a>
                     <a class="button is-warning" target="_blank" href="{{ route('admin.books.log', $book->id) }}"> السجل </a>
+                    @if($book->published)
+                        <span class="modal-open button is-danger" status-name="تأكيد الغاء النشر"  traget-modal=".deactivate-modal" data_id="{{ $book->id }}" data_name="{{ $book->title }}" data-url="{{ route('admin.books.destroy', $book->id) }}">الغاء النشر</span>
+                    @endif
                   </div>
                 </td>
               </tr>
@@ -54,7 +57,7 @@
   </div><!-- End Card -->
 
   <!-- Include Modals -->
-  @include('admin.partials.deleteModal')
+  @include('admin.partials.deactivateModal')
 @endsection<!-- End Content Section -->
 
 

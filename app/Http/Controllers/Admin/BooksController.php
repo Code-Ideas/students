@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\BookRequest;
+use App\Models\Collage;
+use App\Models\Department;
 use App\Models\EBook;
 use App\Models\EBookLog;
+use App\Models\User;
+use App\Models\UserNotification;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -27,13 +33,25 @@ class BooksController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function students()
+    {
+        $books = EBook::whereNotNull('student_id')->with(['user:id,name', 'collage:id,name'])->paginate(15);
+
+        return view('admin.books.students', compact('books'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.books.create');
     }
 
     /**
@@ -42,9 +60,20 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        $fileName = pathinfo($request->file('book')->getClientOriginalName(), PATHINFO_FILENAME);
+        $book = EBook::create($request->input() + [
+                'path' => $request->file('book')->storeAs('e_books', $fileName, 'public'),
+                'admin_id' => auth()->guard('admin')->id(),
+                'approved' => true, 'published' => true
+            ]);
+        if ($book) {
+            UserNotification::create(['title' => 'الكتب الالكترونية', 'body' => 'تم اضافة كتاب جديد', 'seen_users' => [],
+                'model_name' => 'EBook', 'model_id' => $book->id, 'users' => [(int)$book->student_id]]);
+        }
+
+        return redirect()->route('admin.books.create')->with('success', 'تم اضافة الكتاب');
     }
 
     /**
@@ -82,7 +111,7 @@ class BooksController extends Controller
     {
         $eBook->update(['published' => true]);
         EBookLog::create(['title' => 'تم تأكيد نشر الكتاب', 'e_book_id' => $eBook->id,
-            'created_by' => auth()->guard('admin')->id(), 'role' => 'staff']);
+            'created_by' => auth()->guard('admin')->id(), 'role' => 'admin']);
 
         return redirect()->route('admin.books.index')->with('success', 'تم تأكيد نشر الكتاب');
     }
@@ -118,6 +147,28 @@ class BooksController extends Controller
      */
     public function destroy(EBook $eBook)
     {
-        //
+        $eBook->update(['published' => false]);
+
+        EBookLog::create(['title' => 'تم الغاء نشر الكتاب', 'e_book_id' => $eBook->id,
+            'created_by' => auth()->guard('admin')->id(), 'role' => 'admin']);
+
+        return redirect()->back()->with('success', 'تم الغاء النشر');
+    }
+
+    public function yearsList($collage_id)
+    {
+        $collage = Collage::whereId($collage_id)->first();
+
+        return response()->json(Year::whereIn('id', $collage->years)->get(['id', 'name']));
+    }
+
+    public function departmentsList($collage_id)
+    {
+        return response()->json(Department::where('collage_id', $collage_id)->get(['id', 'name']));
+    }
+
+    public function studentsList($department_id, $year_id)
+    {
+        return response()->json(User::where([['department_id', $department_id], ['year_id', $year_id]])->get(['id', 'name']));
     }
 }

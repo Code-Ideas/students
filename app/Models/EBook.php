@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class EBook extends Model
 {
     protected $fillable = ['title', 'path', 'staff_id', 'collage_id', 'department_id', 'year_id',
-        'published', 'approved', 'admin_id', 'return_reason'];
+        'published', 'approved', 'admin_id', 'return_reason', 'student_id'];
 
     protected static function boot()
     {
@@ -75,5 +75,10 @@ class EBook extends Model
     public function logs(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(EBookLog::class, 'e_book_id');
+    }
+
+    public function user()
+    {
+        return$this->belongsTo(User::class, 'student_id');
     }
 }

@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::patch('books/{book}/published', 'BooksController@published')->name('books.published');
     Route::post('books/{book}/returned', 'BooksController@returned')->name('books.returned');
     Route::get('books/{book}/log', 'BooksController@log')->name('books.log');
+    Route::get('student_books', 'BooksController@students')->name('books.students');
     // Services
     Route::resource('services', 'ServicesController', ['except' => 'show']);
     // Service Layers
@@ -40,9 +41,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
 
     Route::resource('medical_departments', 'MedicalDepartmentController');
     Route::resource('medical_reservations', 'MedicalReservationController');
-    Route::get('medical_reservations/{medical_reservation}/reserve','MedicalReservationController@reserve')->name('medical_reservations.reserve');
-
-
+    Route::get('medical_reservations/{medical_reservation}/reserve', 'MedicalReservationController@reserve')
+         ->name('medical_reservations.reserve');
 
     // Articles
     Route::resource('posts', 'PostsController');
@@ -60,6 +60,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'as' => 'admin.',
     Route::name('settings.update')->patch('settings/edit', 'SettingsController@update');
     // Literacy
     Route::resource('literacies', 'LiteraciesController', ['only' => ['index', 'show']]);
+    // Select Routes
+    Route::name('get_years')->get('get_years/{collage_id}', 'BooksController@yearsList');
+    Route::name('get_departments')->get('get_departments/{collage_id}', 'BooksController@departmentsList');
+    Route::name('get_students')->get('get_students/{department_id}/{year_id}', 'BooksController@studentsList');
 });
 
 

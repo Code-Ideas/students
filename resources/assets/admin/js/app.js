@@ -48,6 +48,7 @@ import SingleSelect from './SecondaryComponents/Select/SingleSelect'
 import SelectAll from './SecondaryComponents/Select/SelectAll';
 import CollageSelect from "./SecondaryComponents/Select/CollageSelect";
 import ServiceType from "./SecondaryComponents/ServiceType";
+import StudentSelect from "./SecondaryComponents/Select/StudentSelect";
 
 
 /*==============General Use=============*/
@@ -78,7 +79,8 @@ export {
     Alert,
     IconPicker,
     CollageSelect,
-    ServiceType
+    ServiceType,
+    StudentSelect
 }
 
 const app = new Vue({
@@ -104,6 +106,7 @@ const app = new Vue({
         Alert,
         IconPicker,
         CollageSelect,
-        ServiceType
+        ServiceType,
+        StudentSelect
     }
 });
