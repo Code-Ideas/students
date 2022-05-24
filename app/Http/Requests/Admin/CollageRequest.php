@@ -26,6 +26,8 @@ class CollageRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:150',
             'priority' => 'required|numeric|unique:collages,priority,'.optional($this->collage)->id,
+            'years' => 'required|array',
+            'years.*' => 'required|numeric|exists:years,id'
         ];
     }
 
@@ -34,6 +36,7 @@ class CollageRequest extends FormRequest
         return [
             'name' => 'اسم الكلية',
             'priority' => 'الترتيب',
+            'years' => 'الفرق الدراسية'
         ];
     }
 }

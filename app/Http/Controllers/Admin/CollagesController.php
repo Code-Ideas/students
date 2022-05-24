@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CollageRequest;
 use App\Models\Collage;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class CollagesController extends Controller
@@ -28,7 +29,9 @@ class CollagesController extends Controller
      */
     public function create()
     {
-        return view('admin.collages.create');
+        $years = Year::active()->get(['id', 'name']);
+
+        return view('admin.collages.create', compact('years'));
     }
 
     /**
@@ -63,7 +66,9 @@ class CollagesController extends Controller
      */
     public function edit(Collage $collage)
     {
-        return view('admin.collages.edit', compact('collage'));
+        $years = Year::active()->get(['id', 'name']);
+
+        return view('admin.collages.edit', compact('collage', 'years'));
     }
 
     /**
@@ -73,9 +78,11 @@ class CollagesController extends Controller
      * @param  \App\Models\Collage  $collage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Collage $collage)
+    public function update(CollageRequest $request, Collage $collage)
     {
-        //
+        $collage->update($request->input());
+
+        return redirect()->route('admin.collages.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**
