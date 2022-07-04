@@ -24,12 +24,12 @@
                     @endforeach
                 </div> <!-- Left right -->
                 <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
-                <ol class="carousel-indicators list-inline">
+                <!-- <ol class="carousel-indicators list-inline">
                     <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="{{$post->image}}" class="img-fluid"> </a> </li>
                     @foreach($post->images as $image)
                     <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="{{ $image->id }}" data-target="#custCarousel"> <img src="{{ asset('storage/' . $image->path) }}"  class="img-fluid"> </a> </li>
                     @endforeach
-                </ol>
+                </ol> -->
             </div>
             <div class="text-dark text-right mt-5 pt-5">{!! $post->body !!}</div>
 
