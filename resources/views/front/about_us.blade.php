@@ -13,8 +13,12 @@
         <div class="card">
     <img src="{{asset('images/ahmed.jpeg')}}" class="card-img-top" alt="...">
     <div class="card-body">
+        <div class="name">
       <h5 class="card-title">Ahmed Ali Gad</h5>
+        </div>
+      <div class="role">
           <h6 class="card-subtitle mb-2 text-muted">Back-End Developer</h6>
+      </div>
     </div>
     </div>
       </div>
@@ -22,9 +26,12 @@
   <div class="card">
     <img src="{{asset('images/alaa.png')}}" class="card-img-top" alt="...">
     <div class="card-body">
+        <div class="name">
       <h5 class="card-title">Alaa Ashraf Elsayed</h5>
+        </div>
+      <div class="role">
           <h6 class="card-subtitle mb-2 text-muted">Front-End Developer</h6>
-
+      </div>
     </div>
     </div>
       </div>
@@ -33,8 +40,12 @@
   <div class="card">
     <img src="{{asset('images/bassant.jpg')}}" class="card-img-top" alt="...">
     <div class="card-body">
+        <div class="name">
       <h5 class="card-title">Bassant Mohamed Shalaby</h5>
+        </div>
+      <div class="role">
           <h6 class="card-subtitle mb-2 text-muted">Back-End Developer</h6>
+      </div>
 
     </div>
     </div>
@@ -44,8 +55,12 @@
         <div class="card">
     <img src="{{asset('images/samah.jpg')}}"class="card-img-top" alt="...">
     <div class="card-body">
+        <div class="name">
       <h5 class="card-title">Samah Ayman Nofal</h5>
+        </div>
+      <div class="role">
           <h6 class="card-subtitle mb-2 text-muted">Mobile Developer</h6>
+      </div>
 
     </div>
     </div>
@@ -54,8 +69,12 @@
   <div class="card">
     <img src="{{asset('images/sohaila.jpg')}}" class="card-img-top" alt="...">
     <div class="card-body">
+        <div class="name">
       <h5 class="card-title">Sohaila Abd-Elmoneam Barakat</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Mobile Developer</h6>
+        </div>
+        <div class="role">
+              <h6 class="card-subtitle mb-2 text-muted">Mobile Developer</h6>
+        </div>
     </div>
     </div>
      <br>
