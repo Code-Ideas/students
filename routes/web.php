@@ -37,3 +37,5 @@ Route::get('/e-books', 'WebController@eBooks')->name('e-books');
 Route::get('/illiteracy', 'WebController@illiteracy')->name('illiteracy');
 Route::get('/storeIlliteracy', 'WebController@storeIlliteracy')->name('storeIlliteracy');
 Route::get('/notifications', 'WebController@notifications')->name('notifications');
+Route::get('/about_us', 'WebController@about_us')->name('about_us');
+

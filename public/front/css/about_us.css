@@ -1,0 +1,34 @@
+body {
+    margin-right: 100px;
+    background: #eee !important;
+}
+
+.card {
+    width: 18rem;
+    height: 19rem;
+    color: #448bff;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.card-title,
+.card-subtitle {
+    text-align: center;
+}
+
+.card img {
+    width: 11rem;
+    height: 11rem;
+    margin-top: 15px;
+    border-radius: 50%;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #448bff;
+}
+
+h4 {
+    text-align: center;
+}

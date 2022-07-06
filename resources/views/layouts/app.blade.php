@@ -37,6 +37,11 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
                             <li>
+                                <a href="{{ route('about_us') }}">
+                                        <i class="fa fa-users"></i>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('notifications') }}">
                                     @if(count(auth()->user()->newNotifications()))
                                         <span class="badge badge-light">{{ count(auth()->user()->newNotifications()) }}</span>
@@ -107,8 +112,8 @@
     <div class="mobile-menu2">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu-list">
-                    
-                    
+
+
 <li class='padA'> <a href="{{route('e-books')}}" class="text-dark mt-2"><i class="fas fa-file-pdf-o fa-fw me-3 text-primary pl-2 " ></i><span>الكتب الالكترونية</span></a></li>
 
 				@foreach($services as $service)
@@ -124,13 +129,17 @@
                       class="fa fa-edit fa-fw me-3 text-primary pl-2 "></i><span>الشكاوي</span></a></li>
                 <li>  <a href="{{route('clinic')}}" class="text-dark mt-2"><i
                       class="fas fa-stethoscope fa-fw me-3 text-primary pl-2"></i><span>العيادة الطبية</span></a></li>
+                      @if (auth()->user()->collage->name =='كلية التربية'
+                      or auth()->user()->collage->name =='كلية الاداب'
+                      or auth()->user()->collage->name =='كلية التجارة')
                      <li> <a href="{{route('illiteracy')}}" class="text-dark mt-2">
                     <i class="fas fa-book-open fa-fw me-3 text-primary pl-2"></i><span>محو الامية</span>
                   </a></li>
+                  @endif
                   <li><a href="{{route('news')}}" class="text-dark mt-2">
                     <i class="fas fa-newspaper fa-fw me-3 text-primary pl-2"></i><span>مركز الاخبار</span>
                   </a></li>
-                   
+
                     </ul>
                 </nav>
         </header>

@@ -110,4 +110,9 @@ class WebController extends Controller
 
         return view('front.notifications', compact('notifications'));
     }
+
+    public function about_us()
+    {
+        return view('front.about_us');
+    }
 }
