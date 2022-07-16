@@ -34,4 +34,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('e_books', 'EBookController@index');
     /*====== Contacts=======*/
     Route::post('contact', 'ContactController');
+    /*====== Literacy =======*/
+    Route::post('/submit_literacy', 'ServiceController@submitLiteracy');
 });
